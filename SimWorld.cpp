@@ -5,21 +5,34 @@
 #include <string>
 #include "StillsuitSim.h"
 #include "HumanSim.h"
+#include <thread>
+#include <atomic>
+#include <time.h>
+
+const int MIN_PER_DAY = 1440;
+const int MIN_TEMP = 50;
+const int MAX_TEMP = 100;
+
+
+void sendToHuman(HumanSim* human, int time, int temp) {
+    
+    human->setWorldInfo(time,temp);
+
+}
+
+
 int main()
 {
+    srand(time(NULL));
     std::cout << "Hello World!\n";
     HumanSim* human = new HumanSim("Dave");
     StillsuitSim* suit = new StillsuitSim(human);
 
+    for (int i = 1; i <= MIN_PER_DAY; i++) {
+        int temp = rand() % MIN_TEMP + 1 + (MAX_TEMP - MIN_TEMP);
+        thread tempThread(sendToHuman,human, i, temp);
+        tempThread.join();
+
+    }
+
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
