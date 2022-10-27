@@ -12,6 +12,7 @@
 const int MIN_PER_DAY = 1440;
 const int MIN_TEMP = 50;
 const int MAX_TEMP = 100;
+const int SLEEP_TIME = 100;
 
 
 void sendToHuman(HumanSim* human, int time, int temp) {
@@ -31,8 +32,8 @@ int main()
     for (int i = 1; i <= MIN_PER_DAY; i++) {
         int temp = rand() % MIN_TEMP + 1 + (MAX_TEMP - MIN_TEMP);
         thread tempThread(sendToHuman,human, i, temp);
-        tempThread.join();
-
+        tempThread.detach();
+        this_thread::sleep_for(chrono::milliseconds(100));
     }
 
 }
