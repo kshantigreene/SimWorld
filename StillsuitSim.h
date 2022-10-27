@@ -6,7 +6,9 @@ class StillsuitSim
 public:
 	StillsuitSim();
 	void StillsuitCompoundID();
+	void setTime(int time);
 private:
+	int worldTime;
 };
 
 #endif

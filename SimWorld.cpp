@@ -33,6 +33,7 @@ int main()
         int temp = rand() % MIN_TEMP + 1 + (MAX_TEMP - MIN_TEMP);
         thread tempThread(sendToHuman,human, i, temp);
         tempThread.detach();
+        suit->setTime(i);
         this_thread::sleep_for(chrono::milliseconds(100));
     }
 

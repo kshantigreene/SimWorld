@@ -71,3 +71,8 @@ void StillsuitCompoundID()
         index++;
     }
 }
+
+void StillsuitSim::setTime(int time) {
+    this->worldTime = time;
+}
+
