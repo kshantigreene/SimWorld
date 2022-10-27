@@ -1,13 +1,12 @@
+#ifndef STILL_SUIT_SIM
+#define STILL_SUIT_SIM
 #pragma once
-#include "HumanSim.h"
-
 class StillsuitSim
 {
 public:
-	StillsuitSim(HumanSim* human);
+	StillsuitSim();
 	
 private:
-	HumanSim* human;
-	
 };
 
+#endif

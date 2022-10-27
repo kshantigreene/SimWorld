@@ -1,7 +1,8 @@
 #include "HumanSim.h"
 
-HumanSim::HumanSim(string n) {
+HumanSim::HumanSim(string n, StillsuitSim* suit) {
 	this->name = name;
+    this->suit = suit;
 };
 
 void HumanSim::setWorldInfo(int time,int temp) {
