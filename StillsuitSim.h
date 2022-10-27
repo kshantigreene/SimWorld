@@ -5,7 +5,7 @@ class StillsuitSim
 {
 public:
 	StillsuitSim(HumanSim* human);
-	int StillsuitCompoundID();
+	void StillsuitCompoundID();
 	
 private:
 	HumanSim* human;
