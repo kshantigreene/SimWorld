@@ -28,7 +28,7 @@ int main()
     std::cout << "Hello World!\n";
     HumanSim* human = new HumanSim("Dave");
     StillsuitSim* suit = new StillsuitSim(human);
-
+    //send time and temp
     for (int i = 1; i <= MIN_PER_DAY; i++) {
         int temp = rand() % MIN_TEMP + 1 + (MAX_TEMP - MIN_TEMP);
         thread tempThread(sendToHuman,human, i, temp);
