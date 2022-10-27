@@ -13,3 +13,11 @@ void HumanSim::setWorldInfo(int time,int temp) {
     }
     printf("Current time is: %02d:%02d, %dF\n", hour, minute, temp);
 }
+
+// Calculates the sweat based on activity, temperature and weight (including suit)
+void HumanSim::calculateSweat(int time, int temp, int weight) {
+    this->worldTemp = temp;
+    int hour = (int)time / 60;
+
+
+}
