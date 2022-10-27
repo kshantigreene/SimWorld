@@ -5,7 +5,7 @@ class StillsuitSim
 {
 public:
 	StillsuitSim();
-	
+	void StillsuitCompoundID();
 private:
 };
 

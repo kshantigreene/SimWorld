@@ -2,11 +2,10 @@
 #include <iostream>
 using namespace std;
 
-StillsuitSim::StillsuitSim(HumanSim* h) {
-	this->human = h;
+StillsuitSim::StillsuitSim() {
 };
 
-int StillsuitSim::StillsuitCompoundID()
+void StillsuitSim::StillsuitCompoundID()
 {
     string digits;
     cin >> digits;
