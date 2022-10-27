@@ -5,8 +5,18 @@ using namespace std;
 StillsuitSim::StillsuitSim() {
 };
 
-void StillsuitSim::StillsuitCompoundID()
+void StillsuitCompoundID()
 {
+    string water = "This is water.";
+    string urea = "This is urea.";
+    string chloride = "This is urea.";
+    string sodium = "This is sodium.";
+    string creatinine = "This is creatinine.";
+    string potassium = "This is potassium.";
+    string calcium = "This is calcium.";
+    string magnesium = "This is magnesium.";
+    string error = "This compound is undefined. Please enter a defined compound.";
+
     string digits;
     cin >> digits;
     size_t index = 0;
@@ -17,46 +27,46 @@ void StillsuitSim::StillsuitCompoundID()
         if (c == '1')
         {
             identified = true;
-            cout << "This is water." << endl;
+            cout << water << endl;
         }
         if (c == '2')
         {
             identified = true;
-            cout << "This is urea." << endl;
+            cout << urea << endl;
         }
         if (c == '3')
         {
             identified = true;
-            cout << "This is chloride." << endl;
+            cout << chloride << endl;
         }
         if (c == '4')
         {
             identified = true;
-            cout << "This is sodium." << endl;
+            cout << sodium << endl;
         }
         if (c == '5')
         {
             identified = true;
-            cout << "This is creatinine." << endl;
+            cout << creatinine << endl;
         }
         if (c == '6')
         {
             identified = true;
-            cout << "This is potassium." << endl;
+            cout << potassium << endl;
         }
         if (c == '7')
         {
             identified = true;
-            cout << "This is calcium." << endl;
+            cout << calcium << endl;
         }
         if (c == '8')
         {
             identified = true;
-            cout << "This is magnesium." << endl;
+            cout << magnesium << endl;
         }
         if (!identified)
         {
-            cout << "This compound is undefined. Please enter a defined compound." << endl;
+            cout << error << endl;
         }
         index++;
     }
