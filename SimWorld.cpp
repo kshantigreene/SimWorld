@@ -34,7 +34,7 @@ int main()
         thread tempThread(sendToHuman,human, i, temp);
         tempThread.detach();
         suit->setTime(i);
-        this_thread::sleep_for(chrono::milliseconds(100));
+        this_thread::sleep_for(chrono::milliseconds(SLEEP_TIME));
     }
 
 }
