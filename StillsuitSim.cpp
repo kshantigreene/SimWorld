@@ -9,7 +9,7 @@ void StillsuitCompoundID()
 {
     string water = "This is water.";
     string urea = "This is urea.";
-    string chloride = "This is urea.";
+    string chloride = "This is chloride.";
     string sodium = "This is sodium.";
     string creatinine = "This is creatinine.";
     string potassium = "This is potassium.";
@@ -74,6 +74,66 @@ void StillsuitCompoundID()
 
 void StillsuitSim::setTime(int time) {
     this->worldTime = time;
+}
+
+void StillsuitSim::seperateFluid() {
+    int fluid2[10];
+    int fluid = 123456;
+    for (int i = 0; i < 10; i++)
+    {
+        fluid2[i] = fluid % 10; fluid /= 10;
+    }
+}
+
+
+int urineAmount;
+int sweatAmount;
+//getters and settings for urine
+void setUrine(int urine)
+{
+    int urineAmount = urineAmount + urine;
+}
+
+int getUrine()
+{
+    return urineAmount;
+}
+//getters and settings for sweat
+void setSweat(int sweat)
+{
+    int sweatAmount = sweatAmount + sweat;
+}
+
+int getSweat()
+{
+    return sweatAmount;
+}
+
+//start heating process - not sure on amount to increase
+void startHeat(int temp) 
+{
+    temp += 2;
+}
+
+//start cooling process - not sure on amount to decrease
+void startAirCon(int temp) 
+{
+    temp -= 2;
+}
+
+//checking current internal temp to see if heat or cooling is needed, then calling needed function
+void checkTemperature(int temp) 
+{
+    if (temp < 60) 
+    {
+        startHeat(temp);
+    }
+
+    if (temp > 80) 
+    {
+        startAirCon(temp);
+    }
+
 }
 
 int StillsuitSim::batteryAlert(int time)

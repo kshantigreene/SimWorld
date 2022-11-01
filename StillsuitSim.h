@@ -7,6 +7,9 @@ public:
 	StillsuitSim();
 	void StillsuitCompoundID();
 	void setTime(int time);
+	void seperateFluid();
+	
+
 	int batteryAlert(int time);
 
 private:
