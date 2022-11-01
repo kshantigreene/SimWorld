@@ -8,9 +8,11 @@ public:
 	void StillsuitCompoundID();
 	void setTime(int time);
 	void seperateFluid();
+	
 
 private:
 	int worldTime;
+	
 };
 
 #endif
