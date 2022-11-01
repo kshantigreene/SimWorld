@@ -9,7 +9,7 @@ void StillsuitCompoundID()
 {
     string water = "This is water.";
     string urea = "This is urea.";
-    string chloride = "This is urea.";
+    string chloride = "This is chloride.";
     string sodium = "This is sodium.";
     string creatinine = "This is creatinine.";
     string potassium = "This is potassium.";
