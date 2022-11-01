@@ -20,6 +20,8 @@ public:
 
 	
 
+	int batteryAlert(int time);
+
 private:
 	int worldTime;
 	int urine;
@@ -27,6 +29,7 @@ private:
 	int urineTotal;
 	int sweatTotal;
 	
+
 };
 
 #endif
