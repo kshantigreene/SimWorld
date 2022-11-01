@@ -9,7 +9,7 @@ void StillsuitCompoundID()
 {
     string water = "This is water.";
     string urea = "This is urea.";
-    string chloride = "This is urea.";
+    string chloride = "This is chloride.";
     string sodium = "This is sodium.";
     string creatinine = "This is creatinine.";
     string potassium = "This is potassium.";
@@ -83,6 +83,56 @@ void StillsuitSim::seperateFluid() {
     {
         fluid2[i] = fluid % 10; fluid /= 10;
     }
+}
+
+
+
+//getters and settings for urine
+void StillsuitSim::setUrine(int urine)
+{
+    urineTotal += urine;
+}
+
+int StillsuitSim::getUrine()
+{
+    return urineTotal;
+}
+//getters and settings for sweat
+void StillsuitSim::setSweat(int sweat)
+{
+    sweatTotal += sweat;
+}
+
+int StillsuitSim::getSweat()
+{
+    return sweatTotal;
+}
+
+//start heating process - not sure on amount to increase
+void StillsuitSim::startHeat(int temp)
+{
+    temp += 2;
+}
+
+//start cooling process - not sure on amount to decrease
+void StillsuitSim::startAirCon(int temp)
+{
+    temp -= 2;
+}
+
+//checking current internal temp to see if heat or cooling is needed, then calling needed function
+void StillsuitSim::checkTemperature(int temp)
+{
+    if (temp < 60) 
+    {
+        startHeat(temp);
+    }
+
+    if (temp > 80) 
+    {
+        startAirCon(temp);
+    }
+
 }
 
 // Returns gcd of a and b
@@ -189,4 +239,30 @@ long encrypt(long msg)
     //printf("\nEncrypted data = %lf", c);
     cout << c << endl;
 
+}
+int StillsuitSim::batteryAlert(int time)
+{
+    //assigns values to variables
+    int batteryLevel = 100;
+    int maxBatteryTime = 720;
+
+    //uses worldtime to find how many minuites are left in the battery
+     int batteryTimeLeft;
+    batteryTimeLeft = maxBatteryTime - worldTime;
+
+    //uses simple math to make a percent of the batter left
+    batteryLevel = (batteryTimeLeft / maxBatteryTime) * 100;
+    
+    //checks the level to see if its critical
+    if (batteryLevel < 30)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+
+    //returns the value of the battery level and batter time
+    return batteryLevel, batteryTimeLeft;
 }
