@@ -31,6 +31,7 @@ int main()
     //send time and temp
     for (int i = 1; i <= MIN_PER_DAY; i++) {
         int temp = rand() % MIN_TEMP + 1 + (MAX_TEMP - MIN_TEMP);
+        //create thread so human can deal with it independent of this thread
         thread tempThread(sendToHuman,human, i, temp);
         tempThread.detach();
         suit->setTime(i);
