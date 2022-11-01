@@ -86,43 +86,42 @@ void StillsuitSim::seperateFluid() {
 }
 
 
-int urineAmount;
-int sweatAmount;
+
 //getters and settings for urine
-void setUrine(int urine)
+void StillsuitSim::setUrine(int urine)
 {
-    int urineAmount = urineAmount + urine;
+    urineTotal += urine;
 }
 
-int getUrine()
+int StillsuitSim::getUrine()
 {
-    return urineAmount;
+    return urineTotal;
 }
 //getters and settings for sweat
-void setSweat(int sweat)
+void StillsuitSim::setSweat(int sweat)
 {
-    int sweatAmount = sweatAmount + sweat;
+    sweatTotal += sweat;
 }
 
-int getSweat()
+int StillsuitSim::getSweat()
 {
-    return sweatAmount;
+    return sweatTotal;
 }
 
 //start heating process - not sure on amount to increase
-void startHeat(int temp) 
+void StillsuitSim::startHeat(int temp)
 {
     temp += 2;
 }
 
 //start cooling process - not sure on amount to decrease
-void startAirCon(int temp) 
+void StillsuitSim::startAirCon(int temp)
 {
     temp -= 2;
 }
 
 //checking current internal temp to see if heat or cooling is needed, then calling needed function
-void checkTemperature(int temp) 
+void StillsuitSim::checkTemperature(int temp)
 {
     if (temp < 60) 
     {
