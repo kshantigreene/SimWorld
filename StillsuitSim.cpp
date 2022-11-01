@@ -76,3 +76,12 @@ void StillsuitSim::setTime(int time) {
     this->worldTime = time;
 }
 
+void StillsuitSim::seperateFluid() {
+    int fluid2[10];
+    int fluid = 123456;
+    for (int i = 0; i < 10; i++)
+    {
+        fluid2[i] = fluid % 10; fluid /= 10;
+    }
+}
+
