@@ -76,3 +76,29 @@ void StillsuitSim::setTime(int time) {
     this->worldTime = time;
 }
 
+int StillsuitSim::batteryAlert(int time)
+{
+    //assigns values to variables
+    int batteryLevel = 100;
+    int maxBatteryTime = 720;
+
+    //uses worldtime to find how many minuites are left in the battery
+     int batteryTimeLeft;
+    batteryTimeLeft = maxBatteryTime - worldTime;
+
+    //uses simple math to make a percent of the batter left
+    batteryLevel = (batteryTimeLeft / maxBatteryTime) * 100;
+    
+    //checks the level to see if its critical
+    if (batteryLevel < 30)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+
+    //returns the value of the battery level and batter time
+    return batteryLevel, batteryTimeLeft;
+}
