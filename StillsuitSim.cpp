@@ -280,8 +280,9 @@ long encrypt(long msg)
     c = fmod(c, n);
     //printf("\nEncrypted data = %lf", c);
     cout << c << endl;
-
+    return c;
 }
+
 int StillsuitSim::batteryAlert(int time)
 {
     //assigns values to variables
