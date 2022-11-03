@@ -79,7 +79,7 @@ vector<int> liquidPurifier(int liquidElem) {
     return purifiedLiquid;
 }
 
-void wip()
+void StillsuitCompoundDestination()
 {
     int water = 1;
     int urea = 2;
