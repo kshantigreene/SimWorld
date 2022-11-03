@@ -13,6 +13,7 @@ public:
 	 void setWorldInfo(int time, int temp);
 	 void calculateSweat(int time, int temp, int weight);
 	 double calculateHydration(int height, int weight, bool s);
+	 int CalculateInternalTemp(int temp, int InternalTemp);
 	 double getBattery(); //gets the current battery life
 
 	 int getSuitWeight(); //gets how much the suit weighss
@@ -20,6 +21,11 @@ public:
 	 int getWater(); //gets the current amount of drinkable water
 
 	 int checkAvailWater(); //gets the current filtration process of the water
+
+	 int CheckInternalTemp(int InternalTemp); // gets the current internal temperature 
+	 void setInternalTemp(int InternalTemp); // sets the Internal temperature
+
+	 
 
 private:
 	 string name;
@@ -31,6 +37,9 @@ private:
 	 int height;			// in cm
 	 bool sex;				// 0 female; 1 male
 	 double waterLevel;		// in liters
+
+	 // Internal temperature of human
+	 int InternalTemp;    // base temp is 98F
 
 
 
