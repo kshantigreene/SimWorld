@@ -25,7 +25,7 @@ public:
 	 int CheckInternalTemp(int InternalTemp); // gets the current internal temperature 
 	 void setInternalTemp(int InternalTemp); // sets the Internal temperature
 
-	 
+	 double calculateActivityLevel(int height, int weight, int age);
 
 private:
 	 string name;
@@ -37,7 +37,8 @@ private:
 	 int height;			// in cm
 	 bool sex;				// 0 female; 1 male
 	 double waterLevel;		// in liters
-
+	 double bmrM;
+	 double bmrF;
 	 // Internal temperature of human
 	 int InternalTemp;    // base temp is 98F
 
