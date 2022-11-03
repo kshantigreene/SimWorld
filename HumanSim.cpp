@@ -58,3 +58,34 @@ double HumanSim::calculateHydration(int h, int w, bool s) {
     
     return result;
 }
+
+int HumanSim::CalculateInternalTemp(int temp, int InternalTemp) // Function for calculating body temp
+{
+    if(temp < 60)
+    {
+        InternalTemp -= 2;
+
+    }else if(temp >= 60 && temp < 70)
+    {
+        InternalTemp -= 1;
+
+    }
+    else if (temp >  70 && temp <= 80) 
+    {
+        InternalTemp += 1;
+    }
+    else
+    {
+        InternalTemp += 2;
+    }
+    return InternalTemp;
+}
+    // getters and setters for Internal Temo
+void HumanSim::setInternalTemp(int Internaltemp) // Setter for Internal temp
+{
+    InternalTemp = 98; // base body temp
+}
+int HumanSim::CheckInternalTemp(int Internaltemp) // getter for Internal temp 
+{
+    return Internaltemp;
+}
