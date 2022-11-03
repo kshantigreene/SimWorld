@@ -26,14 +26,15 @@ int main()
 {
     srand(time(NULL));
     std::cout << "Hello World!\n";
-    HumanSim* human = new HumanSim("Dave");
-    StillsuitSim* suit = new StillsuitSim(human);
+    StillsuitSim* suit = new StillsuitSim();
+    HumanSim* human = new HumanSim("Dave",suit);
     //send time and temp
     for (int i = 1; i <= MIN_PER_DAY; i++) {
         int temp = rand() % MIN_TEMP + 1 + (MAX_TEMP - MIN_TEMP);
         thread tempThread(sendToHuman,human, i, temp);
         tempThread.detach();
-        this_thread::sleep_for(chrono::milliseconds(100));
+        suit->setTime(i);
+        this_thread::sleep_for(chrono::milliseconds(SLEEP_TIME));
     }
 
 }

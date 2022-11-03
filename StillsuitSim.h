@@ -1,14 +1,16 @@
+#ifndef STILL_SUIT_SIM
+#define STILL_SUIT_SIM
 #pragma once
-#include "HumanSim.h"
-
 class StillsuitSim
 {
 public:
-	StillsuitSim(HumanSim* human);
-	int StillsuitCompoundID();
-	
+	StillsuitSim();
+	void StillsuitCompoundID();
+	void setTime(int time);
+	void seperateFluid();
+
 private:
-	HumanSim* human;
-	
+	int worldTime;
 };
 
+#endif
