@@ -3,6 +3,8 @@
 using namespace std;
 #include <vector>
 
+vector<int> purifiedLiquidStorage;
+
 StillsuitSim::StillsuitSim() {
 };
 
@@ -73,8 +75,7 @@ void StillsuitCompoundID()
     }
 }
 
-vector<int> liquidPurifier(int liquidElem) {
-    vector<int> purifiedLiquid;
+vector<int> liquidPurifier(int liquidElem, vector<int> purifiedLiquid) {
     purifiedLiquid.push_back(liquidElem);
     return purifiedLiquid;
 }
@@ -93,23 +94,21 @@ void StillsuitCompoundDestination()
     int sweat[5] = { water, sodium, potassium, calcium, magnesium };
     int urine[6] = { water, urea, chloride, sodium, creatinine, potassium };
 
-    vector<int> liquidStorage;
-
     for (int i = 0; i <= sweat[4]; i++) {
         if (i != water) {
-            liquidPurifier(i);
+            purifiedLiquidStorage = liquidPurifier(i, purifiedLiquidStorage);
         }
         else {
-            liquidStorage.push_back(i);
+            purifiedLiquidStorage.push_back(i);
         }
     }
 
     for (int j = 0; j <= urine[5]; j++) {
         if (j != 1) {
-            liquidPurifier(j);
+            purifiedLiquidStorage = liquidPurifier(j, purifiedLiquidStorage);
         }
         else {
-            liquidStorage.push_back(j);
+            purifiedLiquidStorage.push_back(j);
         }
     }
 }
