@@ -14,7 +14,6 @@ const int MIN_TEMP = 50;
 const int MAX_TEMP = 100;
 const int SLEEP_TIME = 100;
 
-
 void sendToHuman(HumanSim* human, int time, int temp) {
     
     human->setWorldInfo(time,temp);
