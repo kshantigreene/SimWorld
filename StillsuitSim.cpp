@@ -1,28 +1,27 @@
 #include "StillsuitSim.h"
 #include <iostream>
+#include <string>
 using namespace std;
 #include <vector>
 
 vector<int> purifiedLiquidStorage;
 
-int liquid;
+int incomingLiquid;
 double waterStg;
 double wasteStg;
 
 StillsuitSim::StillsuitSim() {
 };
 
-// Work in progress
 int setLiquid(int liquid) {
-    return this->liquid = liquid;
+    incomingLiquid = liquid;
 }
 
 void StillsuitCompoundID()
 {
-    string digits;
-    cin >> digits;
+    string strLiquid = to_string(incomingLiquid);
     size_t index = 0;
-    for (char c : digits)
+    for (char c : strLiquid)
     {
         bool identified = false;
         if (c == '1')
@@ -30,7 +29,7 @@ void StillsuitCompoundID()
             identified = true;
             waterStg = +1;
         }
-        if (c != '1') {
+        else {
             identified = true;
             waterStg = +0.95;
             wasteStg = +0.05;
@@ -39,6 +38,7 @@ void StillsuitCompoundID()
     }
 }
 
+// Work in progress
 vector<int> liquidPurifier(int liquidElem, vector<int> purifiedLiquid) {
     purifiedLiquid.push_back(liquidElem);
     return purifiedLiquid;
@@ -238,4 +238,19 @@ int StillsuitSim::batteryAlert(int time)
 
     //returns the value of the battery level and batter time
     return batteryLevel, batteryTimeLeft;
+}
+
+vector<int> StillsuitSim::getAvailableWater() {
+    return purifiedLiquidStorage;
+}
+
+// Sends the water to the human to drink
+vector<int> StillsuitSim::sendWater(int amountRequested) {
+    vector<int> waterToSend;
+    for (int i = 0; i <= amountRequested; i++) {
+        if (purifiedLiquidStorage.size() > 0) {
+            waterToSend.push_back(1);
+        }
+    }
+    return waterToSend;
 }
