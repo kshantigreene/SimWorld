@@ -69,6 +69,27 @@ private:
 	double calculateHydration(int height, int weight, bool s);
 	int calculateInternalTemp(int temp, int InternalTemp);
 	double calculateActivityLevel(int height, int weight, int age);
+	 double calculateActivityLevel(int height, int weight, int age);
+	 
+	 double inAndOut();
+
+private:
+	 string name;
+	 StillsuitSim* suit;
+	 double worldTemp;
+
+	 // Weight of Human
+	 int weight;
+	 int height;			// in cm
+	 bool sex;				// 0 female; 1 male
+	 double waterLevel;		// in liters
+	 double bmrM;
+	 double bmrF;
+	 // Internal temperature of human
+	 int InternalTemp;    // base temp is 98F
+	 int time; 
+	 bool usingSuit;
+	
 
 };
 
