@@ -1,6 +1,9 @@
 #include "StillsuitSim.h"
 #include <iostream>
 using namespace std;
+#include <vector>
+
+vector<int> purifiedLiquidStorage;
 
 StillsuitSim::StillsuitSim() {
 };
@@ -69,6 +72,44 @@ void StillsuitCompoundID()
             cout << error << endl;
         }
         index++;
+    }
+}
+
+vector<int> liquidPurifier(int liquidElem, vector<int> purifiedLiquid) {
+    purifiedLiquid.push_back(liquidElem);
+    return purifiedLiquid;
+}
+
+void StillsuitCompoundDestination()
+{
+    int water = 1;
+    int urea = 2;
+    int chloride = 3;
+    int sodium = 4;
+    int creatinine = 5;
+    int potassium = 6;
+    int calcium = 7;
+    int magnesium = 8;
+
+    int sweat[5] = { water, sodium, potassium, calcium, magnesium };
+    int urine[6] = { water, urea, chloride, sodium, creatinine, potassium };
+
+    for (int i = 0; i <= sweat[4]; i++) {
+        if (i != water) {
+            purifiedLiquidStorage = liquidPurifier(i, purifiedLiquidStorage);
+        }
+        else {
+            purifiedLiquidStorage.push_back(i);
+        }
+    }
+
+    for (int j = 0; j <= urine[5]; j++) {
+        if (j != 1) {
+            purifiedLiquidStorage = liquidPurifier(j, purifiedLiquidStorage);
+        }
+        else {
+            purifiedLiquidStorage.push_back(j);
+        }
     }
 }
 
@@ -238,10 +279,10 @@ long encrypt(long msg)
     c = fmod(c, n);
     //printf("\nEncrypted data = %lf", c);
     cout << c << endl;
-
-    return 0;
+    return c;
 }
-int StillsuitSim::batteryAlert(int time) 
+
+int StillsuitSim::batteryAlert(int time)
 {
     //assigns values to variables
     int batteryLevel = 100;
