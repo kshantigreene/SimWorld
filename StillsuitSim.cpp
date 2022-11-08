@@ -29,7 +29,7 @@ void StillsuitCompoundID()
             identified = true;
             waterStg = +1;
         }
-        if (c != '1') {
+        else {
             identified = true;
             waterStg = +0.95;
             wasteStg = +0.05;
