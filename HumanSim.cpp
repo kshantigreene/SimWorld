@@ -59,7 +59,7 @@ double HumanSim::calculateHydration(int h, int w, bool s) {
     return result;
 }
 
-int HumanSim::CalculateInternalTemp(int temp, int InternalTemp) // Function for calculating body temp
+int HumanSim::calculateInternalTemp(int temp, int InternalTemp) // Function for calculating body temp
 {
     if(temp < 60)
     {
