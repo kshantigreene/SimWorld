@@ -27,17 +27,17 @@ void HumanSim::calculateSweat(int time, int temp, int weight) {
 
 /// <summary>
 /// Uses the Hume-Weyers formulas for calculating human's Total Body Water
-/// Subtracts sweat from result to calculate how much water is lost
+/// and subtracts sweat from result to calculate how much water is lost
 /// </summary>
-/// <param name="h">Human's height</param>
-/// <param name="w">Human's weight</param>
-/// <param name="s">Human's sex</param>
+/// <param name="h">Human's height (cm)</param>
+/// <param name="w">Human's weight (kg)</param>
+/// <param name="s">Human's sex (0 female, 1 male)</param>
 /// <returns>Human's Total Body Water amount after sweating in liters</returns>
 double HumanSim::calculateHydration(int h, int w, bool s) {
     double heightConst;
     double weightConst;
     double sexConst;
-    double sweatAmnt = 0.0;             // Assumes Human hasn't begun sweating yet
+    double sweatAmnt = 0.0;             // in liters (default value ssumes Human hasn't begun sweating yet)
     const double SWEAT_WATER = 0.99;    // How much water is lost through sweat
 
     if (s == 0) {
@@ -61,7 +61,7 @@ double HumanSim::calculateHydration(int h, int w, bool s) {
     return result;
 }
 
-int HumanSim::CalculateInternalTemp(int temp, int InternalTemp) // Function for calculating body temp
+int HumanSim::calculateInternalTemp(int temp, int InternalTemp) // Function for calculating body temp
 {
     if(temp < 60)
     {
@@ -85,9 +85,6 @@ int HumanSim::CalculateInternalTemp(int temp, int InternalTemp) // Function for 
 
 // Calculates the level of activity as a percentage (double) based on weight, height, age
 double HumanSim::calculateActivityLevel(int height, int weight, int age) {
-    int height = 0;
-    int weight = 0;
-    int age = 0;
     double bmrM = 66 + (13.7 * weight) + (5 * height) - (6.8 * age); // Harris-Benedict Formula
     double bmrF = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
 
@@ -159,13 +156,16 @@ double HumanSim::calculateActivityLevel(int height, int weight, int age) {
         return levelResultM;
         return levelResultF;
     }
-    // getters and setters for Internal Temo
-void HumanSim::setInternalTemp(int Internaltemp) // Setter for Internal temp
-{
-    InternalTemp = 98; // base body temp
 }
-int HumanSim::CheckInternalTemp(int Internaltemp) // getter for Internal temp 
+    // getters and setters for Internal Temo
+void HumanSim::setInternalTemp() // Setter for Internal temp
 {
+    this->internalTemp = 98.6; // base body temp
+}
+int HumanSim::getInternalTemp() // getter for Internal temp 
+{
+    return this->internalTemp;
+}
     return Internaltemp;
 }
 
