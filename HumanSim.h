@@ -26,6 +26,8 @@ public:
 	 void setInternalTemp(int InternalTemp); // sets the Internal temperature
 
 	 double calculateActivityLevel(int height, int weight, int age);
+	 
+	 double inAndOut();
 
 private:
 	 string name;
@@ -41,8 +43,9 @@ private:
 	 double bmrF;
 	 // Internal temperature of human
 	 int InternalTemp;    // base temp is 98F
-
-
+	 int time; 
+	 bool usingSuit;
+	
 
 };
 

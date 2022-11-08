@@ -7,6 +7,8 @@ HumanSim::HumanSim(string n, StillsuitSim* suit) {
 
 void HumanSim::setWorldInfo(int time,int temp) {
 	this->worldTemp = temp;
+    this->time = time;
+    this->usingSuit = true;
     int hour = (int)time / 60;
     int minute = time;
     if (hour > 0) {
@@ -165,4 +167,17 @@ void HumanSim::setInternalTemp(int Internaltemp) // Setter for Internal temp
 int HumanSim::CheckInternalTemp(int Internaltemp) // getter for Internal temp 
 {
     return Internaltemp;
+}
+
+void HumanSim::inAndOut()
+{
+   
+
+    if (usingSuit)
+    {
+        //call suit to tell it whether in or out
+    }
+         
+
+
 }
