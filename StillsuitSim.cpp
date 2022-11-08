@@ -1,28 +1,27 @@
 #include "StillsuitSim.h"
 #include <iostream>
+#include <string>
 using namespace std;
 #include <vector>
 
 vector<int> purifiedLiquidStorage;
 
-int liquid;
+int incomingLiquid;
 double waterStg;
 double wasteStg;
 
 StillsuitSim::StillsuitSim() {
 };
 
-// Work in progress
 int setLiquid(int liquid) {
-    return this->liquid = liquid;
+    incomingLiquid = liquid;
 }
 
 void StillsuitCompoundID()
 {
-    string digits;
-    cin >> digits;
+    string strLiquid = to_string(incomingLiquid);
     size_t index = 0;
-    for (char c : digits)
+    for (char c : strLiquid)
     {
         bool identified = false;
         if (c == '1')
@@ -39,6 +38,7 @@ void StillsuitCompoundID()
     }
 }
 
+// Work in progress
 vector<int> liquidPurifier(int liquidElem, vector<int> purifiedLiquid) {
     purifiedLiquid.push_back(liquidElem);
     return purifiedLiquid;
