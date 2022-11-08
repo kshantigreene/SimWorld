@@ -46,11 +46,13 @@ void HumanSim::calculateSweat(int temp) {
     // This equation rises up graphically where it starts at 0 and gets close but not equal to 25.
     double rangeOfactiveML = (25-1/log(x+1));
 
-    // The amount a human can sweat per hour.
+    // The amount a human can sweat per minute.
     // 
     // Note: Need current temp from others.
     //
     double amountOfSweatPerMin = ((currentTemp - (avgBodyTemp * 10))*60);
+
+    double MAX_SWEAT = ((0.03 * 1.0) + amountOfSweatPerMin);
 }
 
 // Calculates the urine based on activity level and amount to drink.
@@ -79,13 +81,13 @@ void HumanSim::calculateUrine(int weight) {
     // The max amount of milliliters per kilograms per hour.
     double maxMLPerKgPerHr = 1.5;
 
-    // The max amount of urine that can be produced.
+    // The max amount of urine that can be produced per minute.
     //
     // This equation takes the maxMLPerKgPerHr variable, times the activityLevel, times the weight of the human in kg.
-    // 
-    // Note: Human's weight must be converted to kg if not already for this equation. Can be converted to pounds later if needed.
     //
-    double maxUrineProducedPerHr = ((maxMLPerKgPerHr * activityLevel) * weight);
+    // Note: Does NOT take into account the percentages of urine above yet.
+    //
+    double maxUrineProducedPerMin = (((maxMLPerKgPerHr * activityLevel) * weight)*60);
 
 
 }
@@ -124,4 +126,112 @@ double HumanSim::calculateHydration(int h, int w, bool s) {
     double result = formulaHW - sweatAmnt;
     
     return result;
+}
+
+int HumanSim::CalculateInternalTemp(int temp, int InternalTemp) // Function for calculating body temp
+{
+    if(temp < 60)
+    {
+        InternalTemp -= 2;
+
+    }else if(temp >= 60 && temp < 70)
+    {
+        InternalTemp -= 1;
+
+    }
+    else if (temp >  70 && temp <= 80) 
+    {
+        InternalTemp += 1;
+    }
+    else
+    {
+        InternalTemp += 2;
+    }
+    return InternalTemp;
+}
+
+// Calculates the level of activity as a percentage (double) based on weight, height, age
+double HumanSim::calculateActivityLevel(int height, int weight, int age) {
+    int height = 0;
+    int weight = 0;
+    int age = 0;
+    double bmrM = 66 + (13.7 * weight) + (5 * height) - (6.8 * age); // Harris-Benedict Formula
+    double bmrF = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
+
+    double sedentaryM = bmrM * 1.2;
+    double lightActiveM = bmrM * 1.375;
+    double moderateActiveM = bmrM * 1.55;
+    double veryActiveM = bmrM * 1.725;
+    double extraActiveM = bmrM * 1.9;
+
+    double sedentaryF = bmrF * 1.2;
+    double lightActiveF = bmrF * 1.375;
+    double moderateActiveF = bmrF * 1.55;
+    double veryActiveF = bmrF * 1.725;
+    double extraActiveF = bmrF * 1.9;
+
+    double levelResultM = 0.0;
+    double levelResultF = 0.0;
+
+    if (extraActiveM == true)
+    {
+        levelResultM = 0.20;
+    }
+    else if (veryActiveM == true)
+    {
+        levelResultM = 0.40;
+    }
+    else if (moderateActiveM == true)
+    {
+        levelResultM = 0.60;
+    }
+    else if (lightActiveM == true)
+    {
+        levelResultM = 0.80;
+    }
+    else if (sedentaryM == true)
+    {
+        levelResultM = 0.1;
+    }
+    else
+    {
+        levelResultM = 0.0;
+
+
+        if (extraActiveF == true)
+        {
+            levelResultF = 0.20;
+        }
+        else if (veryActiveF == true)
+        {
+            levelResultF = 0.40;
+        }
+        else if (moderateActiveF == true)
+        {
+            levelResultF = 0.60;
+        }
+        else if (lightActiveF == true)
+        {
+            levelResultF = 0.80;
+        }
+        else if (sedentaryF == true)
+        {
+            levelResultF = 0.1;
+        }
+        else
+        {
+            levelResultF = 0;
+        }
+
+        return levelResultM;
+        return levelResultF;
+    }
+    // getters and setters for Internal Temo
+void HumanSim::setInternalTemp(int Internaltemp) // Setter for Internal temp
+{
+    InternalTemp = 98; // base body temp
+}
+int HumanSim::CheckInternalTemp(int Internaltemp) // getter for Internal temp 
+{
+    return Internaltemp;
 }
