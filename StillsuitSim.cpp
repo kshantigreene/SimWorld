@@ -12,6 +12,7 @@ double wasteStg;
 StillsuitSim::StillsuitSim() {
 };
 
+// Work in progress
 void setLiquid(int liquid) {
     this->liquid = liquid;
 }
