@@ -1,116 +1,47 @@
 #include "StillsuitSim.h"
 #include <iostream>
+#include <string>
 using namespace std;
 #include <vector>
 
 vector<int> purifiedLiquidStorage;
 
+int incomingLiquid;
+double waterStg;
+double wasteStg;
+
 StillsuitSim::StillsuitSim() {
 };
 
+int setLiquid(int liquid) {
+    incomingLiquid = liquid;
+}
+
 void StillsuitCompoundID()
 {
-    string water = "This is water.";
-    string urea = "This is urea.";
-    string chloride = "This is chloride.";
-    string sodium = "This is sodium.";
-    string creatinine = "This is creatinine.";
-    string potassium = "This is potassium.";
-    string calcium = "This is calcium.";
-    string magnesium = "This is magnesium.";
-    string error = "This compound is undefined. Please enter a defined compound.";
-
-    string digits;
-    cin >> digits;
+    string strLiquid = to_string(incomingLiquid);
     size_t index = 0;
-    for (char c : digits)
+    for (char c : strLiquid)
     {
         bool identified = false;
-        cout << c << endl;
         if (c == '1')
         {
             identified = true;
-            cout << water << endl;
+            waterStg = +1;
         }
-        if (c == '2')
-        {
+        if (c != '1') {
             identified = true;
-            cout << urea << endl;
-        }
-        if (c == '3')
-        {
-            identified = true;
-            cout << chloride << endl;
-        }
-        if (c == '4')
-        {
-            identified = true;
-            cout << sodium << endl;
-        }
-        if (c == '5')
-        {
-            identified = true;
-            cout << creatinine << endl;
-        }
-        if (c == '6')
-        {
-            identified = true;
-            cout << potassium << endl;
-        }
-        if (c == '7')
-        {
-            identified = true;
-            cout << calcium << endl;
-        }
-        if (c == '8')
-        {
-            identified = true;
-            cout << magnesium << endl;
-        }
-        if (!identified)
-        {
-            cout << error << endl;
+            waterStg = +0.95;
+            wasteStg = +0.05;
         }
         index++;
     }
 }
 
+// Work in progress
 vector<int> liquidPurifier(int liquidElem, vector<int> purifiedLiquid) {
     purifiedLiquid.push_back(liquidElem);
     return purifiedLiquid;
-}
-
-void StillsuitCompoundDestination()
-{
-    int water = 1;
-    int urea = 2;
-    int chloride = 3;
-    int sodium = 4;
-    int creatinine = 5;
-    int potassium = 6;
-    int calcium = 7;
-    int magnesium = 8;
-
-    int sweat[5] = { water, sodium, potassium, calcium, magnesium };
-    int urine[6] = { water, urea, chloride, sodium, creatinine, potassium };
-
-    for (int i = 0; i <= sweat[4]; i++) {
-        if (i != water) {
-            purifiedLiquidStorage = liquidPurifier(i, purifiedLiquidStorage);
-        }
-        else {
-            purifiedLiquidStorage.push_back(i);
-        }
-    }
-
-    for (int j = 0; j <= urine[5]; j++) {
-        if (j != 1) {
-            purifiedLiquidStorage = liquidPurifier(j, purifiedLiquidStorage);
-        }
-        else {
-            purifiedLiquidStorage.push_back(j);
-        }
-    }
 }
 
 void StillsuitSim::setTime(int time) {
@@ -307,4 +238,19 @@ int StillsuitSim::batteryAlert(int time)
 
     //returns the value of the battery level and batter time
     return batteryLevel, batteryTimeLeft;
+}
+
+vector<int> StillsuitSim::getAvailableWater() {
+    return purifiedLiquidStorage;
+}
+
+// Sends the water to the human to drink
+vector<int> StillsuitSim::sendWater(int amountRequested) {
+    vector<int> waterToSend;
+    for (int i = 0; i <= amountRequested; i++) {
+        if (purifiedLiquidStorage.size() > 0) {
+            waterToSend.push_back(1);
+        }
+    }
+    return waterToSend;
 }

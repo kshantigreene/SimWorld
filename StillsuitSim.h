@@ -5,7 +5,9 @@ class StillsuitSim
 {
 public:
 	StillsuitSim();
+	int setLiquid(int liquid);
 	void StillsuitCompoundID();
+	void StillsuitCompoundDestination();
 	void setTime(int time);
 	void seperateFluid();
 	
@@ -17,10 +19,10 @@ public:
 	void startHeat(int temp);
 	void startAirCon(int temp);
 
-
-	
-
 	int batteryAlert(int time);
+
+	vector<int> getAvailableWater();
+	vector<int> sendWater(int amountRequested);
 
 private:
 	int worldTime;
