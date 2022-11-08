@@ -239,8 +239,9 @@ long encrypt(long msg)
     //printf("\nEncrypted data = %lf", c);
     cout << c << endl;
 
+    return 0;
 }
-int StillsuitSim::batteryAlert(int time)
+int StillsuitSim::batteryAlert(int time) 
 {
     //assigns values to variables
     int batteryLevel = 100;

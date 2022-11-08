@@ -25,17 +25,17 @@ void HumanSim::calculateSweat(int time, int temp, int weight) {
 
 /// <summary>
 /// Uses the Hume-Weyers formulas for calculating human's Total Body Water
-/// Subtracts sweat from result to calculate how much water is lost
+/// and subtracts sweat from result to calculate how much water is lost
 /// </summary>
-/// <param name="h">Human's height</param>
-/// <param name="w">Human's weight</param>
-/// <param name="s">Human's sex</param>
+/// <param name="h">Human's height (cm)</param>
+/// <param name="w">Human's weight (kg)</param>
+/// <param name="s">Human's sex (0 female, 1 male)</param>
 /// <returns>Human's Total Body Water amount after sweating in liters</returns>
 double HumanSim::calculateHydration(int h, int w, bool s) {
     double heightConst;
     double weightConst;
     double sexConst;
-    double sweatAmnt = 0.0;             // Assumes Human hasn't begun sweating yet
+    double sweatAmnt = 0.0;             // in liters (default value ssumes Human hasn't begun sweating yet)
     const double SWEAT_WATER = 0.99;    // How much water is lost through sweat
 
     if (s == 0) {
