@@ -13,8 +13,8 @@ StillsuitSim::StillsuitSim() {
 };
 
 // Work in progress
-void setLiquid(int liquid) {
-    this->liquid = liquid;
+int setLiquid(int liquid) {
+    return this->liquid = liquid;
 }
 
 void StillsuitCompoundID()

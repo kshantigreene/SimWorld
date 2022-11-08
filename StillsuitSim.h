@@ -5,7 +5,7 @@ class StillsuitSim
 {
 public:
 	StillsuitSim();
-	void setLiquid(int liquid);
+	int setLiquid(int liquid);
 	void StillsuitCompoundID();
 	void StillsuitCompoundDestination();
 	void setTime(int time);
