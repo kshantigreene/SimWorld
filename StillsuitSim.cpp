@@ -239,3 +239,18 @@ int StillsuitSim::batteryAlert(int time)
     //returns the value of the battery level and batter time
     return batteryLevel, batteryTimeLeft;
 }
+
+vector<int> StillsuitSim::getAvailableWater() {
+    return purifiedLiquidStorage;
+}
+
+// Sends the water to the human to drink
+vector<int> StillsuitSim::sendWater(int amountRequested) {
+    vector<int> waterToSend;
+    for (int i = 0; i <= amountRequested; i++) {
+        if (purifiedLiquidStorage.size() > 0) {
+            waterToSend.push_back(1);
+        }
+    }
+    return waterToSend;
+}
