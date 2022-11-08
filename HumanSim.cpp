@@ -1,4 +1,5 @@
 #include "HumanSim.h"
+using namespace std;
 
 HumanSim::HumanSim(string n, StillsuitSim* suit) {
 	this->name = name;
