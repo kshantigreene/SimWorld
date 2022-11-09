@@ -13,7 +13,7 @@ double wasteStg;
 StillsuitSim::StillsuitSim() {
 };
 
-int setLiquid(int liquid) {
+void setLiquid(int liquid) {
     incomingLiquid = liquid;
 }
 

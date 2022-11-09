@@ -1,11 +1,14 @@
 #ifndef STILL_SUIT_SIM
 #define STILL_SUIT_SIM
 #pragma once
+#include <vector>
+using namespace std;
+
 class StillsuitSim
 {
 public:
 	StillsuitSim();
-	int setLiquid(int liquid);
+	void setLiquid(int liquid);
 	void StillsuitCompoundID();
 	void StillsuitCompoundDestination();
 	void updateSuit(int time);

@@ -26,7 +26,7 @@ double HumanSim::calculateSweat(int temp, double InternalTemp) {
     InternalTemp = 98.6;
 
     // Current Temp of Human (may need additional data on this)
-    double currentTemp;
+    double currentTemp=98.6;
 
     // Curent milliliters for an active male.
     const double MAX_SWEAT = 23;
@@ -39,7 +39,7 @@ double HumanSim::calculateSweat(int temp, double InternalTemp) {
     // Range of active milliliters (ML) equation
     // 
     // This equation rises up graphically where it starts at 0 and gets close but not equal to 25.
-    double sweat = (25 - 1 / log(tempOverheated + 1));
+    double sweat = (MAX_SWEAT - 1 / log(tempOverheated + 1));
 
     return sweat;
 }
@@ -216,15 +216,14 @@ double HumanSim::calculateActivityLevel(int height, int weight, int age) {
     }
 }
     // getters and setters for Internal Temo
-void HumanSim::setInternalTemp() // Setter for Internal temp
+void HumanSim::setInternalTemp(int InternalTemp) // Setter for Internal temp
 {
-    this->internalTemp = 98.6; // base body temp
+    this->internalTemp = InternalTemp; // base body temp
 }
+
 int HumanSim::getInternalTemp() // getter for Internal temp 
 {
     return this->internalTemp;
-}
-    return Internaltemp;
 }
 
 void HumanSim::inAndOut()
