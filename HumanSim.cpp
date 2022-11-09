@@ -146,6 +146,7 @@ double HumanSim::calculateActivityLevel(int height, int weight, int age) {
     double bmrM = 66 + (13.7 * weight) + (5 * height) - (6.8 * age); // Harris-Benedict Formula
     double bmrF = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
 
+
     double sedentaryM = bmrM * 1.2;
     double lightActiveM = bmrM * 1.375;
     double moderateActiveM = bmrM * 1.55;
@@ -161,6 +162,8 @@ double HumanSim::calculateActivityLevel(int height, int weight, int age) {
     double levelResultM = 0.0;
     double levelResultF = 0.0;
 
+    //you are converting a double to boolean.. 
+    //I think you want a separate boolean and to use the variables in your computation depending on level
     if (extraActiveM == true)
     {
         levelResultM = 0.20;
@@ -211,6 +214,7 @@ double HumanSim::calculateActivityLevel(int height, int weight, int age) {
             levelResultF = 0;
         }
 
+        //can't return both, but you will know whether your person is M or F so you can access the member variable 
         return levelResultM;
         return levelResultF;
     }
