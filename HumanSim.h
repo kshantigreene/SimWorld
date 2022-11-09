@@ -10,17 +10,68 @@ using namespace std;
 class HumanSim
 {
 public:
+	// ==================================================
+	// Public data members
+	// ==================================================
+
+	HumanSim(string n, StillsuitSim* suit);
+
+
+	// ==================================================
+	// Setter functions
+	// ==================================================
+
+	void setInternalTemp(int InternalTemp); // sets the Internal temperature
 	 HumanSim(string n, StillsuitSim* suit);
 	 void updateHuman(int time, int temp);
-	 void calculateSweat(int time, int temp, int weight);
+	 double calculateSweat(int temp, double InternalTemp);
+	 void calculateUrine(int weight);
 	 double calculateHydration(int height, int weight, bool s);
+	 int CalculateInternalTemp(int temp, int InternalTemp);
 	 double getBattery(); //gets the current battery life
 
-	 int getSuitWeight(); //gets how much the suit weighss
 
-	 int getWater(); //gets the current amount of drinkable water
+	// ==================================================
+	// Getter functions
+	// ==================================================
 
-	 int checkAvailWater(); //gets the current filtration process of the water
+	double getBattery(); //gets the current battery life
+	int getSuitWeight(); //gets how much the suit weighs
+	int getWater(); //gets the current amount of drinkable water
+	int getAvailWater(); //gets the current filtration process of the water
+	int getInternalTemp(); // gets the current internal temperature 
+
+private:
+
+	// ===================================================
+	// Private data members
+	// ===================================================
+
+	string name;
+	StillsuitSim* suit;
+	double worldTemp;
+	int weight;			// in kg
+	int height;			// in cm
+	bool sex;				// 0 female; 1 male
+	double waterLevel;		// in liters
+	double bmrM;
+	double bmrF;
+	double internalTemp;    // base human internal temp is 98.6F
+	double sweat;			// in milliliters
+
+	 int InternalTemp;    // base temp is 98F
+	 double bladderCapacity;	
+
+	// ==================================================
+	// Calculation functions
+	// ==================================================
+
+	double calculateHydration(int height, int weight, bool s);
+	int calculateInternalTemp(int temp, int InternalTemp);
+	double calculateActivityLevel(int height, int weight, int age);
+	 double calculateActivityLevel(int height, int weight, int age);
+	 
+	 double inAndOut();
 
 private:
 	 string name;
@@ -32,10 +83,14 @@ private:
 	 int height;			// in cm
 	 bool sex;				// 0 female; 1 male
 	 double waterLevel;		// in liters
-
-
+	 double bmrM;
+	 double bmrF;
+	 // Internal temperature of human
+	 int InternalTemp;    // base temp is 98F
+	 int time; 
+	 bool usingSuit;
+	
 
 };
 
 #endif
-
