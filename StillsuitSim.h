@@ -6,7 +6,7 @@ class StillsuitSim
 public:
 	StillsuitSim();
 	void StillsuitCompoundID();
-	void setTime(int time);
+	void updateSuit(int time);
 	void seperateFluid();
 	
 	void setUrine(int urine);

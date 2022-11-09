@@ -6,11 +6,12 @@
 #include "StillsuitSim.h"
 using namespace std;
 
+
 class HumanSim
 {
 public:
 	 HumanSim(string n, StillsuitSim* suit);
-	 void setWorldInfo(int time, int temp);
+	 void updateHuman(int time, int temp);
 	 void calculateSweat(int time, int temp, int weight);
 	 double calculateHydration(int height, int weight, bool s);
 	 double getBattery(); //gets the current battery life

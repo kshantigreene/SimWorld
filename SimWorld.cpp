@@ -18,10 +18,10 @@ const int SLEEP_TIME = 100;
 const double PI = 3.14159265359;
 
 
-void sendToHuman(HumanSim* human, int time, int temp) {
+void sendToSims(HumanSim* human, StillsuitSim* suit, int time, int temp) {
     
     human->setWorldInfo(time,temp);
-
+    suit->setTime(time);
 }
 
 
@@ -46,9 +46,9 @@ int main()
         double r = rand() % 4-2.0;
         int temp = tempDiff+r+initTemp;
         //create thread so human can deal with it independent of this thread
-        thread tempThread(sendToHuman,human, i, temp);
+        thread tempThread(sendToSims,human, suit, i, temp);
         tempThread.detach();
-        suit->setTime(i);
+        
         this_thread::sleep_for(chrono::milliseconds(SLEEP_TIME));
     }
 

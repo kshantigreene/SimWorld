@@ -5,7 +5,7 @@ HumanSim::HumanSim(string n, StillsuitSim* suit) {
     this->suit = suit;
 };
 
-void HumanSim::setWorldInfo(int time,int temp) {
+void HumanSim::updateHuman(int time,int temp) {
 	this->worldTemp = temp;
     int hour = (int)time / 60;
     int minute = time;

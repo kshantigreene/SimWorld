@@ -114,7 +114,7 @@ void wip()
     }
 }
 
-void StillsuitSim::setTime(int time) {
+void StillsuitSim::updateSuit(int time) {
     this->worldTime = time;
 }
 
