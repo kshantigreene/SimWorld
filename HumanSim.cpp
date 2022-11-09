@@ -20,41 +20,28 @@ void HumanSim::setWorldInfo(int time,int temp) {
 }
 
 // Calculates the sweat based on activity, temperature and weight (including suit)
-void HumanSim::calculateSweat(int temp) {
+double HumanSim::calculateSweat(int temp, double InternalTemp) {
     
     // Average Temperature of Human
-    double avgBodyTemp = 98.6;
+    InternalTemp = 98.6;
 
     // Current Temp of Human (may need additional data on this)
     double currentTemp;
 
-    // Human's rest liters per hour
-    double restLPerHr = 0.8;
-
-    // Human's active liters per hour
-    double activeLPerHr = 1.4;
-
-    // active milliliters (ML) per minute equation
-    // 
-    // Doing activeLPerHr divided by 60 gives you 0.023 mL per minute.
-    // Rounding to three decimal places to the right gives us 23 mL/min.
-    double activeMLperMin = (round(activeLPerHr/60));
+    // Curent milliliters for an active male.
+    const double MAX_SWEAT = 23;
     
-    // Random number picked as a placeholder on the graph.
-    double x = 19.6;
+    // Calculates the temperature the human has overheated.
+    //
+    // This equation looks at the current temperature minus the average body temperature (98.6).
+    double tempOverheated = (currentTemp - InternalTemp);
 
     // Range of active milliliters (ML) equation
     // 
     // This equation rises up graphically where it starts at 0 and gets close but not equal to 25.
-    double rangeOfactiveML = (25-1/log(x+1));
+    double sweat = (25 - 1 / log(tempOverheated + 1));
 
-    // The amount a human can sweat per minute.
-    // 
-    // Note: Need current temp from others.
-    //
-    double amountOfSweatPerMin = ((currentTemp - (avgBodyTemp * 10))*60);
-
-    double MAX_SWEAT = ((0.03 * 1.0) + amountOfSweatPerMin);
+    return sweat;
 }
 
 // Calculates the urine based on activity level and amount to drink.
@@ -90,6 +77,8 @@ void HumanSim::calculateUrine(int weight) {
     // Note: Does NOT take into account the percentages of urine above yet.
     //
     double maxUrineProducedPerMin = (((maxMLPerKgPerHr * activityLevel) * weight)*60);
+
+    this->bladderCapacity++;
 
 
 }

@@ -20,16 +20,12 @@ public:
 	// Setter functions
 	// ==================================================
 
-	void setWorldInfo(int time, int temp);
-	void setInternalTemp();
 	void setInternalTemp(int InternalTemp); // sets the Internal temperature
 	 HumanSim(string n, StillsuitSim* suit);
 	 void setWorldInfo(int time, int temp);
-	 void calculateSweat(int temp);
+	 double calculateSweat(int temp, double InternalTemp);
 	 void calculateUrine(int weight);
 	 double calculateHydration(int height, int weight, bool s);
-	 int CalculateInternalTemp(int temp, int InternalTemp);
-	 double getBattery(); //gets the current battery life
 
 
 	// ==================================================
@@ -58,14 +54,15 @@ private:
 	double bmrM;
 	double bmrF;
 	double internalTemp;    // base human internal temp is 98.6F
+	double sweat;			// in milliliters
 
 	 int InternalTemp;    // base temp is 98F
+	 double bladderCapacity;	
 
 	// ==================================================
 	// Calculation functions
 	// ==================================================
 
-	void calculateSweat(int time, int temp, int weight);
 	double calculateHydration(int height, int weight, bool s);
 	int calculateInternalTemp(int temp, int InternalTemp);
 	double calculateActivityLevel(int height, int weight, int age);
