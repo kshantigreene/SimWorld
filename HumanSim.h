@@ -26,6 +26,8 @@ public:
 	 double calculateSweat(int temp, double InternalTemp);
 	 void calculateUrine(int weight);
 	 double calculateHydration(int height, int weight, bool s);
+	 int CalculateInternalTemp(int temp, int InternalTemp);
+	 double getBattery(); //gets the current battery life
 
 
 	// ==================================================
