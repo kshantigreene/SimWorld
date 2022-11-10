@@ -242,3 +242,11 @@ void HumanSim::inAndOut()
 
 
 }
+
+int HumanSim::evaporate(int sweat, int temp) {
+    float evap = 0;
+    evap = sweat / temp;
+    evap = sweat / evap;
+    int e = static_cast<int>(evap);
+    return e;
+}

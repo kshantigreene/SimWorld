@@ -74,7 +74,7 @@ private:
 	 int internalTemp;    // base temp is 98F
 	 int time; 
 	 bool usingSuit;
-	
+	 int evaporate(int sweat, int temp);
 
 };
 
