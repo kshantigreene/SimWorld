@@ -231,7 +231,7 @@ long encrypt(long msg)
     return c;
 }
 
-int StillsuitSim::batteryLevel(int time)
+pair<int, int> StillsuitSim::batteryLevel(int time)
 {
     //assigns values to variables
     int batteryLevel = 100;
@@ -243,22 +243,27 @@ int StillsuitSim::batteryLevel(int time)
 
     //uses simple math to make a percent of the batter left
     batteryLevel = (batteryTimeLeft / maxBatteryTime) * 100;
-
+    
     //returns the value of the battery level and batter time
-    return batteryLevel, batteryTimeLeft;
+    return std::make_pair(batteryLevel, batteryTimeLeft);
 }
 
-vector<int> StillsuitSim::getAvailableWater() {
-    return purifiedLiquidStorage;
+double StillsuitSim::getAvailableWater() {
+    return waterStg;
 }
 
 // Sends the water to the human to drink
-vector<int> StillsuitSim::sendWater(int amountRequested) {
-    vector<int> waterToSend;
-    for (int i = 0; i <= amountRequested; i++) {
-        if (purifiedLiquidStorage.size() > 0) {
-            waterToSend.push_back(1);
-        }
+double StillsuitSim::sendWater(double amountRequested) {
+    double waterToSend;
+    if (amountRequested > waterStg) {
+        waterToSend = waterStg;
+        cout << "Amount of water requested is larger than the amount in storage. Sending " << waterToSend << " water." << endl;
+        waterStg = waterStg - waterToSend;
+        return waterToSend;
     }
-    return waterToSend;
+    else {
+        waterToSend = amountRequested;
+        waterStg = waterStg - waterToSend;
+        return waterToSend;
+    }
 }
