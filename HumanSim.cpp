@@ -121,6 +121,10 @@ double HumanSim::calculateHydration(int h, int w, bool s) {
 
 int HumanSim::calculateInternalTemp(int temp, int InternalTemp) // Function for calculating body temp
 {
+    double activityLevel;
+    activityLevel = calculateActivityLevel();
+    InternalTemp += activityLevel * 2;
+
     if(temp < 60)
     {
         InternalTemp -= 2;
@@ -139,6 +143,8 @@ int HumanSim::calculateInternalTemp(int temp, int InternalTemp) // Function for 
         InternalTemp += 2;
     }
     return InternalTemp;
+
+    
 }
 
 // Calculates the level of activity as a percentage (double) based on weight, height, age

@@ -25,7 +25,7 @@ public:
 	 void updateHuman(int time, int temp);
 	 double calculateSweat(int temp, double InternalTemp);
 	 void calculateUrine(int weight);
-	 int CalculateInternalTemp(int temp, int InternalTemp);
+	 int calculateInternalTemp(int temp, int InternalTemp);
 
 
 	// ==================================================
