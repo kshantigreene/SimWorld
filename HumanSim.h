@@ -3,6 +3,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
 #include "StillsuitSim.h"
 using namespace std;
 
@@ -32,10 +33,10 @@ public:
 	// Getter functions
 	// ==================================================
 
-	double getBattery(); //gets the current battery life
+	int getBattery(); //gets the current battery life
 	int getSuitWeight(); //gets how much the suit weighs
-	int getWater(); //gets the current amount of drinkable water
-	int getAvailWater(); //gets the current filtration process of the water
+	vector<int> getWater(); //gets the current amount of drinkable water
+	vector<int> getAvailWater(); //gets the current filtration process of the water
 	int getInternalTemp(); // gets the current internal temperature 
 
 private:

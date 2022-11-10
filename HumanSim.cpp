@@ -1,4 +1,5 @@
 #include "HumanSim.h"
+#include "StillsuitSim.h"
 #include <cmath>
 using std::log;
 
@@ -240,5 +241,28 @@ void HumanSim::inAndOut()
     }
          
 
+
+}
+
+
+void HumanSim::getBattery()
+{
+    pair<int, int> battery = 
+    int batLevel = battery.first;
+    int batTime = battery.second;
+}
+
+void HumanSim::getAvailWater()
+{
+    vector<int> water = suit->getAvailableWater();
+}
+
+void HumanSim::getWater()
+{
+    vector<int> newWater = suit->sendWater();
+}
+
+void HumanSim::getSuitWeight()
+{
 
 }
