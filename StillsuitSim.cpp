@@ -6,7 +6,10 @@ using namespace std;
 
 vector<int> purifiedLiquidStorage;
 
+// Declaration of given liquid variable
 int incomingLiquid;
+
+// Declaration of water storage and waste storage variables
 double waterStg;
 double wasteStg;
 
@@ -19,16 +22,24 @@ void setLiquid(int liquid) {
 
 void StillsuitCompoundID()
 {
+    // Converts incomong integer to a string and stores it in a new string variable
     string strLiquid = to_string(incomingLiquid);
+
+    // Declaration of FOR loop and index for the purpose of iterating through liquid string
     size_t index = 0;
     for (char c : strLiquid)
     {
         bool identified = false;
+        
+        // If string char is 1, then add 1 to water storage variable
         if (c == '1')
         {
             identified = true;
             waterStg = +1;
         }
+        
+        /* If string char isn't 1, then add 0.95 to water storage variable and
+           0.05 to waste storage variable*/
         else {
             identified = true;
             waterStg = +0.95;
