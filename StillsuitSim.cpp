@@ -50,12 +50,12 @@ void StillsuitCompoundID()
 void liquidPurifier(char liquidElem) {
     if (liquidElem == '2') {
         if(waterStg + 0.95 <= MAX_waterStg)
-        cout << "Urine purified" << endl;
+        cout << "Urine purified." << endl;
         waterStg += 0.95;
     }
     if (liquidElem == '3') {
         if (waterStg + 0.99 <= MAX_waterStg) {
-            cout << "Sweat purified" << endl;
+            cout << "Sweat purified." << endl;
             waterStg += 0.99;
         }     
     }  
