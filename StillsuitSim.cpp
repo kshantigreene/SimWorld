@@ -224,7 +224,7 @@ long encrypt(long msg)
     return c;
 }
 
-int StillsuitSim::batteryLevel(int time)
+pair<int, int> StillsuitSim::batteryLevel(int time)
 {
     //assigns values to variables
     int batteryLevel = 100;
@@ -236,9 +236,9 @@ int StillsuitSim::batteryLevel(int time)
 
     //uses simple math to make a percent of the batter left
     batteryLevel = (batteryTimeLeft / maxBatteryTime) * 100;
-
+    
     //returns the value of the battery level and batter time
-    return batteryLevel, batteryTimeLeft;
+    return std::make_pair(batteryLevel, batteryTimeLeft);
 }
 
 vector<int> StillsuitSim::getAvailableWater() {
