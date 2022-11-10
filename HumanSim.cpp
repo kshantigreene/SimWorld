@@ -230,15 +230,23 @@ int HumanSim::getInternalTemp() // getter for Internal temp
     return this->internalTemp;
 }
 
-void HumanSim::inAndOut()
+void HumanSim::HumanLocation()
 {
    
 
     if (usingSuit)
     {
-        //call suit to tell it whether in or out
+        //call suit to tell it whether inside  or outside 
     }
          
 
 
+}
+
+int HumanSim::evaporate(int sweat, int temp) {
+    float evap = 0;
+    evap = sweat / temp;
+    evap = sweat / evap;
+    int e = static_cast<int>(evap);
+    return e;
 }

@@ -22,7 +22,7 @@ public:
 	void startHeat(int temp);
 	void startAirCon(int temp);
 
-	int batteryAlert(int time);
+	int batteryLevel(int time);
 
 	vector<int> getAvailableWater();
 	vector<int> sendWater(int amountRequested);
