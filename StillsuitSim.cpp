@@ -9,7 +9,7 @@ using namespace std;
 // Declaration of given liquid variable
 int incomingLiquid;
 
-// Declaration of water storage and waste storage variables
+// Declaration of water storage variables
 double waterStg;
 double MAX_waterStg = 2000;
 
@@ -38,8 +38,7 @@ void StillsuitCompoundID()
             waterStg = +1;
         }
         
-        /* If string char isn't 1, then add 0.95 to water storage variable and
-           0.05 to waste storage variable*/
+        // If string char isn't 1, then call liquidPurifier function and pass c variable to it
         else {
             identified = true;
             liquidPurifier(c);
