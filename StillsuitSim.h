@@ -22,10 +22,10 @@ public:
 	void startHeat(int temp);
 	void startAirCon(int temp);
 
-	int batteryAlert(int time);
+	std::pair<int, int> batteryLevel(int time);
 
-	vector<int> getAvailableWater();
-	vector<int> sendWater(int amountRequested);
+	double getAvailableWater();
+	double sendWater(double amountRequested);
 
 private:
 	int worldTime;

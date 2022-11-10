@@ -4,11 +4,14 @@
 using namespace std;
 #include <vector>
 
-vector<int> purifiedLiquidStorage;
 
+
+// Declaration of global given liquid variable
 int incomingLiquid;
+
+// Declaration of global water storage variables
 double waterStg;
-double wasteStg;
+double MAX_waterStg = 2000;
 
 StillsuitSim::StillsuitSim() {
 };
@@ -19,29 +22,44 @@ void setLiquid(int liquid) {
 
 void StillsuitCompoundID()
 {
+    // Converts incomong integer to a string and stores it in a new string variable
     string strLiquid = to_string(incomingLiquid);
+
+    // Declaration of FOR loop and index for the purpose of iterating through liquid string
     size_t index = 0;
     for (char c : strLiquid)
     {
         bool identified = false;
+        
+        // If string char is 1, then add 1 to water storage variable
         if (c == '1')
         {
             identified = true;
             waterStg = +1;
         }
+        
+        // If string char isn't 1, then call liquidPurifier function and pass c variable to it
         else {
             identified = true;
-            waterStg = +0.95;
-            wasteStg = +0.05;
+            liquidPurifier(c);
         }
         index++;
     }
 }
 
-// Work in progress
-vector<int> liquidPurifier(int liquidElem, vector<int> purifiedLiquid) {
-    purifiedLiquid.push_back(liquidElem);
-    return purifiedLiquid;
+void liquidPurifier(char liquidElem) {
+    if (liquidElem == '2') {
+        if (waterStg + 0.95 <= MAX_waterStg) {
+            cout << "Urine purified." << endl;
+            waterStg += 0.95;
+        }
+    }
+    if (liquidElem == '3') {
+        if (waterStg + 0.99 <= MAX_waterStg) {
+            cout << "Sweat purified." << endl;
+            waterStg += 0.99;
+        }     
+    }  
 }
 
 void StillsuitSim::updateSuit(int time) {
@@ -213,7 +231,7 @@ long encrypt(long msg)
     return c;
 }
 
-int StillsuitSim::batteryAlert(int time)
+pair<int, int> StillsuitSim::batteryLevel(int time)
 {
     //assigns values to variables
     int batteryLevel = 100;
@@ -226,31 +244,26 @@ int StillsuitSim::batteryAlert(int time)
     //uses simple math to make a percent of the batter left
     batteryLevel = (batteryTimeLeft / maxBatteryTime) * 100;
     
-    //checks the level to see if its critical
-    if (batteryLevel < 30)
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
-
     //returns the value of the battery level and batter time
-    return batteryLevel, batteryTimeLeft;
+    return std::make_pair(batteryLevel, batteryTimeLeft);
 }
 
-vector<int> StillsuitSim::getAvailableWater() {
-    return purifiedLiquidStorage;
+double StillsuitSim::getAvailableWater() {
+    return waterStg;
 }
 
 // Sends the water to the human to drink
-vector<int> StillsuitSim::sendWater(int amountRequested) {
-    vector<int> waterToSend;
-    for (int i = 0; i <= amountRequested; i++) {
-        if (purifiedLiquidStorage.size() > 0) {
-            waterToSend.push_back(1);
-        }
+double StillsuitSim::sendWater(double amountRequested) {
+    double waterToSend;
+    if (amountRequested > waterStg) {
+        waterToSend = waterStg;
+        cout << "Amount of water requested is larger than the amount in storage. Sending " << waterToSend << " water." << endl;
+        waterStg = waterStg - waterToSend;
+        return waterToSend;
     }
-    return waterToSend;
+    else {
+        waterToSend = amountRequested;
+        waterStg = waterStg - waterToSend;
+        return waterToSend;
+    }
 }
