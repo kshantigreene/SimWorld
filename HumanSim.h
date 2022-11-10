@@ -75,6 +75,7 @@ private:
 	 int time; 
 	 bool usingSuit;
 	 int evaporate(int sweat, int temp);
+	 double activityLevel;
 
 };
 
