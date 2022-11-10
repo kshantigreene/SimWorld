@@ -6,10 +6,10 @@ using namespace std;
 
 
 
-// Declaration of given liquid variable
+// Declaration of global given liquid variable
 int incomingLiquid;
 
-// Declaration of water storage variables
+// Declaration of global water storage variables
 double waterStg;
 double MAX_waterStg = 2000;
 
