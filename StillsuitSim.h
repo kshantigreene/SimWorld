@@ -22,7 +22,7 @@ public:
 	void startHeat(int temp);
 	void startAirCon(int temp);
 
-	int batteryLevel(int time);
+	std::pair<int, int> batteryLevel(int time);
 
 	double getAvailableWater();
 	double sendWater(double amountRequested);

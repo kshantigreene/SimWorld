@@ -6,10 +6,10 @@ using namespace std;
 
 
 
-// Declaration of given liquid variable
+// Declaration of global given liquid variable
 int incomingLiquid;
 
-// Declaration of water storage and waste storage variables
+// Declaration of global water storage variables
 double waterStg;
 double MAX_waterStg = 2000;
 
@@ -38,8 +38,7 @@ void StillsuitCompoundID()
             waterStg = +1;
         }
         
-        /* If string char isn't 1, then add 0.95 to water storage variable and
-           0.05 to waste storage variable*/
+        // If string char isn't 1, then call liquidPurifier function and pass c variable to it
         else {
             identified = true;
             liquidPurifier(c);
@@ -51,12 +50,12 @@ void StillsuitCompoundID()
 void liquidPurifier(char liquidElem) {
     if (liquidElem == '2') {
         if(waterStg + 0.95 <= MAX_waterStg)
-        cout << "Urine purified" << endl;
+        cout << "Urine purified." << endl;
         waterStg += 0.95;
     }
     if (liquidElem == '3') {
         if (waterStg + 0.99 <= MAX_waterStg) {
-            cout << "Sweat purified" << endl;
+            cout << "Sweat purified." << endl;
             waterStg += 0.99;
         }     
     }  
@@ -231,7 +230,7 @@ long encrypt(long msg)
     return c;
 }
 
-int StillsuitSim::batteryLevel(int time)
+pair<int, int> StillsuitSim::batteryLevel(int time)
 {
     //assigns values to variables
     int batteryLevel = 100;
@@ -243,9 +242,9 @@ int StillsuitSim::batteryLevel(int time)
 
     //uses simple math to make a percent of the batter left
     batteryLevel = (batteryTimeLeft / maxBatteryTime) * 100;
-
+    
     //returns the value of the battery level and batter time
-    return batteryLevel, batteryTimeLeft;
+    return std::make_pair(batteryLevel, batteryTimeLeft);
 }
 
 double StillsuitSim::getAvailableWater() {
