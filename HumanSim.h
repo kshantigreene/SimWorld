@@ -55,8 +55,8 @@ private:
 	double calculateHydration(int height, int weight, bool s);
 	int calculateInternalTemp(int temp, int InternalTemp);
 	double calculateActivityLevel(int height, int weight, int age);
-	 
-	 void inAndOut();
+	void HumanLocation(); 
+	
 
 private:
 	 string name;
