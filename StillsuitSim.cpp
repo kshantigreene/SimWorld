@@ -6,7 +6,10 @@ using namespace std;
 
 vector<int> purifiedLiquidStorage;
 
+// Declaration of given liquid variable
 int incomingLiquid;
+
+// Declaration of water storage and waste storage variables
 double waterStg;
 double wasteStg;
 
