@@ -54,7 +54,7 @@ private:
 
 	double calculateHydration(int height, int weight, bool s);
 	int calculateInternalTemp(int temp, int InternalTemp);
-	double calculateActivityLevel(int height, int weight, int age);
+	double calculateActivityLevel();
 	void HumanLocation(); 
 	
 
@@ -67,15 +67,16 @@ private:
 	 int weight;
 	 int height;			// in cm
 	 bool sex;				// 0 female; 1 male
+	 int age;
 	 double waterLevel;		// in liters
 	 double bmrM;
-	 double bmrF;
+	 double bmrF
 	 // Internal temperature of human
 	 int internalTemp;    // base temp is 98F
 	 int time; 
 	 bool usingSuit;
 	 int evaporate(int sweat, int temp);
-
+	 double currentActivity;
 };
 
 #endif

@@ -2,9 +2,17 @@
 #include <cmath>
 using std::log;
 
+// declares activity level constants
+const SEDENTARY = 1.2;
+const LIGHTACTIVE = 1.375;
+const MODERATEACTIVE = 1.55;
+const VERYACTIVE = 1.725;
+const EXTRAACTIVE = 1.9;
+
 HumanSim::HumanSim(string n, StillsuitSim* suit) {
 	this->name = name;
     this->suit = suit;
+    this->currentActivity = MODERATEACTIVE; // FOR NOW
 };
 
 void HumanSim::updateHuman(int time,int temp) {
@@ -148,19 +156,7 @@ double HumanSim::calculateActivityLevel() {
     double bmrF = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
 
 
-    double sedentaryM = bmrM * 1.2; //delete
-    double lightActiveM = bmrM * 1.375;
-    double moderateActiveM = bmrM * 1.55;
-    double veryActiveM = bmrM * 1.725;
-    double extraActiveM = bmrM * 1.9;
-
-    double sedentaryF = bmrF * 1.2; //delete
-    double lightActiveF = bmrF * 1.375;
-    double moderateActiveF = bmrF * 1.55;
-    double veryActiveF = bmrF * 1.725;
-    double extraActiveF = bmrF * 1.9;
-
-
+    double currentActivityLevel = bmrM * currentActivity / bmrM * EXTRAACTIVE;
 }
     // getters and setters for Internal Temo
 void HumanSim::setInternalTemp(int InternalTemp) // Setter for Internal temp
