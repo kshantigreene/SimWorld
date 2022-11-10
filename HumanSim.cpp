@@ -20,12 +20,12 @@ void HumanSim::updateHuman(int time,int temp) {
 }
 
 // Calculates the sweat based on activity, temperature and weight (including suit)
-double HumanSim::calculateSweat(int temp, double InternalTemp) {
+double HumanSim::calculateSweat(int temp, double InternalTemp, int weight) {
     
     // Average Temperature of Human
     InternalTemp = 98.6;
 
-    // Current Temp of Human (may need additional data on this)
+    // Current Temp of Human (may need additional data on this from others)
     double currentTemp=98.6;
 
     // Curent milliliters for an active male.

@@ -23,7 +23,7 @@ public:
 
 	void setInternalTemp(int InternalTemp); // sets the Internal temperature
 	 void updateHuman(int time, int temp);
-	 double calculateSweat(int temp, double InternalTemp);
+	 double calculateSweat(int temp, double InternalTemp, int weight);
 	 void calculateUrine(int weight);
 	 int CalculateInternalTemp(int temp, int InternalTemp);
 
@@ -64,7 +64,7 @@ private:
 	 double worldTemp;
 
 	 // Weight of Human
-	 int weight;
+	 int weight;			// in kg
 	 int height;			// in cm
 	 bool sex;				// 0 female; 1 male
 	 double waterLevel;		// in liters
