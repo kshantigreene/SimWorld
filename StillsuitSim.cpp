@@ -13,6 +13,9 @@ int incomingLiquid;
 double waterStg;
 double MAX_waterStg = 2000;
 
+// Declaration of constant empty suit weight in kg
+double emptySuitWeight = 6.8;
+
 StillsuitSim::StillsuitSim() {
 };
 
@@ -265,4 +268,12 @@ double StillsuitSim::sendWater(double amountRequested) {
         waterStg = waterStg - waterToSend;
         return waterToSend;
     }
+}
+
+// Calculates the suit's weight and returns its weight in kilograms
+double StillsuitSim::calculateSuitWeight() {
+    double waterWeight = waterStg / 1000;
+    double suitWeight = emptySuitWeight + waterWeight;
+
+    return suitWeight;
 }
