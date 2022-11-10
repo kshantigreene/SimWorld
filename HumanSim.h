@@ -26,7 +26,7 @@ public:
 	 void updateHuman(int time, int temp);
 	 double calculateSweat(int temp, double InternalTemp);
 	 void calculateUrine(int weight);
-	 int CalculateInternalTemp(int temp, int InternalTemp);
+	 int calculateInternalTemp(int temp, int InternalTemp);
 
 
 	// ==================================================
@@ -56,8 +56,8 @@ private:
 	double calculateHydration(int height, int weight, bool s);
 	int calculateInternalTemp(int temp, int InternalTemp);
 	double calculateActivityLevel(int height, int weight, int age);
-	 
-	 void inAndOut();
+	void HumanLocation(); 
+	
 
 private:
 	 string name;
@@ -75,7 +75,8 @@ private:
 	 int internalTemp;    // base temp is 98F
 	 int time; 
 	 bool usingSuit;
-	
+	 int evaporate(int sweat, int temp);
+	 double activityLevel;
 
 };
 
