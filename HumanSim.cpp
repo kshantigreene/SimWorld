@@ -141,83 +141,26 @@ int HumanSim::calculateInternalTemp(int temp, int InternalTemp) // Function for 
     return InternalTemp;
 }
 
+
 // Calculates the level of activity as a percentage (double) based on weight, height, age
-double HumanSim::calculateActivityLevel(int height, int weight, int age) {
+double HumanSim::calculateActivityLevel() {
     double bmrM = 66 + (13.7 * weight) + (5 * height) - (6.8 * age); // Harris-Benedict Formula
     double bmrF = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
 
 
-    double sedentaryM = bmrM * 1.2;
+    double sedentaryM = bmrM * 1.2; //delete
     double lightActiveM = bmrM * 1.375;
     double moderateActiveM = bmrM * 1.55;
     double veryActiveM = bmrM * 1.725;
     double extraActiveM = bmrM * 1.9;
 
-    double sedentaryF = bmrF * 1.2;
+    double sedentaryF = bmrF * 1.2; //delete
     double lightActiveF = bmrF * 1.375;
     double moderateActiveF = bmrF * 1.55;
     double veryActiveF = bmrF * 1.725;
     double extraActiveF = bmrF * 1.9;
 
-    double levelResultM = 0.0;
-    double levelResultF = 0.0;
 
-    //you are converting a double to boolean.. 
-    //I think you want a separate boolean and to use the variables in your computation depending on level
-    if (extraActiveM == true)
-    {
-        levelResultM = 0.20;
-    }
-    else if (veryActiveM == true)
-    {
-        levelResultM = 0.40;
-    }
-    else if (moderateActiveM == true)
-    {
-        levelResultM = 0.60;
-    }
-    else if (lightActiveM == true)
-    {
-        levelResultM = 0.80;
-    }
-    else if (sedentaryM == true)
-    {
-        levelResultM = 0.1;
-    }
-    else
-    {
-        levelResultM = 0.0;
-
-
-        if (extraActiveF == true)
-        {
-            levelResultF = 0.20;
-        }
-        else if (veryActiveF == true)
-        {
-            levelResultF = 0.40;
-        }
-        else if (moderateActiveF == true)
-        {
-            levelResultF = 0.60;
-        }
-        else if (lightActiveF == true)
-        {
-            levelResultF = 0.80;
-        }
-        else if (sedentaryF == true)
-        {
-            levelResultF = 0.1;
-        }
-        else
-        {
-            levelResultF = 0;
-        }
-
-        //can't return both, but you will know whether your person is M or F so you can access the member variable 
-        return levelResultM;
-        return levelResultF;
-    }
 }
     // getters and setters for Internal Temo
 void HumanSim::setInternalTemp(int InternalTemp) // Setter for Internal temp
