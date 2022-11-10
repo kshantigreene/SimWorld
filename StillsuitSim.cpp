@@ -4,14 +4,14 @@
 using namespace std;
 #include <vector>
 
-vector<int> purifiedLiquidStorage;
+
 
 // Declaration of given liquid variable
 int incomingLiquid;
 
 // Declaration of water storage and waste storage variables
 double waterStg;
-double wasteStg;
+double MAX_waterStg = 2000;
 
 StillsuitSim::StillsuitSim() {
 };
@@ -42,17 +42,24 @@ void StillsuitCompoundID()
            0.05 to waste storage variable*/
         else {
             identified = true;
-            waterStg = +0.95;
-            wasteStg = +0.05;
+            liquidPurifier(c);
         }
         index++;
     }
 }
 
-// Work in progress
-vector<int> liquidPurifier(int liquidElem, vector<int> purifiedLiquid) {
-    purifiedLiquid.push_back(liquidElem);
-    return purifiedLiquid;
+void liquidPurifier(char liquidElem) {
+    if (liquidElem == '2') {
+        if(waterStg + 0.95 <= MAX_waterStg)
+        cout << "Urine purified" << endl;
+        waterStg += 0.95;
+    }
+    if (liquidElem == '3') {
+        if (waterStg + 0.99 <= MAX_waterStg) {
+            cout << "Sweat purified" << endl;
+            waterStg += 0.99;
+        }     
+    }  
 }
 
 void StillsuitSim::updateSuit(int time) {
