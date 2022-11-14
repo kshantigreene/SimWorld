@@ -167,7 +167,7 @@ double HumanSim::calculateActivityLevel() {
     double veryActiveF = bmrF * 1.725;
     double extraActiveF = bmrF * 1.9;
 
-
+    return 0;
 }
     // getters and setters for Internal Temo
 void HumanSim::setInternalTemp(int InternalTemp) // Setter for Internal temp
@@ -196,22 +196,22 @@ void HumanSim::HumanLocation()
 
 void HumanSim::getBattery()
 {
-    pair<int, int> battery = 
+    pair<int, int> battery = suit->batteryLevel(time);
     int batLevel = battery.first;
     int batTime = battery.second;
 }
 
 void HumanSim::getAvailWater()
 {
-    vector<int> water = suit->getAvailableWater();
+    double water = suit->getAvailableWater();
 }
 
 void HumanSim::getWater()
 {
-    vector<int> newWater = suit->sendWater();
+    double newWater = suit->sendWater(1.0);
 }
 
-void HumanSim::getSuitWeight()
+int HumanSim::getSuitWeight()
 {
-
+    return 0;//finish this!
 }

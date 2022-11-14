@@ -26,17 +26,16 @@ public:
 	 void updateHuman(int time, int temp);
 	 double calculateSweat(int temp, double InternalTemp);
 	 void calculateUrine(int weight);
-	 int calculateInternalTemp(int temp, int InternalTemp);
 
 
 	// ==================================================
 	// Getter functions
 	// ==================================================
 
-	int getBattery(); //gets the current battery life
+	void getBattery(); //gets the current battery life
 	int getSuitWeight(); //gets how much the suit weighs
-	vector<int> getWater(); //gets the current amount of drinkable water
-	vector<int> getAvailWater(); //gets the current filtration process of the water
+	void getWater(); //gets the current amount of drinkable water
+	void getAvailWater(); //gets the current filtration process of the water
 	int getInternalTemp(); // gets the current internal temperature 
 
 private:
@@ -55,7 +54,7 @@ private:
 
 	double calculateHydration(int height, int weight, bool s);
 	int calculateInternalTemp(int temp, int InternalTemp);
-	double calculateActivityLevel(int height, int weight, int age);
+	double calculateActivityLevel();
 	void HumanLocation(); 
 	
 
@@ -67,6 +66,7 @@ private:
 	 // Weight of Human
 	 int weight;
 	 int height;			// in cm
+	 int age;
 	 bool sex;				// 0 female; 1 male
 	 double waterLevel;		// in liters
 	 double bmrM;
@@ -77,6 +77,7 @@ private:
 	 bool usingSuit;
 	 int evaporate(int sweat, int temp);
 	 double activityLevel;
+
 
 };
 

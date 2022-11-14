@@ -13,7 +13,7 @@ public:
 	void StillsuitCompoundDestination();
 	void updateSuit(int time);
 	void seperateFluid();
-	
+	void liquidPurifier(char);
 	void setUrine(int urine);
 	int getUrine();
 	void setSweat(int sweat);
