@@ -45,14 +45,17 @@ private:
 	// ===================================================
 
 	double sweat;			// in milliliters
+	double currentWL;		// current total water of human
+	double expectedWL;		// how much water human should have
 
 	 double bladderCapacity;	
+	void setTotalBodyWater();
 
 	// ==================================================
 	// Calculation functions
 	// ==================================================
 
-	double calculateHydration(int height, int weight, bool s);
+	void calculateHydration();
 	int calculateInternalTemp(int temp, int InternalTemp);
 	double calculateActivityLevel();
 	void HumanLocation(); 
