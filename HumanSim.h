@@ -3,6 +3,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
 #include "StillsuitSim.h"
 using namespace std;
 
@@ -25,17 +26,16 @@ public:
 	 void updateHuman(int time, int temp);
 	 double calculateSweat(int temp, double InternalTemp, int weight);
 	 void calculateUrine(int weight);
-	 int CalculateInternalTemp(int temp, int InternalTemp);
 
 
 	// ==================================================
 	// Getter functions
 	// ==================================================
 
-	double getBattery(); //gets the current battery life
+	void getBattery(); //gets the current battery life
 	int getSuitWeight(); //gets how much the suit weighs
-	int getWater(); //gets the current amount of drinkable water
-	int getAvailWater(); //gets the current filtration process of the water
+	void getWater(); //gets the current amount of drinkable water
+	void getAvailWater(); //gets the current filtration process of the water
 	int getInternalTemp(); // gets the current internal temperature 
 
 private:
@@ -45,16 +45,19 @@ private:
 	// ===================================================
 
 	double sweat;			// in milliliters
+	double currentWL;		// current total water of human
+	double expectedWL;		// how much water human should have
 
 	 double bladderCapacity;	
+	void setTotalBodyWater();
 
 	// ==================================================
 	// Calculation functions
 	// ==================================================
 
-	double calculateHydration(int height, int weight, bool s);
+	void calculateHydration();
 	int calculateInternalTemp(int temp, int InternalTemp);
-	double calculateActivityLevel(int height, int weight, int age);
+	double calculateActivityLevel();
 	void HumanLocation(); 
 	
 
@@ -66,6 +69,7 @@ private:
 	 // Weight of Human
 	 int weight;			// in kg
 	 int height;			// in cm
+	 int age;
 	 bool sex;				// 0 female; 1 male
 	 double waterLevel;		// in liters
 	 double bmrM;
@@ -76,6 +80,7 @@ private:
 	 bool usingSuit;
 	 int evaporate(int sweat, int temp);
 	 double activityLevel;
+
 
 };
 

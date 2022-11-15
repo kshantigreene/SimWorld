@@ -23,7 +23,23 @@ void setLiquid(int liquid) {
     incomingLiquid = liquid;
 }
 
-void StillsuitCompoundID()
+
+void StillsuitSim::liquidPurifier(char liquidElem) {
+    if (liquidElem == '2') {
+        if (waterStg + 0.95 <= MAX_waterStg) {
+            cout << "Urine purified." << endl;
+            waterStg += 0.95;
+        }
+    }
+    if (liquidElem == '3') {
+        if (waterStg + 0.99 <= MAX_waterStg) {
+            cout << "Sweat purified." << endl;
+            waterStg += 0.99;
+        }
+    }
+}
+
+void StillsuitSim::StillsuitCompoundID()
 {
     // Converts incomong integer to a string and stores it in a new string variable
     string strLiquid = to_string(incomingLiquid);
@@ -48,21 +64,6 @@ void StillsuitCompoundID()
         }
         index++;
     }
-}
-
-void liquidPurifier(char liquidElem) {
-    if (liquidElem == '2') {
-        if (waterStg + 0.95 <= MAX_waterStg) {
-            cout << "Urine purified." << endl;
-            waterStg += 0.95;
-        }
-    }
-    if (liquidElem == '3') {
-        if (waterStg + 0.99 <= MAX_waterStg) {
-            cout << "Sweat purified." << endl;
-            waterStg += 0.99;
-        }     
-    }  
 }
 
 void StillsuitSim::updateSuit(int time) {
