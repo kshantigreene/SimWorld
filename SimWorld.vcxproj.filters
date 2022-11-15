@@ -27,6 +27,9 @@
     <ClCompile Include="Colton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Jacob.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HumanSim.h">
