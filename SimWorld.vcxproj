@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="HumanSim.cpp" />
+    <ClCompile Include="Jacob.cpp" />
     <ClCompile Include="SimWorld.cpp" />
     <ClCompile Include="StillsuitSim.cpp" />
   </ItemGroup>
