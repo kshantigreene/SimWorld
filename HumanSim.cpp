@@ -81,7 +81,12 @@ void HumanSim::calculateUrine(int weight) {
 
     this->bladderCapacity++;
 
+    double hydration;
+
+    double drinkingWater;
+
     // (Hydration + Drinking) * percentageOfWater
+    double urine = (hydration + drinkingWater) * urineComposedOfWater;
 }
 
 /// <summary>
