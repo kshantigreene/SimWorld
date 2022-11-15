@@ -48,7 +48,7 @@ private:
 	double currentWL;		// current total water of human
 	double expectedWL;		// how much water human should have
 
-	 double bladderCapacity;	
+	double bladderCapacity;	
 	void setTotalBodyWater();
 
 	// ==================================================

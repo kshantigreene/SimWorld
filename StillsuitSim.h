@@ -30,6 +30,9 @@ public:
 	double calculateSuitWeight();
 
 private:
+	int incomingLiquid;
+	double waterStg;
+	double MAX_waterStg = 2000;
 	int worldTime;
 	int urine;
 	int sweat;
