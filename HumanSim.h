@@ -59,6 +59,7 @@ private:
 	int calculateInternalTemp(int temp, int InternalTemp);
 	double calculateActivityLevel();
 	void HumanLocation(); 
+	double amountDrank();
 	
 
 private:

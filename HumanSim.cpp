@@ -213,24 +213,4 @@ void HumanSim::HumanLocation()
 }
 
 
-void HumanSim::getBattery()
-{
-    pair<int, int> battery = suit->batteryLevel(time);
-    int batLevel = battery.first;
-    int batTime = battery.second;
-}
 
-void HumanSim::getAvailWater()
-{
-    double water = suit->getAvailableWater();
-}
-
-void HumanSim::getWater()
-{
-    double newWater = suit->sendWater(1.0);
-}
-
-int HumanSim::getSuitWeight()
-{
-    return 0;//finish this!
-}
