@@ -30,6 +30,8 @@ double HumanSim::calculateSweat(int temp, double InternalTemp, int weight) {
     return sweat;
 }
 
+
+
 // Calculates the urine based on activity level and amount to drink.
 void HumanSim::calculateUrine(int weight) {
 
@@ -64,26 +66,25 @@ void HumanSim::calculateUrine(int weight) {
     //
     double maxUrineProducedPerMin = (((maxMLPerKgPerHr * activityLevel) * (weight)) * 60);
 
-    this->bladderCapacity++;
+    this->bladderCapacity;
 
-    // Comes from Hydration function
-    double hydration = 0.0;
-
-    // Comes from Drinking Function
-    double drinkWater = 0.0;
+    this->waterDrank;
 
     if (currentWL > expectedWL) {
         
         // Release fluids
 
         // urine in a day.
-        double urine = (drinkWater - sweat) * urineComposedOfWater;
+        double urine = (waterDrank - sweat) * urineComposedOfWater;
 
         // urine per minute.
         double urinePerMin = urine / 1440;
 
         // How many times you went to the bathroom in a day.
         double totalNumberOfTimesWentToPee = urine / bladderCapacity;
+
+        // Create a variable for what's in the bladder currently.
+        double currentBladder = 0.0;
     }
 
     // Calculates the current water level and urine by adding currentWL and the urine composed of Water.
