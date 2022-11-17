@@ -20,9 +20,10 @@ void HumanSim::getWater()
 int HumanSim::getSuitWeight()
 {
     int sWeight = suit->calculateSuitWeight();
+    return sWeight;
 }
 
-double HumanSim::amountDrank()
+void HumanSim::amountDrank()
 {
     if (currentWL < expectedWL)
     {
@@ -30,5 +31,7 @@ double HumanSim::amountDrank()
         double neededWater = expectedWL - currentWL;
         double waterReq = suit->sendWater(neededWater);
         currentWL += waterReq;
+        waterDrank = waterReq;
     }
+    
 }
