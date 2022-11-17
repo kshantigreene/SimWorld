@@ -7,7 +7,12 @@
 #include "StillsuitSim.h"
 using namespace std;
 
-
+// declares activity level constants
+const double SEDENTARY = 1.2;
+const double LIGHTACTIVE = 1.375;
+const double MODERATEACTIVE = 1.55;
+const double VERYACTIVE = 1.725;
+const double EXTRAACTIVE = 1.9;
 class HumanSim
 {
 public:

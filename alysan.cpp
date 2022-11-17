@@ -17,6 +17,7 @@ double HumanSim::calculateActivityLevel() {
 
 
     double currentActivityLevel = bmrM * currentActivity / bmrM * EXTRAACTIVE;
+    return currentActivityLevel;
 }
 
 /* 
