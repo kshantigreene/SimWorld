@@ -70,8 +70,33 @@ void HumanSim::calculateUrine(int weight) {
     double hydration = 0.0;
 
     // Comes from Drinking Function
-    double drinkingWater = 0.0;
+    double drinkWater = 0.0;
 
-    // (Hydration + Drinking) * percentageOfWater
-    double urine = (hydration + drinkingWater) * urineComposedOfWater;
+    if (currentWL > expectedWL) {
+        
+        // Release fluids
+
+        // urine in a day.
+        double urine = (drinkWater - sweat) * urineComposedOfWater;
+
+        // urine per minute.
+        double urinePerMin = urine / 1440;
+
+        // How many times you went to the bathroom in a day.
+        double totalNumberOfTimesWentToPee = urine / bladderCapacity;
+    }
+
+    // Comes from Hydration function
+    double hydration = 0.0;
+
+    // Calculates the current water level and urine by adding currentWL and the urine composed of Water.
+    //double currentWLAndUrine = currentWL * urineComposedOfWater;
+
+    // Adds together the "bad" compositions of urine.
+    //double totalUrineComposedOfWaste = urineComposedOfUrea + urineComposedOfCreatinine + urineComposedOfUricAcid;
+
+    // Calculates the total water level with urine and waste by dividing current 
+    //double totalWLWithUrineAndWaste = currentWLAndUrine / totalUrineComposedOfWaste;
+
+
 }
