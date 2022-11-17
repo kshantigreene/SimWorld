@@ -3,6 +3,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
 #include "StillsuitSim.h"
 using namespace std;
 
@@ -25,17 +26,17 @@ public:
 	 void updateHuman(int time, int temp);
 	 double calculateSweat(int temp, double InternalTemp);
 	 void calculateUrine(int weight);
-	 int CalculateInternalTemp(int temp, int InternalTemp);
+	 int calculateInternalTemp(int temp, int InternalTemp);
 
 
 	// ==================================================
 	// Getter functions
 	// ==================================================
 
-	double getBattery(); //gets the current battery life
+	int getBattery(); //gets the current battery life
 	int getSuitWeight(); //gets how much the suit weighs
-	int getWater(); //gets the current amount of drinkable water
-	int getAvailWater(); //gets the current filtration process of the water
+	vector<int> getWater(); //gets the current amount of drinkable water
+	vector<int> getAvailWater(); //gets the current filtration process of the water
 	int getInternalTemp(); // gets the current internal temperature 
 
 private:
@@ -77,6 +78,8 @@ private:
 	 bool usingSuit;
 	 int evaporate(int sweat, int temp);
 	 double currentActivity;
+	 double activityLevel;
+
 };
 
 #endif

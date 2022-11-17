@@ -1,4 +1,5 @@
 #include "HumanSim.h"
+#include "StillsuitSim.h"
 #include <cmath>
 using std::log;
 
@@ -129,6 +130,10 @@ double HumanSim::calculateHydration(int h, int w, bool s) {
 
 int HumanSim::calculateInternalTemp(int temp, int InternalTemp) // Function for calculating body temp
 {
+    double activityLevel;
+    activityLevel = calculateActivityLevel();
+    InternalTemp += activityLevel * 2;
+
     if(temp < 60)
     {
         InternalTemp -= 2;
@@ -147,6 +152,8 @@ int HumanSim::calculateInternalTemp(int temp, int InternalTemp) // Function for 
         InternalTemp += 2;
     }
     return InternalTemp;
+
+    
 }
 
 
@@ -182,10 +189,25 @@ void HumanSim::HumanLocation()
 
 }
 
-int HumanSim::evaporate(int sweat, int temp) {
-    float evap = 0;
-    evap = sweat / temp;
-    evap = sweat / evap;
-    int e = static_cast<int>(evap);
-    return e;
+
+void HumanSim::getBattery()
+{
+    pair<int, int> battery = 
+    int batLevel = battery.first;
+    int batTime = battery.second;
+}
+
+void HumanSim::getAvailWater()
+{
+    vector<int> water = suit->getAvailableWater();
+}
+
+void HumanSim::getWater()
+{
+    vector<int> newWater = suit->sendWater();
+}
+
+void HumanSim::getSuitWeight()
+{
+
 }

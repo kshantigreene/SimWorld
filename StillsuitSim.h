@@ -27,6 +27,8 @@ public:
 	double getAvailableWater();
 	double sendWater(double amountRequested);
 
+	double calculateSuitWeight();
+
 private:
 	int worldTime;
 	int urine;
