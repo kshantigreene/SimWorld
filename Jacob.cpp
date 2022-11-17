@@ -62,7 +62,7 @@ void HumanSim::calculateUrine(int weight) {
     //
     // Note: Does NOT take into account the percentages of urine above yet.
     //
-    double maxUrineProducedPerMin = (((maxMLPerKgPerHr * activityLevel) * weight) * 60);
+    double maxUrineProducedPerMin = (((maxMLPerKgPerHr * activityLevel) * (weight)) * 60);
 
     this->bladderCapacity++;
 
@@ -94,6 +94,4 @@ void HumanSim::calculateUrine(int weight) {
 
     // Calculates the total water level with urine and waste by dividing current 
     //double totalWLWithUrineAndWaste = currentWLAndUrine / totalUrineComposedOfWaste;
-
-
 }
