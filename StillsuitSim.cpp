@@ -4,9 +4,6 @@
 using namespace std;
 #include <vector>
 
-// Declaration of constant empty suit weight in kg
-double emptySuitWeight = 6.8;
-
 StillsuitSim::StillsuitSim() {
 };
 
@@ -194,32 +191,4 @@ pair<int, int> StillsuitSim::batteryLevel(int time)
     
     //returns the value of the battery level and batter time
     return std::make_pair(batteryLevel, batteryTimeLeft);
-}
-
-double StillsuitSim::getAvailableWater() {
-    return waterStg;
-}
-
-// Sends the water to the human to drink
-double StillsuitSim::sendWater(double amountRequested) {
-    double waterToSend;
-    if (amountRequested > waterStg) {
-        waterToSend = waterStg;
-        cout << "Amount of water requested is larger than the amount in storage. Sending " << waterToSend << " water." << endl;
-        waterStg = waterStg - waterToSend;
-        return waterToSend;
-    }
-    else {
-        waterToSend = amountRequested;
-        waterStg = waterStg - waterToSend;
-        return waterToSend;
-    }
-}
-
-// Calculates the suit's weight and returns its weight in kilograms
-double StillsuitSim::calculateSuitWeight() {
-    double waterWeight = waterStg / 1000;
-    double suitWeight = emptySuitWeight + waterWeight;
-
-    return suitWeight;
 }

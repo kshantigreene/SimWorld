@@ -47,6 +47,7 @@ private:
 	double sweat;			// in milliliters
 	double currentWL;		// current total water of human
 	double expectedWL;		// how much water human should have
+	double waterDrank;
 
 	double bladderCapacity;	
 	void setTotalBodyWater();
@@ -59,7 +60,7 @@ private:
 	int calculateInternalTemp(int temp, int InternalTemp);
 	double calculateActivityLevel();
 	void HumanLocation(); 
-	double amountDrank();
+	void amountDrank();
 	
 
 private:
@@ -80,6 +81,7 @@ private:
 	 int time; 
 	 bool usingSuit;
 	 int evaporate(int sweat, int temp);
+	 double currentActivity;
 	 double activityLevel;
 
 
