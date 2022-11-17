@@ -72,7 +72,6 @@ private:
 	 int height;			// in cm
 	 int age;
 	 bool sex;				// 0 female; 1 male
-	 int age;
 	 double waterLevel;		// in liters
 	 double bmrM;
 	 double bmrF;

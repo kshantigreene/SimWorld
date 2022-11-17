@@ -36,6 +36,9 @@
     <ClCompile Include="Donovan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Jarod.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HumanSim.h">

@@ -60,20 +60,8 @@ int HumanSim::calculateInternalTemp(int temp, int InternalTemp) // Function for 
 
 
 
-    double sedentaryM = bmrM * 1.2; //delete
-    double lightActiveM = bmrM * 1.375;
-    double moderateActiveM = bmrM * 1.55;
-    double veryActiveM = bmrM * 1.725;
-    double extraActiveM = bmrM * 1.9;
-
-    double sedentaryF = bmrF * 1.2; //delete
-    double lightActiveF = bmrF * 1.375;
-    double moderateActiveF = bmrF * 1.55;
-    double veryActiveF = bmrF * 1.725;
-    double extraActiveF = bmrF * 1.9;
 
 
-}
     // getters and setters for Internal Temo
 void HumanSim::setInternalTemp(int InternalTemp) // Setter for Internal temp
 {
@@ -99,7 +87,3 @@ void HumanSim::HumanLocation()
 }
 
 
-void HumanSim::getSuitWeight()
-{
-
-}
