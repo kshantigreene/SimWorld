@@ -71,7 +71,7 @@ private:
 	 int age;
 	 double waterLevel;		// in liters
 	 double bmrM;
-	 double bmrF
+	 double bmrF;
 	 // Internal temperature of human
 	 int internalTemp;    // base temp is 98F
 	 int time; 

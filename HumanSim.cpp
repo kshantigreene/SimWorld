@@ -4,11 +4,11 @@
 using std::log;
 
 // declares activity level constants
-const SEDENTARY = 1.2;
-const LIGHTACTIVE = 1.375;
-const MODERATEACTIVE = 1.55;
-const VERYACTIVE = 1.725;
-const EXTRAACTIVE = 1.9;
+const double SEDENTARY = 1.2;
+const double LIGHTACTIVE = 1.375;
+const double MODERATEACTIVE = 1.55;
+const double VERYACTIVE = 1.725;
+const double EXTRAACTIVE = 1.9;
 
 HumanSim::HumanSim(string n, StillsuitSim* suit) {
 	this->name = name;
@@ -157,14 +157,7 @@ int HumanSim::calculateInternalTemp(int temp, int InternalTemp) // Function for 
 }
 
 
-// Calculates the level of activity as a percentage (double) based on weight, height, age
-double HumanSim::calculateActivityLevel() {
-    double bmrM = 66 + (13.7 * weight) + (5 * height) - (6.8 * age); // Harris-Benedict Formula
-    double bmrF = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
 
-
-    double currentActivityLevel = bmrM * currentActivity / bmrM * EXTRAACTIVE;
-}
     // getters and setters for Internal Temo
 void HumanSim::setInternalTemp(int InternalTemp) // Setter for Internal temp
 {
@@ -209,5 +202,5 @@ void HumanSim::getWater()
 
 void HumanSim::getSuitWeight()
 {
-
+    
 }
