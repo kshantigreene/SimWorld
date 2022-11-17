@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bella.cpp" />
     <ClCompile Include="Colton.cpp" />
     <ClCompile Include="Donald.cpp" />
     <ClCompile Include="Donovan.cpp" />
