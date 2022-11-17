@@ -132,6 +132,7 @@
     <ClCompile Include="Donovan.cpp" />
     <ClCompile Include="HumanSim.cpp" />
     <ClCompile Include="Jacob.cpp" />
+    <ClCompile Include="Jarod.cpp" />
     <ClCompile Include="SimWorld.cpp" />
     <ClCompile Include="StillsuitSim.cpp" />
   </ItemGroup>
