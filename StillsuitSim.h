@@ -13,7 +13,7 @@ public:
 	void StillsuitCompoundDestination();
 	void updateSuit(int time);
 	void seperateFluid();
-	
+	void liquidPurifier(char);
 	void setUrine(int urine);
 	int getUrine();
 	void setSweat(int sweat);
@@ -30,6 +30,10 @@ public:
 	double calculateSuitWeight();
 
 private:
+	int incomingLiquid;
+	double waterStg;
+	double MAX_waterStg = 2000;
+	double emptySuitWeight = 6.8;
 	int worldTime;
 	int urine;
 	int sweat;
