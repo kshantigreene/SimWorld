@@ -20,7 +20,7 @@ double HumanSim::calculateSweat(int temp, double InternalTemp, int weight) {
     // Calculates the temperature the human has overheated.
     //
     // This equation looks at the current temperature minus the average body temperature (98.6).
-    double tempOverheated = (currentTemp - InternalTemp);
+    long double tempOverheated = (currentTemp - InternalTemp);
 
     // Range of active milliliters (ML) equation
     // 
@@ -85,9 +85,6 @@ void HumanSim::calculateUrine(int weight) {
         // How many times you went to the bathroom in a day.
         double totalNumberOfTimesWentToPee = urine / bladderCapacity;
     }
-
-    // Comes from Hydration function
-    double hydration = 0.0;
 
     // Calculates the current water level and urine by adding currentWL and the urine composed of Water.
     //double currentWLAndUrine = currentWL * urineComposedOfWater;
