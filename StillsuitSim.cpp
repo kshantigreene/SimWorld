@@ -25,25 +25,11 @@ void StillsuitSim::seperateFluid() {
 
 
 
-//getters and settings for urine
-void StillsuitSim::setUrine(int urine)
-{
-    urineTotal += urine;
-}
-
-int StillsuitSim::getUrine()
-{
-    return urineTotal;
-}
-//getters and settings for sweat
-void StillsuitSim::setSweat(int sweat)
-{
-    sweatTotal += sweat;
-}
-
-int StillsuitSim::getSweat()
-{
-    return sweatTotal;
+//setters for all liquids
+void StillsuitSim::setLiquid(int liquid) {
+    incomingLiquid = liquid;
+    StillsuitCompoundID();
+    incomingLiquid = 0;
 }
 
 //start heating process - not sure on amount to increase
