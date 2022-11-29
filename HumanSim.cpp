@@ -68,17 +68,4 @@ int HumanSim::getInternalTemp() // getter for Internal temp
     return this->internalTemp;
 }
 
-void HumanSim::HumanLocation()
-{
-   
-
-    if (usingSuit)
-    {
-        //call suit to tell it whether inside  or outside 
-    }
-         
-
-
-}
-
 
