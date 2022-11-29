@@ -3,26 +3,8 @@
 #include <string>
 using namespace std;
 #include <vector>
-//getters and settings for urine
-void StillsuitSim::setUrine(int urine)
-{
-    urineTotal += urine;
-}
 
-int StillsuitSim::getUrine()
-{
-    return urineTotal;
-}
-//getters and settings for sweat
-void StillsuitSim::setSweat(int sweat)
-{
-    sweatTotal += sweat;
-}
 
-int StillsuitSim::getSweat()
-{
-    return sweatTotal;
-}
 
 //start heating process - not sure on amount to increase
 void StillsuitSim::startHeat(int temp)
