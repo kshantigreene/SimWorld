@@ -25,6 +25,7 @@ void StillsuitSim::seperateFluid() {
 //getters and settings for urine
 void StillsuitSim::setUrine(int urine)
 {
+    
     urineTotal += urine;
 }
 
