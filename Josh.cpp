@@ -1,3 +1,8 @@
+#include "StillsuitSim.h"
+#include <iostream>
+#include <string>
+using namespace std;
+#include <vector>
 //getters and settings for urine
 void StillsuitSim::setUrine(int urine)
 {
