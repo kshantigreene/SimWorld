@@ -3,6 +3,7 @@
 #include <string>
 using namespace std;
 #include <vector>
+
 pair<int, int> StillsuitSim::batteryLevel(int time)
 {
     //assigns values to variables

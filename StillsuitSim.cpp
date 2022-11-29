@@ -39,21 +39,6 @@ void StillsuitSim::startAirCon(int temp)
     temp -= 2;
 }
 
-//checking current internal temp to see if heat or cooling is needed, then calling needed function
-void StillsuitSim::checkTemperature(int temp)
-{
-    if (temp < 60) 
-    {
-        startHeat(temp);
-    }
-
-    if (temp > 80) 
-    {
-        startAirCon(temp);
-    }
-
-}
-
 // Returns gcd of a and b
 int gcd(int a, int h)
 {
@@ -160,19 +145,3 @@ long encrypt(long msg)
     return c;
 }
 
-pair<int, int> StillsuitSim::batteryLevel(int time)
-{
-    //assigns values to variables
-    int batteryLevel = 100;
-    int maxBatteryTime = 720;
-
-    //uses worldtime to find how many minuites are left in the battery
-     int batteryTimeLeft;
-    batteryTimeLeft = maxBatteryTime - worldTime;
-
-    //uses simple math to make a percent of the batter left
-    batteryLevel = (batteryTimeLeft / maxBatteryTime) * 100;
-    
-    //returns the value of the battery level and batter time
-    return std::make_pair(batteryLevel, batteryTimeLeft);
-}
