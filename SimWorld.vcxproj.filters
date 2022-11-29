@@ -13,6 +13,7 @@
     <ClCompile Include="alysan.cpp" />
     <ClCompile Include="Josh.cpp" />
     <ClCompile Include="Brandon.cpp" />
+    <ClCompile Include="Dominic.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HumanSim.h" />

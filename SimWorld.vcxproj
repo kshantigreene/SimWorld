@@ -131,6 +131,7 @@
     <ClCompile Include="Bella.cpp" />
     <ClCompile Include="Brandon.cpp" />
     <ClCompile Include="Colton.cpp" />
+    <ClCompile Include="Dominic.cpp" />
     <ClCompile Include="Donald.cpp" />
     <ClCompile Include="Donovan.cpp" />
     <ClCompile Include="HumanSim.cpp" />
