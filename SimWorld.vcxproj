@@ -131,12 +131,14 @@
     <ClCompile Include="Bella.cpp" />
     <ClCompile Include="Brandon.cpp" />
     <ClCompile Include="Colton.cpp" />
+    <ClCompile Include="Dominic.cpp" />
     <ClCompile Include="Donald.cpp" />
     <ClCompile Include="Donovan.cpp" />
     <ClCompile Include="HumanSim.cpp" />
     <ClCompile Include="Jacob.cpp" />
     <ClCompile Include="Jarod.cpp" />
     <ClCompile Include="Josh.cpp" />
+    <ClCompile Include="Michael.cpp" />
     <ClCompile Include="SimWorld.cpp" />
     <ClCompile Include="StillsuitSim.cpp" />
   </ItemGroup>
