@@ -20,7 +20,7 @@ double HumanSim::calculateSweat(int temp, double InternalTemp, int weight) {
     // Calculates the temperature the human has overheated.
     //
     // This equation looks at the current temperature minus the average body temperature (98.6).
-    double tempOverheated = (currentTemp - InternalTemp);
+    long double tempOverheated = (currentTemp - InternalTemp);
 
     // Range of active milliliters (ML) equation
     // 
@@ -29,6 +29,8 @@ double HumanSim::calculateSweat(int temp, double InternalTemp, int weight) {
 
     return sweat;
 }
+
+
 
 // Calculates the urine based on activity level and amount to drink.
 void HumanSim::calculateUrine(int weight) {
@@ -62,16 +64,35 @@ void HumanSim::calculateUrine(int weight) {
     //
     // Note: Does NOT take into account the percentages of urine above yet.
     //
-    double maxUrineProducedPerMin = (((maxMLPerKgPerHr * activityLevel) * weight) * 60);
+    double maxUrineProducedPerMin = (((maxMLPerKgPerHr * activityLevel) * (weight)) * 60);
 
-    this->bladderCapacity++;
+    this->bladderCapacity;
 
-    // Comes from Hydration function
-    double hydration = 0.0;
+    this->waterDrank;
 
-    // Comes from Drinking Function
-    double drinkingWater = 0.0;
+    if (currentWL > expectedWL) {
+        
+        // Release fluids
 
-    // (Hydration + Drinking) * percentageOfWater
-    double urine = (hydration + drinkingWater) * urineComposedOfWater;
+        // urine in a day.
+        double urine = (waterDrank - sweat) * urineComposedOfWater;
+
+        // urine per minute.
+        double urinePerMin = urine / 1440;
+
+        // How many times you went to the bathroom in a day.
+        double totalNumberOfTimesWentToPee = urine / bladderCapacity;
+
+        // Create a variable for what's in the bladder currently.
+        double currentBladder = 0.0;
+    }
+
+    // Calculates the current water level and urine by adding currentWL and the urine composed of Water.
+    //double currentWLAndUrine = currentWL * urineComposedOfWater;
+
+    // Adds together the "bad" compositions of urine.
+    //double totalUrineComposedOfWaste = urineComposedOfUrea + urineComposedOfCreatinine + urineComposedOfUricAcid;
+
+    // Calculates the total water level with urine and waste by dividing current 
+    //double totalWLWithUrineAndWaste = currentWLAndUrine / totalUrineComposedOfWaste;
 }

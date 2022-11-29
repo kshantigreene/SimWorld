@@ -29,6 +29,7 @@ private:
 	int incomingLiquid;
 	double waterStg;
 	double MAX_waterStg = 2000;
+	double emptySuitWeight = 6.8;
 	int worldTime;
 	int urine;
 	int sweat;
