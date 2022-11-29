@@ -20,9 +20,7 @@ void StillsuitSim::seperateFluid() {
     }
 }
 
-
-
-//setters for all liquids
+//setter for all liquids
 void StillsuitSim::setLiquid(int liquid) {
     incomingLiquid = liquid;
     StillsuitCompoundID();
