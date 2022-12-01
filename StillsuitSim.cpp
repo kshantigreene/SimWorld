@@ -27,17 +27,7 @@ void StillsuitSim::setLiquid(int liquid) {
     incomingLiquid = 0;
 }
 
-//start heating process - not sure on amount to increase
-void StillsuitSim::startHeat(int temp)
-{
-    temp += 2;
-}
 
-//start cooling process - not sure on amount to decrease
-void StillsuitSim::startAirCon(int temp)
-{
-    temp -= 2;
-}
 
 // Returns gcd of a and b
 int gcd(int a, int h)

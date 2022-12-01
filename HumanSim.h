@@ -66,7 +66,7 @@ private:
 	double calculateActivityLevel();
 	void HumanLocation(); 
 	void amountDrank();
-	
+	int activity(int time, int hour, int minute);
 
 private:
 	 string name;
