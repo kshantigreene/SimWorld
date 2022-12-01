@@ -1,6 +1,9 @@
 #include "HumanSim.h"
 #include "StillsuitSim.h"
 
+#include <vector>
+using std::vector;
+
 //
 //  These are my code changes below from the HumanSim.cpp file.
 //
@@ -8,19 +11,16 @@
 // Calculates the sweat based on activity, temperature and weight (including suit)
 double HumanSim::calculateSweat(int temp, double InternalTemp, int weight) {
 
-    // Average Temperature of Human
-    InternalTemp = 98.6;
+    // Normal Temp of Human (98.6 F).
+    double normalTemp = 98.6;
 
-    // Current Temp of Human (may need additional data on this from others)
-    double currentTemp = 98.6;
-
-    // Curent milliliters for an active male.
+    // Curent milliliters for an active male. (Add female sweat in mL).
     const double MAX_SWEAT = 23;
 
     // Calculates the temperature the human has overheated.
     //
-    // This equation looks at the current temperature minus the average body temperature (98.6).
-    long double tempOverheated = (currentTemp - InternalTemp);
+    // This equation looks at the current temperature of the person minus the average body temperature (98.6 F).
+    long double tempOverheated = (InternalTemp - normalTemp);
 
     // Range of active milliliters (ML) equation
     // 
@@ -44,19 +44,21 @@ void HumanSim::calculateUrine(int weight) {
     double urineComposedOfWater = 0.95;
 
     // Percentage of urine composed of urea.
-    double urineComposedOfUrea = 0.2;
+    double urineComposedOfUrea = 0.02;
 
     // Percentage of urine composed of creatinine.
-    double urineComposedOfCreatinine = 0.1;
+    double urineComposedOfCreatinine = 0.01;
 
     // Percentage of urine composed of uric acid.
-    double urineComposedOfUricAcid = 0.03;
+    double urineComposedOfUricAcid = 0.003;
 
     // The max activity used in urine function. (Human)
-    double activityLevel = 1.0;
+    // double activityLevel = 1.0;
 
     // The max amount of milliliters per kilograms per hour.
-    double maxMLPerKgPerHr = 1.5;
+    // double maxMLPerKgPerHr = 1.5;
+
+    //vector<double> ;
 
     // The max amount of urine that can be produced per minute.
     //
@@ -64,7 +66,7 @@ void HumanSim::calculateUrine(int weight) {
     //
     // Note: Does NOT take into account the percentages of urine above yet.
     //
-    double maxUrineProducedPerMin = (((maxMLPerKgPerHr * activityLevel) * (weight)) * 60);
+    // double maxUrineProducedPerMin = (((maxMLPerKgPerHr * activityLevel) * (weight)) * 60);
 
     this->bladderCapacity;
 
@@ -77,11 +79,18 @@ void HumanSim::calculateUrine(int weight) {
         // urine in a day.
         double urine = (waterDrank - sweat) * urineComposedOfWater;
 
+        // Divides the parts that are bad in urine.
+        double ureaAmount = urine * urineComposedOfUrea;
+
+        double creatinineAmount = urine * urineComposedOfCreatinine;
+
+        double uricAcidAmount = urine * urineComposedOfUricAcid;
+
         // urine per minute.
         double urinePerMin = urine / 1440;
 
         // How many times you went to the bathroom in a day.
-        double totalNumberOfTimesWentToPee = urine / bladderCapacity;
+        double totalNumberOfTimesWentToPee = urinePerMin / bladderCapacity;
 
         // Create a variable for what's in the bladder currently.
         double currentBladder = 0.0;
@@ -96,3 +105,12 @@ void HumanSim::calculateUrine(int weight) {
     // Calculates the total water level with urine and waste by dividing current 
     //double totalWLWithUrineAndWaste = currentWLAndUrine / totalUrineComposedOfWaste;
 }
+
+// Need to setup function that sends fluids from urine to the suit.
+
+//void HumanSim::sendFluidsToSuit(double urineAmount, double sweatAmount) 
+//{
+    // char[] decryptLiquid;
+
+    // 
+//}
