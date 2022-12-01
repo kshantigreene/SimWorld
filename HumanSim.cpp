@@ -3,26 +3,25 @@
 #include <cmath>
 using std::log;
 
-
-
 HumanSim::HumanSim(string n, StillsuitSim* suit) {
-	this->name = name;
+    this->name = name;
     this->suit = suit;
-    this->currentActivity = MODERATEACTIVE; // FOR NOW
+    this->currentActivity = MODERATEACTIVE; // FOR NOW (ADDED THIS)
+    setInternalTemp(98.6);
+    setTotalBodyWater();                    // Will remove this entire constructor once implementation added for the other (full) constructor in simworld
 };
 
-void HumanSim::updateHuman(int time,int temp) {
-	this->worldTemp = temp;
-    this->time = time;
-    this->usingSuit = true;
-    int hour = (int)time / 60;
-    int minute = time;
-    if (hour > 0) {
-        minute = time - hour * 60;
-    }
-    printf("Current time is: %02d:%02d, %dF\n", hour, minute, temp);
-}
-
+HumanSim::HumanSim(string n, StillsuitSim* suit, double currentActivity, int age, int height, int weight, bool sex) {
+	this->name = name;
+    this->suit = suit;
+    this->currentActivity = currentActivity;
+    this->age = age;
+    this->height = height;
+    this->weight = weight;
+    this->sex = sex;
+    setInternalTemp(98.6);
+    setTotalBodyWater();
+};
 
 
 

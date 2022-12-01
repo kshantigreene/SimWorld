@@ -21,7 +21,7 @@ public:
 	// ==================================================
 
 	HumanSim(string n, StillsuitSim* suit);
-
+	HumanSim(string n, StillsuitSim* suit, double currentActivity, int age, int height, int weight, bool sex);
 
 	// ==================================================
 	// Setter functions

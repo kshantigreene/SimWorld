@@ -8,12 +8,14 @@ void StillsuitSim::liquidPurifier(char liquidElem) {
         if (waterStg + 0.95 <= MAX_waterStg) {
             cout << "Urine purified." << endl;
             waterStg += 0.95;
+            cout << calculateSuitWeight() << endl;
         }
     }
     if (liquidElem == '3') {
         if (waterStg + 0.99 <= MAX_waterStg) {
             cout << "Sweat purified." << endl;
             waterStg += 0.99;
+            cout << calculateSuitWeight() << endl;
         }
     }
     else {
