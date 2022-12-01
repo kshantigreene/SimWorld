@@ -31,7 +31,7 @@ int main()
     srand(time(NULL));
     std::cout << "Hello World!\n";
     StillsuitSim* suit = new StillsuitSim();
-    HumanSim* human = new HumanSim("Dave",suit);
+    HumanSim* human = new HumanSim("Dave", suit, 3.0, 25, 72, 180, true);
     int initTemp= MIN_TEMP+rand() % 10 + 1; //within 10 degrees of min
     double width = 7.5;
     double a = -1.0/(MIN_PER_DAY*width);

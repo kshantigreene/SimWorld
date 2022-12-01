@@ -61,10 +61,13 @@ void HumanSim::updateHuman(int time, int temp) {
 
     // Updates the Human's statistics
     cout << "Calculating Human's internal temperature... " << endl;
+    cout << "Calculating Human's current activity level... " << endl;
+    
+    activity(time, hour, minute);
+    calculateActivityLevel();
+
     calculateInternalTemp(temp, internalTemp);
     
-    cout << "Calculating Human's current activity level... " << endl;
-    calculateActivityLevel();
 
     cout << "Calculating Human's current location... " << endl;
     HumanLocation();
