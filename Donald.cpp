@@ -33,5 +33,5 @@ void HumanSim::amountDrank()
         currentWL += waterReq;
         waterDrank = waterReq;
     }
-    cout << "The human has drank " << waterDrank << "mLs.";
+    cout << "The human has drank " << waterDrank << "mLs." << '\n';
 }
