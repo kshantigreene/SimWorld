@@ -17,6 +17,8 @@ double HumanSim::calculateActivityLevel() {
 
     double currentActivityLevel = bmrM * currentActivity / bmrM * EXTRAACTIVE;
     return currentActivityLevel;
+
+    cout << "Calculation of the activity level is " << currentActivityLevel;
 }
 
 /* 
@@ -29,4 +31,9 @@ double HumanSim::calculateActivityLevel() {
     - double activityLevel
 */
 
-// sending activity level and in/out of suit to suit
+/* sending activity level and in/out of suit to suit */
+double HumanSim::getActivityLevel()
+{
+    double activityLevel = suit->calculateActivityLevel();
+    return activityLevel; // returns variable of the activity level
+}

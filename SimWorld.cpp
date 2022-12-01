@@ -48,7 +48,7 @@ int main()
         //create thread so human can deal with it independent of this thread
         thread tempThread(sendToSims,human, suit, i, temp);
         tempThread.detach();
-        
+       
         this_thread::sleep_for(chrono::milliseconds(SLEEP_TIME));
     }
 
