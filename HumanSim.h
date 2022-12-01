@@ -21,7 +21,7 @@ public:
 	// ==================================================
 
 	HumanSim(string n, StillsuitSim* suit);
-
+	HumanSim(string n, StillsuitSim* suit, double currentActivity, int age, int height, int weight, bool sex);
 
 	// ==================================================
 	// Setter functions
@@ -66,7 +66,7 @@ private:
 	double calculateActivityLevel();
 	void HumanLocation(); 
 	void amountDrank();
-	
+	int activity(int time, int hour, int minute);
 
 private:
 	 string name;

@@ -47,3 +47,42 @@ void HumanSim::calculateHydration() {
 
     currentWL = currentWL - sweatAmnt - urineAmnt;
 }
+
+void HumanSim::updateHuman(int time, int temp) {
+    this->worldTemp = temp;
+    this->time = time;
+    this->usingSuit = true;
+    int hour = (int)time / 60;
+    int minute = time;
+    if (hour > 0) {
+        minute = time - hour * 60;
+    }
+    printf("Current time is: %02d:%02d, %dF\n", hour, minute, temp);
+
+    // Updates the Human's statistics
+    cout << "Calculating Human's internal temperature... " << endl;
+    calculateInternalTemp(temp, internalTemp);
+    
+    cout << "Calculating Human's current activity level... " << endl;
+    calculateActivityLevel();
+
+    cout << "Calculating Human's current location... " << endl;
+    HumanLocation();
+
+    cout << "Calculating Human's sweat production... " << endl;
+    calculateSweat(temp, internalTemp, weight);
+
+    cout << "Calculating Human's urine production... " << endl;
+    calculateUrine(weight);
+
+    cout << "Calculating Human's current hydration level... " << endl;
+    calculateHydration();
+
+    // Logic for when the Human should drink
+    // Runs every 10 minutes while the Human is wearinig its Stillsuit
+    int check = minute % 10;
+    if (usingSuit && check == 0) {
+        cout << "The Human checks if they are thirsty... " << endl;
+        amountDrank();
+    }
+}
