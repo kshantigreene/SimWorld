@@ -6,24 +6,24 @@
 using namespace std;
 #include <vector>
 
-// make random variable/ use rand() function too coin toss type thing for wheter inside or outside 
-// set it to constant wheter inside or outside 
-
-void HumanSim::HumanLocation()
+bool HumanSim::HumanLocation()
 
 {
-    bool usingsuit = rand() % 10;
-
-    if (usingSuit > 5)
+    int r = rand() % 10;
+    // they are in the suit 
+    if (r > 5)
     {
-        int BatteryUse; 
-
-
-
-       
-       
+        usingSuit = true;
+        return usingSuit;
+    
     }
-
+    // they are not in the suit 
+    if (r < 5)
+    {
+        usingSuit = false;
+        return usingSuit;
+    
+    }
 
 
 }
