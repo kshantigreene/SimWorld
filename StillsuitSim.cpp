@@ -5,6 +5,7 @@ using namespace std;
 #include <vector>
 
 StillsuitSim::StillsuitSim() {
+
 };
 
 void StillsuitSim::updateSuit(int time) {
