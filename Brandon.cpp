@@ -1,8 +1,8 @@
 #include <iostream>
 #include "StillsuitSim.h"
 #include <string>
-using namespace std;
 #include <vector>
+using namespace std;
 
 pair<int, int> StillsuitSim::batteryLevel(int time)
 {
@@ -15,8 +15,8 @@ pair<int, int> StillsuitSim::batteryLevel(int time)
     batteryTimeLeft = maxBatteryTime - worldTime;
 
     //uses simple math to make a percent of the batter left
-    batteryLevel = (batteryTimeLeft / maxBatteryTime) * 100;
+    //batteryLevel = (batteryTimeLeft / maxBatteryTime) * 100;
 
     //returns the value of the battery level and batter time
-    return std::make_pair(batteryLevel, batteryTimeLeft);
+    //return std::make_pair(batteryLevel, batteryTimeLeft);
 }
