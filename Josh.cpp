@@ -16,14 +16,15 @@ void StillsuitSim::startHeat(int temp)
 void StillsuitSim::startAirCon(int temp)
 {
     temp -= 2;
+    return temp;
 }
 
 //checking current internal temp to see if heat or cooling is needed, then calling needed function
 void StillsuitSim::checkTemperature(int temp)
 {
-    if (temp < 60)
+    if ( < 60)
     {
-        startHeat(temp);
+        return startHeat(temp);
     }
 
     if (temp > 80)
