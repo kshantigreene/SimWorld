@@ -61,12 +61,11 @@ void HumanSim::updateHuman(int time, int temp) {
 
     // Updates the Human's statistics
     cout << "Calculating Human's internal temperature... " << endl;
-    cout << "Calculating Human's current activity level... " << endl;
-    
-    activity(time, hour, minute);
-    calculateActivityLevel();
-
     calculateInternalTemp(temp, internalTemp);
+    cout << "Calculating Human's current activity level... " << endl;
+    activity(time, hour, minute);
+
+
     
 
     cout << "Calculating Human's current location... " << endl;
@@ -84,6 +83,8 @@ void HumanSim::updateHuman(int time, int temp) {
     // Logic for when the Human should drink
     // Runs every 10 minutes while the Human is wearinig its Stillsuit
     int check = minute % 10;
+    usingSuit = true;
+    currentWL--;
     if (usingSuit && check == 0) {
         cout << "The Human checks if they are thirsty... " << endl;
         amountDrank();

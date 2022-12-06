@@ -27,7 +27,6 @@ void sendToSims(HumanSim* human, StillsuitSim* suit, int time, int temp) {
 
 int main()
 {
- 
     srand(time(NULL));
     std::cout << "Hello World!\n";
     StillsuitSim* suit = new StillsuitSim();
