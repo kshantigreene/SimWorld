@@ -11,7 +11,7 @@ public:
 	void setLiquid(int liquid);
 	void StillsuitCompoundID();
 	void StillsuitCompoundDestination();
-	void updateSuit(int time);
+	void updateSuit(int time, double temp);
 	void seperateFluid();
 	void liquidPurifier(char);
 	void checkTemperature(int temp);
@@ -24,7 +24,7 @@ public:
 	double sendWater(double amountRequested);
 
 	double calculateSuitWeight();
-
+	
 private:
 	int incomingLiquid;
 	double waterStg;
@@ -32,6 +32,8 @@ private:
 	double emptySuitWeight = 6.8;
 	int urine;
 	int sweat;
+	double outsideTemp;
+	double battery;
 	
 
 };

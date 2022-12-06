@@ -6,6 +6,9 @@ using namespace std;
 
 pair<int, int> StillsuitSim::batteryLevel(int time)
 {
+
+    //if in suit, get activity level,
+    
     //assigns values to variables
     int batteryLevel = 100;
     int maxBatteryTime = 720;

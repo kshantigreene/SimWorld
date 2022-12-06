@@ -8,8 +8,9 @@ StillsuitSim::StillsuitSim() {
 
 };
 
-void StillsuitSim::updateSuit(int time) {
+void StillsuitSim::updateSuit(int time, double temp) {
     this->worldTime = time;
+    this->outsideTemp = temp;
 }
 
 void StillsuitSim::seperateFluid() {
