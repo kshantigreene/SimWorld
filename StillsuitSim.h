@@ -14,9 +14,9 @@ public:
 	void updateSuit(int time);
 	void seperateFluid();
 	void liquidPurifier(char);
-	void checkTemperature(int temp);
-	void startHeat(int temp);
-	void startAirCon(int temp);
+	auto checkTemperature(int outsideTemp);
+	auto startHeat(int outsideTemp);
+	auto startAirCon(int outsideTemp);
 
 	std::pair<int, int> batteryLevel(int time);
 

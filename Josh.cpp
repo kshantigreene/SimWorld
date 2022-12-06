@@ -2,34 +2,43 @@
 #include <iostream>
 #include <string>
 using namespace std;
-#include <vector>
+
 
 
 
 //start heating process - not sure on amount to increase
-void StillsuitSim::startHeat(int temp)
+auto StillsuitSim::startHeat(int outsideTemp)
 {
-    temp += 2;
+    if (batteryLevel > 15)
+    {
+        
+        outsideTemp +=  2;
+        return outsideTemp;
+    }
 }
 
 //start cooling process - not sure on amount to decrease
-void StillsuitSim::startAirCon(int temp)
+auto StillsuitSim::startAirCon(int outsideTemp)
 {
-    temp -= 2;
-    return temp;
+    if (batteryLevel > 15) 
+    {
+        outsideTemp -= 2;
+        return outsideTemp;
+    }
 }
 
 //checking current internal temp to see if heat or cooling is needed, then calling needed function
-void StillsuitSim::checkTemperature(int temp)
+auto StillsuitSim::checkTemperature(int outsideTemp)
 {
-    if ( < 60)
+    if (outsideTemp < 60)
     {
-        return startHeat(temp);
+        return startHeat(outsideTemp);
     }
 
-    if (temp > 80)
+    if (outsideTemp > 80)
     {
-        startAirCon(temp);
+       
+       return startAirCon(outsideTemp);
     }
 
 }
