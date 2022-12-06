@@ -29,7 +29,7 @@ void StillsuitSim::StillsuitCompoundID()
     string strLiquid = to_string(incomingLiquid);
 
     // Declaration of FOR loop and index for the purpose of iterating through liquid string
-    size_t index = 0;
+    int index = 0;
     for (char c : strLiquid)
     {
         bool identified = false;

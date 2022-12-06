@@ -11,20 +11,20 @@ public:
 	void setLiquid(int liquid);
 	void StillsuitCompoundID();
 	void StillsuitCompoundDestination();
-	void updateSuit(int time);
+	void updateSuit(int time, double temp);
 	void seperateFluid();
 	void liquidPurifier(char);
-	void checkTemperature(int temp);
-	void startHeat(int temp);
-	void startAirCon(int temp);
+	auto checkTemperature();
+	auto startHeat();
+	auto startAirCon();
 
-	std::pair<int, int> batteryLevel(int time);
+	double batteryLevel(int time, double currentActivityLevel);
 
 	double getAvailableWater();
 	double sendWater(double amountRequested);
 
 	double calculateSuitWeight();
-
+	
 private:
 	int incomingLiquid;
 	double waterStg;
@@ -33,6 +33,8 @@ private:
 	int worldTime;
 	int urine;
 	int sweat;
+	double outsideTemp;
+	double battery;
 	
 
 };

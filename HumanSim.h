@@ -28,7 +28,7 @@ public:
 	// ==================================================
 
 	void setInternalTemp(int InternalTemp); // sets the Internal temperature
-	 void updateHuman(int time, int temp);
+	void updateHuman(int time, int temp);
 
 
 	// ==================================================
@@ -65,7 +65,7 @@ private:
 	void calculateHydration();
 	int calculateInternalTemp(int temp, int InternalTemp);
 	double calculateActivityLevel();
-	bool HumanLocation(); 
+	bool HumanLocation(bool inSuit); 
 	void amountDrank();
 	double activity(int time, int hour, int minute);
 	void calculateDeath();
