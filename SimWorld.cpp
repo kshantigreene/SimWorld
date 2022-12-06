@@ -21,7 +21,7 @@ const double PI = 3.14159265359;
 void sendToSims(HumanSim* human, StillsuitSim* suit, int time, int temp) {
     
     human->updateHuman(time,temp);
-    suit->updateSuit(time);
+    suit->updateSuit(time, temp);
 }
 
 

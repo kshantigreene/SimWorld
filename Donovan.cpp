@@ -37,6 +37,7 @@ void HumanSim::calculateHydration() {
 
     // Same as above but for urine
     double urineAmnt = 0.0;
+
     const double URINE_WATER = 0.95;
 
     // calculates how much water is lost through sweat and urine

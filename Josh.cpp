@@ -7,9 +7,9 @@ using namespace std;
 
 
 //start heating process - not sure on amount to increase
-auto StillsuitSim::startHeat(int outsideTemp)
+auto StillsuitSim::startHeat()
 {
-    if (batteryLevel > 15)
+    if (battery > 15)
     {
         
         outsideTemp +=  2;
@@ -18,9 +18,9 @@ auto StillsuitSim::startHeat(int outsideTemp)
 }
 
 //start cooling process - not sure on amount to decrease
-auto StillsuitSim::startAirCon(int outsideTemp)
+auto StillsuitSim::startAirCon()
 {
-    if (batteryLevel > 15) 
+    if (battery > 15) 
     {
         outsideTemp -= 2;
         return outsideTemp;
@@ -28,17 +28,17 @@ auto StillsuitSim::startAirCon(int outsideTemp)
 }
 
 //checking current internal temp to see if heat or cooling is needed, then calling needed function
-auto StillsuitSim::checkTemperature(int outsideTemp)
+auto StillsuitSim::checkTemperature()
 {
     if (outsideTemp < 60)
     {
-        return startHeat(outsideTemp);
+        return startHeat();
     }
 
     if (outsideTemp > 80)
     {
        
-       return startAirCon(outsideTemp);
+       return startAirCon();
     }
 
 }
