@@ -14,9 +14,9 @@ public:
 	void updateSuit(int time, double temp);
 	void seperateFluid();
 	void liquidPurifier(char);
-	void checkTemperature(int temp);
-	void startHeat(int temp);
-	void startAirCon(int temp);
+	auto checkTemperature();
+	auto startHeat();
+	auto startAirCon();
 
 	double batteryLevel(int time, double currentActivityLevel);
 
