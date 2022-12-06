@@ -3,28 +3,38 @@
 #include <iostream>
 #include "StillsuitSim.h"
 #include <string>
+#include <cstdlib>
 using namespace std;
 #include <vector>
 
-bool HumanSim::HumanLocation()
+bool HumanSim::HumanLocation(bool maybeSuit)
 
+ 
 {
-    int r = rand() % 10;
-    // they are in the suit 
-    if (r > 5)
+    if (maybeSuit == true) // if this is true will randomize whether they are using the suit or not 
     {
-        usingSuit = true;
-        return usingSuit;
-    
+
+        int r = rand() % 10;
+        // they are in the suit 
+        if (r > 5)
+        {
+            
+           usingSuit = true;
+           return usingSuit;
+        }
+        
+// they are not in the suit 
+        if (r < 5)
+        {
+            usingSuit = false;
+            return usingSuit;
+
+        }
     }
-    // they are not in the suit 
-    if (r < 5)
+    else  
     {
         usingSuit = false;
         return usingSuit;
-    
     }
-
-
 }
 
