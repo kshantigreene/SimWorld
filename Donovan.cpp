@@ -80,9 +80,6 @@ void HumanSim::updateHuman(int time, int temp) {
     activity(time, hour, minute);
     cout << endl;
 
-    cout << "Calculating Human's current location... " << endl;
-    HumanLocation();
-
     cout << "Calculating Human's sweat production... " << endl;
     calculateSweat(internalTemp);
 

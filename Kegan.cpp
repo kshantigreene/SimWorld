@@ -131,9 +131,9 @@ long getRandomPrimes()
     }
     return (p, q);
 }
-int main()
+int main2()
 {
-    int msg;
+    int msg = 0;
 
     getRandomPrimes();
 
