@@ -8,11 +8,11 @@
 using namespace std;
 
 // declares activity level constants
-const double SEDENTARY = 1.2;
-const double LIGHTACTIVE = 1.375;
-const double MODERATEACTIVE = 1.55;
-const double VERYACTIVE = 1.725;
-const double EXTRAACTIVE = 1.9;
+const double SEDENTARY = 1;
+const double LIGHTACTIVE = 3;
+const double MODERATEACTIVE = 5;
+const double VERYACTIVE = 8;
+const double EXTRAACTIVE = 10;
 class HumanSim
 {
 public:
@@ -64,9 +64,9 @@ private:
 	void calculateHydration();
 	int calculateInternalTemp(int temp, int InternalTemp);
 	double calculateActivityLevel();
-	void HumanLocation(); 
+	bool HumanLocation(); 
 	void amountDrank();
-	int activity(int time, int hour, int minute);
+	double activity(int time, int hour, int minute);
 
 	// ==================================================
 	// Sending functions
