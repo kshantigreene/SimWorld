@@ -72,7 +72,7 @@ private:
 	// Sending functions
 	// ==================================================
 
-	void sendFluidsToSuit(double water, double urea, double creatinine, double uricAcid);
+	void sendFluidsToSuit(double water, double urea, double chloride, double sodium, double creatinine, double potassium);
 
 private:
 	 string name;

@@ -4,12 +4,29 @@
 #include <iostream>
 using std::rand;
 
+// Declares the const characters of the liquids that will be sent to the suit.
+const char WATER = '1';
+const char UREA = '2';
+const char CHLORIDE = '3';
+const char SODIUM = '4';
+const char CREATININE = '5';
+const char POTASSIUM = '6';
+
 //
 //  These are my code changes below from the HumanSim.cpp file.
 //
 
 // Calculates the sweat based on activity, temperature and weight (including suit)
 double HumanSim::calculateSweat(double InternalTemp) {
+
+    // Percentage of Water in sweat
+    double sweatComposedOfWater = 0.99;
+
+    // Percentage of Sodium in sweat
+    double sweatComposedOfSodium = 0.009;
+
+    // Percentage of Potassium in sweat
+    double sweatComposedOfPotassium = 0.002;
 
     // Normal Temp of Human (98.6 F).
     double normalTemp = 98.6;
@@ -27,11 +44,14 @@ double HumanSim::calculateSweat(double InternalTemp) {
     // This equation rises up graphically where it starts at 0 and gets close but not equal to 25.
     double sweat = (MAX_SWEAT - 1 / log(tempOverheated + 1));
 
-    //decompose into components
-    //pass to suit
-    double sweatComposedOfWater = 0.99;
+    // Creates the amounts composed in sweat.
+    double waterAmount = sweat * sweatComposedOfWater;
 
+    double sodiumAmount = sweat * sweatComposedOfSodium;
 
+    double potassiumAmount = sweat * sweatComposedOfPotassium;
+
+    sendFluidsToSuit(waterAmount, 0, 0, sodiumAmount, 0, potassiumAmount);
 
     return sweat;
 }
@@ -44,19 +64,23 @@ void HumanSim::calculateUrine(double urine) {
     // Based on activity and amount to drink (you can assume they are getting 
     // water from outside if the suit isn’t providing enough)
 
-    // Compositions of urine variables
-
-    // Percentage of urine composed of water.
+    // Percentage of water composed in urine.
     double urineComposedOfWater = 0.95;
 
-    // Percentage of urine composed of urea.
-    double urineComposedOfUrea = 0.02;
+    // Percentage of urea composed in urine.
+    double urineComposedOfUrea = 0.093;
 
-    // Percentage of urine composed of creatinine.
-    double urineComposedOfCreatinine = 0.01;
+    // Percentage of chloride composed in urine.
+    double urineComposedOfChloride = 0.019;
 
-    // Percentage of urine composed of uric acid.
-    double urineComposedOfUricAcid = 0.003;
+    // Percentage of sodium composed in urine.
+    double urineComposedOfSodium = 0.018;
+    
+    // Percentage of creatinine composed in urine.
+    double urineComposedOfCreatinine = 0.007;
+
+    // Percentage of potassium composed in urine.
+    double urineComposedOfPotassium = 0.008;
 
     this->bladderCapacity;
 
@@ -69,14 +93,18 @@ void HumanSim::calculateUrine(double urine) {
         // urine in a day.
         urine = currentWL - expectedWL;
         
+        // Creates the amounts composed in urine.
         double waterAmount = urine * urineComposedOfWater;
 
-        // Divides the parts that are bad in urine.
         double ureaAmount = urine * urineComposedOfUrea;
+
+        double chlorideAmount = urine * urineComposedOfChloride;
+
+        double sodiumAmount = urine * urineComposedOfSodium;
 
         double creatinineAmount = urine * urineComposedOfCreatinine;
 
-        double uricAcidAmount = urine * urineComposedOfUricAcid;
+        double potassiumAmount = urine * urineComposedOfPotassium;
 
         // urine per minute.
         double urinePerMin = urine / 1440;
@@ -86,24 +114,17 @@ void HumanSim::calculateUrine(double urine) {
 
         bladderCapacity = urine;
 
-        sendFluidsToSuit(waterAmount, ureaAmount, creatinineAmount, uricAcidAmount);
+        sendFluidsToSuit(waterAmount, ureaAmount, chlorideAmount, sodiumAmount, creatinineAmount, potassiumAmount);
     }
 }
 
-// Need to setup function that sends fluids from urine to the suit.
-
-//void HumanSim::sendFluidsToSuit(double water, uricAcid, creatine, sodium)
-//sendFluidsToSuit(waterAmount,uricAcidAmount,creatineAmount, 0,0,0);
-//sweat: 
-
-void HumanSim::sendFluidsToSuit(double water, double urea, double creatinine, double uricAcid)
+// This function sends fluids from urine & sweat to the suit.
+void HumanSim::sendFluidsToSuit(double water, double urea, double chloride, double sodium, double creatinine, double potassium)
 {
-    // Declares the character array for decrypting the liquid.
-    char decryptLiquid[4];
+    // Declares the character array for encrypting the liquid.
+    char encryptLiquid[4];
 
-    int maxLiquidSize = 9;
-
-    int liquidType = rand() % 9;
+    int maxLiquidSize = 5;
 
     this->urine;
 
@@ -111,6 +132,8 @@ void HumanSim::sendFluidsToSuit(double water, double urea, double creatinine, do
 
     while (urine > 0) 
     {
+        int liquidType = rand() % 6;
+
         for (int i = 0; i < maxLiquidSize && water > 0; i++)
         {
             switch (liquidType) {
@@ -118,7 +141,7 @@ void HumanSim::sendFluidsToSuit(double water, double urea, double creatinine, do
                     // Water
                     if (water > 0) 
                     {
-                        convertLiquid = convertLiquid + '1';
+                        convertLiquid = convertLiquid + WATER;
                         water--;
                         urine--;
                     }
@@ -127,31 +150,47 @@ void HumanSim::sendFluidsToSuit(double water, double urea, double creatinine, do
                     // Urea
                     if (water > 0) 
                     {
-                        convertLiquid = convertLiquid + '2';
+                        convertLiquid = convertLiquid + UREA;
                         urea--;
                         urine--;
                     }
                     break;
                 case 2:
-                    // Creatinine
+                    // Chloride
                     if (water > 0) 
                     {
-                        convertLiquid = convertLiquid + '3';
-                        creatinine--;
+                        convertLiquid = convertLiquid + CHLORIDE;
+                        chloride--;
                         urine--;
                     }
                     break;
                 case 3:
-                    // Uric Acid
+                    // Sodium
                     if (water > 0) 
                     {
-                        convertLiquid = convertLiquid + '4';
-                        uricAcid--;
+                        convertLiquid = convertLiquid + SODIUM;
+                        sodium--;
                         urine--;
                     }
                     break;
-
-                    // Add sodium or other cases when the time comes.
+                case 4:
+                    // Creatinine
+                    if (water > 0)
+                    {
+                        convertLiquid = convertLiquid + CREATININE;
+                        creatinine--;
+                        urine--;
+                    }
+                    break;
+                case 5:
+                    // Potassium
+                    if (water > 0)
+                    {
+                        convertLiquid = convertLiquid + POTASSIUM;
+                        potassium--;
+                        urine--;
+                    }
+                    break;
             }
             urine--;
         }
@@ -164,11 +203,5 @@ void HumanSim::sendFluidsToSuit(double water, double urea, double creatinine, do
     }
 
     // CANNOT GO OVER 9 CASES
-    // Get rid of uric acid from urine since it is only found in animals (birds).
-    // Add most of the components from fluid simulation & round to thousandths place for each percentage.
-    // DO NOT include Calcium and Magnesium
-    // 
     // Fix function for send fluids to suit once all use cases are set.
-    // 
-    // Add a call for the sweat function that sends fluids to suit.
 }
