@@ -51,6 +51,7 @@ private:
 	double currentWL;		// current total water of human
 	double expectedWL;		// how much water human should have
 	double waterDrank;
+	bool dead;
 
 	double bladderCapacity;	
 	void setTotalBodyWater();
@@ -67,6 +68,7 @@ private:
 	bool HumanLocation(); 
 	void amountDrank();
 	double activity(int time, int hour, int minute);
+	void calculateDeath();
 
 	// ==================================================
 	// Sending functions
