@@ -34,7 +34,7 @@ private:
 	int urine;
 	int sweat;
 	double outsideTemp;
-	double batteryLevel;
+	double battery;
 	
 
 };
