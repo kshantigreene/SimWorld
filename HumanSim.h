@@ -29,8 +29,6 @@ public:
 
 	void setInternalTemp(int InternalTemp); // sets the Internal temperature
 	 void updateHuman(int time, int temp);
-	 double calculateSweat(int temp, double InternalTemp, int weight);
-	 void calculateUrine(int weight);
 
 
 	// ==================================================
@@ -56,6 +54,8 @@ private:
 
 	double bladderCapacity;	
 	void setTotalBodyWater();
+	double calculateSweat(double InternalTemp);
+	void calculateUrine(double urine);
 
 	// ==================================================
 	// Calculation functions
@@ -68,6 +68,12 @@ private:
 	void amountDrank();
 	int activity(int time, int hour, int minute);
 
+	// ==================================================
+	// Sending functions
+	// ==================================================
+
+	void sendFluidsToSuit(double water, double urea, double creatinine, double uricAcid);
+
 private:
 	 string name;
 	 StillsuitSim* suit;
@@ -79,6 +85,7 @@ private:
 	 int age;
 	 bool sex;				// 0 female; 1 male
 	 double waterLevel;		// in liters
+	 double urine;			// in milliliters
 	 double bmrM;
 	 double bmrF;
 	 // Internal temperature of human

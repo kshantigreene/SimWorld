@@ -32,7 +32,7 @@ void HumanSim::setTotalBodyWater() {
 /// </summary>
 /// <returns>Human's Total Body Water amount after sweat/urine outtake in liters</returns>
 void HumanSim::calculateHydration() {
-    double sweatAmnt = 0.0;             // in liters (default value ssumes Human hasn't begun sweating yet)
+    double sweatAmnt = 0.0;             // in liters (default value assumes Human hasn't begun sweating yet)
     const double SWEAT_WATER = 0.99;    // How much water is lost through sweat
 
     // Same as above but for urine
@@ -70,7 +70,7 @@ void HumanSim::updateHuman(int time, int temp) {
     HumanLocation();
 
     cout << "Calculating Human's sweat production... " << endl;
-    calculateSweat(temp, internalTemp, weight);
+    calculateSweat(internalTemp);
 
     cout << "Calculating Human's urine production... " << endl;
     calculateUrine(weight);

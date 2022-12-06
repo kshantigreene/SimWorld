@@ -1,15 +1,15 @@
 #include "HumanSim.h"
 #include "StillsuitSim.h"
 
-#include <vector>
-using std::vector;
+#include <iostream>
+using std::rand;
 
 //
 //  These are my code changes below from the HumanSim.cpp file.
 //
 
 // Calculates the sweat based on activity, temperature and weight (including suit)
-double HumanSim::calculateSweat(int temp, double InternalTemp, int weight) {
+double HumanSim::calculateSweat(double InternalTemp) {
 
     // Normal Temp of Human (98.6 F).
     double normalTemp = 98.6;
@@ -27,13 +27,19 @@ double HumanSim::calculateSweat(int temp, double InternalTemp, int weight) {
     // This equation rises up graphically where it starts at 0 and gets close but not equal to 25.
     double sweat = (MAX_SWEAT - 1 / log(tempOverheated + 1));
 
+    //decompose into components
+    //pass to suit
+    double sweatComposedOfWater = 0.99;
+
+
+
     return sweat;
 }
 
 
 
 // Calculates the urine based on activity level and amount to drink.
-void HumanSim::calculateUrine(int weight) {
+void HumanSim::calculateUrine(double urine) {
 
     // Based on activity and amount to drink (you can assume they are getting 
     // water from outside if the suit isn’t providing enough)
@@ -52,22 +58,6 @@ void HumanSim::calculateUrine(int weight) {
     // Percentage of urine composed of uric acid.
     double urineComposedOfUricAcid = 0.003;
 
-    // The max activity used in urine function. (Human)
-    // double activityLevel = 1.0;
-
-    // The max amount of milliliters per kilograms per hour.
-    // double maxMLPerKgPerHr = 1.5;
-
-    //vector<double> ;
-
-    // The max amount of urine that can be produced per minute.
-    //
-    // This equation takes the maxMLPerKgPerHr variable, times the activityLevel, times the weight of the human in kg.
-    //
-    // Note: Does NOT take into account the percentages of urine above yet.
-    //
-    // double maxUrineProducedPerMin = (((maxMLPerKgPerHr * activityLevel) * (weight)) * 60);
-
     this->bladderCapacity;
 
     this->waterDrank;
@@ -77,7 +67,9 @@ void HumanSim::calculateUrine(int weight) {
         // Release fluids
 
         // urine in a day.
-        double urine = (waterDrank - sweat) * urineComposedOfWater;
+        urine = currentWL - expectedWL;
+        
+        double waterAmount = urine * urineComposedOfWater;
 
         // Divides the parts that are bad in urine.
         double ureaAmount = urine * urineComposedOfUrea;
@@ -92,25 +84,91 @@ void HumanSim::calculateUrine(int weight) {
         // How many times you went to the bathroom in a day.
         double totalNumberOfTimesWentToPee = urinePerMin / bladderCapacity;
 
-        // Create a variable for what's in the bladder currently.
-        double currentBladder = 0.0;
+        bladderCapacity = urine;
+
+        sendFluidsToSuit(waterAmount, ureaAmount, creatinineAmount, uricAcidAmount);
     }
-
-    // Calculates the current water level and urine by adding currentWL and the urine composed of Water.
-    //double currentWLAndUrine = currentWL * urineComposedOfWater;
-
-    // Adds together the "bad" compositions of urine.
-    //double totalUrineComposedOfWaste = urineComposedOfUrea + urineComposedOfCreatinine + urineComposedOfUricAcid;
-
-    // Calculates the total water level with urine and waste by dividing current 
-    //double totalWLWithUrineAndWaste = currentWLAndUrine / totalUrineComposedOfWaste;
 }
 
 // Need to setup function that sends fluids from urine to the suit.
 
-//void HumanSim::sendFluidsToSuit(double urineAmount, double sweatAmount) 
-//{
-    // char[] decryptLiquid;
+//void HumanSim::sendFluidsToSuit(double water, uricAcid, creatine, sodium)
+//sendFluidsToSuit(waterAmount,uricAcidAmount,creatineAmount, 0,0,0);
+//sweat: 
 
+void HumanSim::sendFluidsToSuit(double water, double urea, double creatinine, double uricAcid)
+{
+    // Declares the character array for decrypting the liquid.
+    char decryptLiquid[4];
+
+    int maxLiquidSize = 9;
+
+    int liquidType = rand() % 9;
+
+    this->urine;
+
+    string convertLiquid = "";
+
+    while (urine > 0) 
+    {
+        for (int i = 0; i < maxLiquidSize && water > 0; i++)
+        {
+            switch (liquidType) {
+                case 0:
+                    // Water
+                    if (water > 0) 
+                    {
+                        convertLiquid = convertLiquid + '1';
+                        water--;
+                        urine--;
+                    }
+                    break;
+                case 1:
+                    // Urea
+                    if (water > 0) 
+                    {
+                        convertLiquid = convertLiquid + '2';
+                        urea--;
+                        urine--;
+                    }
+                    break;
+                case 2:
+                    // Creatinine
+                    if (water > 0) 
+                    {
+                        convertLiquid = convertLiquid + '3';
+                        creatinine--;
+                        urine--;
+                    }
+                    break;
+                case 3:
+                    // Uric Acid
+                    if (water > 0) 
+                    {
+                        convertLiquid = convertLiquid + '4';
+                        uricAcid--;
+                        urine--;
+                    }
+                    break;
+
+                    // Add sodium or other cases when the time comes.
+            }
+            urine--;
+        }
+
+        int liquidToSuit = 0;
+
+        liquidToSuit = stoi(convertLiquid);
+
+        suit->setLiquid(liquidToSuit);
+    }
+
+    // CANNOT GO OVER 9 CASES
+    // Get rid of uric acid from urine since it is only found in animals (birds).
+    // Add most of the components from fluid simulation & round to thousandths place for each percentage.
+    // DO NOT include Calcium and Magnesium
     // 
-//}
+    // Fix function for send fluids to suit once all use cases are set.
+    // 
+    // Add a call for the sweat function that sends fluids to suit.
+}
