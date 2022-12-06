@@ -15,7 +15,7 @@ double StillsuitSim::sendWater(double amountRequested) {
     if (amountRequested > waterStg) {
         waterToSend = waterStg;
         cout << "Amount of water requested is larger than the amount in storage. Sending " << waterToSend << "ml of water." << endl;
-        waterStg = waterStg - waterToSend;
+        waterStg = 0;
         cout << "There is " << waterStg << "ml of water remaining." << endl;
         return waterToSend;
     }
