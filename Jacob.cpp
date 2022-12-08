@@ -51,7 +51,7 @@ double HumanSim::calculateSweat(double InternalTemp) {
 
     double potassiumAmount = sweat * sweatComposedOfPotassium;
 
-    sendFluidsToSuit(waterAmount, 0, 0, sodiumAmount, 0, potassiumAmount);
+    sendFluidsToSuit(sweat, waterAmount, 0, 0, sodiumAmount, 0, potassiumAmount);
 
     return sweat;
 }
@@ -114,23 +114,21 @@ void HumanSim::calculateUrine(double urine) {
 
         bladderCapacity = urine;
 
-        sendFluidsToSuit(waterAmount, ureaAmount, chlorideAmount, sodiumAmount, creatinineAmount, potassiumAmount);
+        sendFluidsToSuit(bladderCapacity, waterAmount, ureaAmount, chlorideAmount, sodiumAmount, creatinineAmount, potassiumAmount);
     }
 }
 
 // This function sends fluids from urine & sweat to the suit.
-void HumanSim::sendFluidsToSuit(double water, double urea, double chloride, double sodium, double creatinine, double potassium)
+void HumanSim::sendFluidsToSuit(double totalLiquid, double water, double urea, double chloride, double sodium, double creatinine, double potassium)
 {
     // Declares the character array for encrypting the liquid.
     char encryptLiquid[4];
 
     int maxLiquidSize = 5;
 
-    this->urine;
-
     string convertLiquid = "";
 
-    while (urine > 0 && sweat > 0) 
+    while (totalLiquid > 0) 
     {
         int liquidType = rand() % 6;
 
@@ -199,7 +197,7 @@ void HumanSim::sendFluidsToSuit(double water, double urea, double chloride, doub
 
         liquidToSuit = stoi(convertLiquid);
 
-        suit->setLiquid(liquidToSuit);
+        suit->StillsuitCompoundID(liquidToSuit);
     }
 
     // CANNOT GO OVER 9 CASES
