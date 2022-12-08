@@ -96,9 +96,10 @@ private:
 	 int time; 
 	 bool usingSuit;
 	 int evaporate(int sweat, int temp);
-	 double currentActivity;
+	 int currentActivity;
 	 double activityLevel;
 	 RSAEncryption* encryption;
+	 int activityChange;
 
 
 };
