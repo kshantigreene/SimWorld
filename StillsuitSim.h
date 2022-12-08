@@ -16,7 +16,7 @@ public:
 	void updateSuit(int time, double temp);
 	void seperateFluid();
 	void liquidPurifier(char);
-	auto checkTemperature();
+	double checkTemperature();
 	auto startHeat();
 	auto startAirCon();
 
@@ -24,6 +24,8 @@ public:
 
 	double getAvailableWater();
 	double sendWater(double amountRequested);
+
+	void setInSuit(bool inSuit);
 
 	double calculateSuitWeight();
 	
@@ -38,6 +40,7 @@ private:
 	double outsideTemp;
 	double battery;
 	RSAEncryption *encryption;
+	bool inSuit;
 
 };
 

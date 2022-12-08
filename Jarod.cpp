@@ -34,3 +34,8 @@ double StillsuitSim::calculateSuitWeight() {
 
     return suitWeight;
 }
+
+// Sets the humanInSuit bool variable to the inSuit argument
+void StillsuitSim::setInSuit(bool inSuit) {
+    this->inSuit = inSuit;
+}
