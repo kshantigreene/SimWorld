@@ -28,7 +28,12 @@ int HumanSim::calculateInternalTemp(int temp) // Function for calculating body t
     {
         internalTemp += 2;
     }
+
+    std::cout << internalTemp << "F is your current internal temperature" << std::endl;
+
     return internalTemp;
+
+
 
 
 }
