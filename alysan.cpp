@@ -23,5 +23,3 @@ double HumanSim::calculateActivityLevel() {
     cout << "Calculation of the activity level is " << currentActivityLevel;
     return currentActivityLevel;
 }
-
-/* sending activity level and in/out of suit to suit */
