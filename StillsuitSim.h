@@ -9,7 +9,7 @@ class StillsuitSim
 public:
 	StillsuitSim();
 	void setLiquid(int liquid);
-	void StillsuitCompoundID();
+	void StillsuitCompoundID(int incomingLiquid);
 	void StillsuitCompoundDestination();
 	void updateSuit(int time, double temp);
 	void seperateFluid();
