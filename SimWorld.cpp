@@ -34,7 +34,7 @@ int main()
     srand(time(NULL));
     RSAEncryption* encryption = new RSAEncryption();
     std::cout << "Hello World!\n";
-    StillsuitSim* suit = new StillsuitSim();
+    StillsuitSim* suit = new StillsuitSim( encryption);
     HumanSim* human = new HumanSim("Dave", suit, 3.0, 25, 72, 180, true, encryption);
     int initTemp= MIN_TEMP+rand() % 10 + 1; //within 10 degrees of min
     double width = 7.5;
