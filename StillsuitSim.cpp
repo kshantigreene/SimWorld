@@ -5,7 +5,7 @@ using namespace std;
 #include <vector>
 #include "RSAEncryption.h"
 
-StillsuitSim::StillsuitSim(RSAEncryption encrypt) {
+StillsuitSim::StillsuitSim(RSAEncryption * encrypt) {
     this->encryption = encrypt;
 };
 
