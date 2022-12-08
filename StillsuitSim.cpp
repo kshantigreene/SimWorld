@@ -3,9 +3,10 @@
 #include <string>
 using namespace std;
 #include <vector>
+#include "RSAEncryption.h"
 
-StillsuitSim::StillsuitSim() {
-
+StillsuitSim::StillsuitSim(RSAEncryption * encrypt) {
+    this->encryption = encrypt;
 };
 
 void StillsuitSim::updateSuit(int time, double temp) {

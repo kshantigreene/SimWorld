@@ -8,33 +8,46 @@ using namespace std;
 #include <vector>
 
 bool HumanSim::HumanLocation(bool maybeSuit)
-
- 
 {
-    if (maybeSuit == true) // if this is true will randomize whether they are using the suit or not 
+    bool test = usingSuit;
+    if (maybeSuit = true) // if this is true will randomize whether they are using the suit or not 
     {
 
         int r = rand() % 10;
         // they are in the suit 
         if (r > 5)
         {
-            
-           usingSuit = true;
-           return usingSuit;
+
+            usingSuit = true;
+            return usingSuit;
+
         }
-        
-// they are not in the suit 
-        if (r < 5)
+
+        // they are not in the suit 
+        if (r <= 5)
         {
             usingSuit = false;
             return usingSuit;
 
+
         }
     }
-    else  
+    else
     {
         usingSuit = false;
         return usingSuit;
-    }
-}
 
+    }
+    if (test != usingSuit)
+    {
+        if (test == true)
+        {
+            cout << "suit is being used";
+        }
+        else if (test == false)
+        {
+            cout << " suit is not being used";
+        }
+    }
+    
+}
