@@ -95,6 +95,7 @@ private:
 	 double internalTemp;    // base temp is 98F
 	 int time; 
 	 bool usingSuit;
+	 bool test;
 	 int evaporate(int sweat, int temp);
 	 double currentActivity;
 	 double activityLevel;
