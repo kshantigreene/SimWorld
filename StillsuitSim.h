@@ -18,7 +18,7 @@ public:
 	auto startHeat();
 	auto startAirCon();
 
-	std::pair<int, int> batteryLevel(int time);
+	double batteryLevel(int time, double currentActivityLevel);
 
 	double getAvailableWater();
 	double sendWater(double amountRequested);
@@ -30,6 +30,7 @@ private:
 	double waterStg;
 	double MAX_waterStg = 2000;
 	double emptySuitWeight = 6.8;
+	int worldTime;
 	int urine;
 	int sweat;
 	double outsideTemp;

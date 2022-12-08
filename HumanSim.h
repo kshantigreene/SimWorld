@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include "StillsuitSim.h"
+#include "RSAEncryption.h"
 using namespace std;
 
 // declares activity level constants
@@ -21,7 +22,7 @@ public:
 	// ==================================================
 
 	HumanSim(string n, StillsuitSim* suit);
-	HumanSim(string n, StillsuitSim* suit, double currentActivity, int age, int height, int weight, bool sex);
+	HumanSim(string n, StillsuitSim* suit, double currentActivity, int age, int height, int weight, bool sex, RSAEncryption* encryption);
 
 	// ==================================================
 	// Setter functions
@@ -51,6 +52,7 @@ private:
 	double currentWL;		// current total water of human
 	double expectedWL;		// how much water human should have
 	double waterDrank;
+	bool dead;
 
 	double bladderCapacity;	
 	void setTotalBodyWater();
@@ -66,13 +68,14 @@ private:
 	double calculateActivityLevel();
 	bool HumanLocation(bool inSuit); 
 	void amountDrank();
-	double activity(int time, int hour, int minute);
+	int activity(int time, int hour, int minute);
+	void calculateDeath();
 
 	// ==================================================
 	// Sending functions
 	// ==================================================
 
-	void sendFluidsToSuit(double water, double urea, double creatinine, double uricAcid);
+	void sendFluidsToSuit(double water, double urea, double chloride, double sodium, double creatinine, double potassium);
 
 private:
 	 string name;
@@ -95,6 +98,7 @@ private:
 	 int evaporate(int sweat, int temp);
 	 double currentActivity;
 	 double activityLevel;
+	 RSAEncryption* encryption;
 
 
 };

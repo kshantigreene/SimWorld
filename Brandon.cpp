@@ -1,14 +1,13 @@
 #include <iostream>
 #include "StillsuitSim.h"
+#include "HumanSim.h"
 #include <string>
 #include <vector>
 using namespace std;
 
-pair<int, int> StillsuitSim::batteryLevel(int time)
+double StillsuitSim::batteryLevel(int time, double currentActivityLevel)
 {
 
-    //if in suit, get activity level,
-    
     //assigns values to variables
     int batteryLevel = 100;
     int maxBatteryTime = 720;
@@ -17,9 +16,12 @@ pair<int, int> StillsuitSim::batteryLevel(int time)
     int batteryTimeLeft;
     batteryTimeLeft = maxBatteryTime - worldTime;
 
-    //uses simple math to make a percent of the batter left
-    //batteryLevel = (batteryTimeLeft / maxBatteryTime) * 100;
+    // every minute called, battery level lowers by 1 minute
+    battery = (1 - currentActivityLevel);
 
-    //returns the value of the battery level and batter time
-    //return std::make_pair(batteryLevel, batteryTimeLeft);
+    if (battery < 15) {
+        cout << "Battery is low." << endl;
+    }
+
+    return battery;
 }

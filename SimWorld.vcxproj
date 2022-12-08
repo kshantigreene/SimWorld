@@ -138,12 +138,14 @@
     <ClCompile Include="Jacob.cpp" />
     <ClCompile Include="Jarod.cpp" />
     <ClCompile Include="Josh.cpp" />
+    <ClCompile Include="Kegan.cpp" />
     <ClCompile Include="Michael.cpp" />
     <ClCompile Include="SimWorld.cpp" />
     <ClCompile Include="StillsuitSim.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HumanSim.h" />
+    <ClInclude Include="RSAEncryption.h" />
     <ClInclude Include="StillsuitSim.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

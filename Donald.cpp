@@ -2,9 +2,7 @@
 
 void HumanSim::getBattery()
 {
-    pair<int, int> battery = suit->batteryLevel(time);
-    int batLevel = battery.first;
-    int batTime = battery.second;
+    double battery = suit->batteryLevel(time, currentActivity);
 }
 
 void HumanSim::getAvailWater()
