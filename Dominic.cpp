@@ -2,31 +2,38 @@
 #include "StillsuitSim.h"
 #include <cmath>
 
-int HumanSim::calculateInternalTemp(int temp, int InternalTemp) // Function for calculating body temp
+int HumanSim::calculateInternalTemp(int temp) // Function for calculating body temp
 {
-    double activityLevel;
-    activityLevel = calculateActivityLevel();
-    InternalTemp += activityLevel * 2;
+    internalTemp = 98.6;  // base human temp
 
-    if (temp < 60)
+    double activityLevel;
+    activityLevel = calculateActivityLevel();   // calculates human temp off activity level 
+    internalTemp += activityLevel * 2;
+
+    if (temp < 60)                           // calculates human temp off outside temp
     {
-        InternalTemp -= 2;
+        internalTemp -= 2;
 
     }
     else if (temp >= 60 && temp < 70)
     {
-        InternalTemp -= 1;
+        internalTemp -= 1;
 
     }
     else if (temp > 70 && temp <= 80)
     {
-        InternalTemp += 1;
+        internalTemp += 1;
     }
     else
     {
-        InternalTemp += 2;
+        internalTemp += 2;
     }
-    return InternalTemp;
+
+    std::cout << internalTemp << "F is your current internal temperature" << std::endl;
+
+    return internalTemp;
+
+
 
 
 }

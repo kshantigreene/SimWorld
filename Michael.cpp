@@ -11,7 +11,7 @@ bool HumanSim::HumanLocation(bool maybeSuit)
 
  
 {
-    if (maybeSuit == true) // if this is true will randomize whether they are using the suit or not 
+    if (maybeSuit = true) // if this is true will randomize whether they are using the suit or not 
     {
 
         int r = rand() % 10;
@@ -21,6 +21,7 @@ bool HumanSim::HumanLocation(bool maybeSuit)
             
            usingSuit = true;
            return usingSuit;
+           cout << "suit is being used";
         }
         
 // they are not in the suit 
@@ -28,6 +29,7 @@ bool HumanSim::HumanLocation(bool maybeSuit)
         {
             usingSuit = false;
             return usingSuit;
+            cout << "suit is not being used";
 
         }
     }
@@ -35,6 +37,7 @@ bool HumanSim::HumanLocation(bool maybeSuit)
     {
         usingSuit = false;
         return usingSuit;
+        cout << "suit is not being used"; 
     }
 }
 

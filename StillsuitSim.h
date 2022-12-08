@@ -7,7 +7,7 @@ using namespace std;
 class StillsuitSim
 {
 public:
-	StillsuitSim();
+	StillsuitSim(RSAEncryption encrypt);
 	void setLiquid(int liquid);
 	void StillsuitCompoundID(int incomingLiquid);
 	void StillsuitCompoundDestination();
@@ -35,7 +35,7 @@ private:
 	int sweat;
 	double outsideTemp;
 	double battery;
-	
+	RSAEncryption encryption;
 
 };
 
