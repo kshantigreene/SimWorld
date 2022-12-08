@@ -16,12 +16,9 @@ void StillsuitSim::liquidPurifier(char liquidElem) {
             waterStg += 0.99;
         }
     }
-    else {
-        cout << "The given character ID is invalid." << endl;
-    }
 }
 
-void StillsuitSim::StillsuitCompoundID()
+void StillsuitSim::StillsuitCompoundID(int incomingLiquid)
 {
     // Converts incoming liquid integer to a string and stores it in a new string variable
     string strLiquid = to_string(incomingLiquid);

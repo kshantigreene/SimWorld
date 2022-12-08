@@ -25,7 +25,7 @@ bool HumanSim::HumanLocation(bool maybeSuit)
         }
         
 // they are not in the suit 
-        if (r < 5)
+        if (r <= 5)
         {
             usingSuit = false;
             return usingSuit;
