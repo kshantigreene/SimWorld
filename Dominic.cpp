@@ -2,12 +2,10 @@
 #include "StillsuitSim.h"
 #include <cmath>
 
-int HumanSim::calculateInternalTemp(int temp) // Function for calculating body temp
+double HumanSim::calculateInternalTemp(int temp, double activityLevel) // Function for calculating body temp
 {
-    internalTemp = 98.6;  // base human temp
+    double internalTemp = 98.6;  // base human temp
 
-    double activityLevel;
-    activityLevel = calculateActivityLevel();   // calculates human temp off activity level 
     internalTemp += activityLevel * 2;
 
     if (temp < 60)                           // calculates human temp off outside temp

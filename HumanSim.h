@@ -65,7 +65,7 @@ private:
 	// ==================================================
 
 	void calculateHydration();
-	int calculateInternalTemp(int temp);
+	double calculateInternalTemp(int temp, double activityLevel);
 	double calculateActivityLevel();
 	bool HumanLocation(bool inSuit); 
 	void amountDrank();

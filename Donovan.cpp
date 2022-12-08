@@ -83,7 +83,7 @@ void HumanSim::updateHuman(int time, int temp) {
 
     // Updates the Human's statistics
     cout << "Calculating Human's internal temperature... " << endl;
-    int suitTemp = suit->checkTemperature();
+    double suitTemp = suit->checkTemperature();
     calculateInternalTemp(suitTemp, internalTemp);
 
     cout << "Calculating Human's sweat production... " << endl;
