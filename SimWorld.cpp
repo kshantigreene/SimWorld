@@ -54,6 +54,10 @@ int main()
         tempThread.detach();
        
         this_thread::sleep_for(chrono::milliseconds(SLEEP_TIME));
-    }
 
+        if (human->calculateDeath()) {
+            delete human;
+        }
+    }
+    
 }
