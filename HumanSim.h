@@ -41,6 +41,7 @@ public:
 	void getWater(); //gets the current amount of drinkable water
 	void getAvailWater(); //gets the current filtration process of the water
 	int getInternalTemp(); // gets the current internal temperature 
+	bool calculateDeath(); // is the human dead?
 
 private:
 
@@ -52,7 +53,7 @@ private:
 	double currentWL;		// current total water of human
 	double expectedWL;		// how much water human should have
 	double waterDrank;
-	bool dead;
+
 
 	double bladderCapacity;	
 	void setTotalBodyWater();
@@ -64,12 +65,12 @@ private:
 	// ==================================================
 
 	void calculateHydration();
-	int calculateInternalTemp(int temp);
+	double calculateInternalTemp(int temp, double activityLevel);
 	double calculateActivityLevel();
 	bool HumanLocation(bool inSuit); 
 	void amountDrank();
 	int activity(int time, int hour, int minute);
-	void calculateDeath();
+
 
 	// ==================================================
 	// Sending functions
@@ -95,10 +96,12 @@ private:
 	 double internalTemp;    // base temp is 98F
 	 int time; 
 	 bool usingSuit;
+	 bool test;
 	 int evaporate(int sweat, int temp);
-	 double currentActivity;
+	 int currentActivity;
 	 double activityLevel;
 	 RSAEncryption* encryption;
+	 int activityChange;
 
 
 };

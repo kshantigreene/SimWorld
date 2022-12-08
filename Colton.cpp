@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-void StillsuitSim::liquidPurifier(char liquidElem) {
+/*void StillsuitSim::liquidPurifier(char liquidElem) {
     if (liquidElem == '2') {
         if (waterStg + 0.95 <= MAX_waterStg) {
             cout << "Urine purified." << endl;
@@ -16,12 +16,9 @@ void StillsuitSim::liquidPurifier(char liquidElem) {
             waterStg += 0.99;
         }
     }
-    else {
-        cout << "The given character ID is invalid." << endl;
-    }
-}
+}*/
 
-void StillsuitSim::StillsuitCompoundID()
+void StillsuitSim::StillsuitCompoundID(int incomingLiquid)
 {
     // Converts incoming liquid integer to a string and stores it in a new string variable
     string strLiquid = to_string(incomingLiquid);
@@ -42,10 +39,10 @@ void StillsuitSim::StillsuitCompoundID()
         }
 
         // If string char isn't 1, then call liquidPurifier function and pass c variable to it
-        else {
+        /*else {
             identified = true;
             liquidPurifier(c);
-        }
+        }*/
         index++;
     }
     cout << "The suit weighs: " << calculateSuitWeight() << " kg" << endl;

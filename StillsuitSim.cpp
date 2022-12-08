@@ -5,7 +5,7 @@ using namespace std;
 #include <vector>
 #include "RSAEncryption.h"
 
-StillsuitSim::StillsuitSim(RSAEncryption encrypt) {
+StillsuitSim::StillsuitSim(RSAEncryption * encrypt) {
     this->encryption = encrypt;
 };
 
@@ -26,6 +26,6 @@ void StillsuitSim::seperateFluid() {
 //setter for all liquids
 void StillsuitSim::setLiquid(int liquid) {
     incomingLiquid = liquid;
-    StillsuitCompoundID();
+    StillsuitCompoundID(incomingLiquid);
     incomingLiquid = 0;
 }

@@ -2,19 +2,21 @@
 #define STILL_SUIT_SIM
 #pragma once
 #include <vector>
+#include "RSAEncryption.h"
+
 using namespace std;
 
 class StillsuitSim
 {
 public:
-	StillsuitSim(RSAEncryption encrypt);
+	StillsuitSim(RSAEncryption * encrypt);
 	void setLiquid(int liquid);
-	void StillsuitCompoundID();
+	void StillsuitCompoundID(int incomingLiquid);
 	void StillsuitCompoundDestination();
 	void updateSuit(int time, double temp);
 	void seperateFluid();
 	void liquidPurifier(char);
-	auto checkTemperature();
+	double checkTemperature();
 	auto startHeat();
 	auto startAirCon();
 
@@ -37,7 +39,7 @@ private:
 	int sweat;
 	double outsideTemp;
 	double battery;
-	RSAEncryption encryption;
+	RSAEncryption *encryption;
 	bool inSuit;
 
 };
