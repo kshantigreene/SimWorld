@@ -7,11 +7,13 @@ using namespace std;
 
 StillsuitSim::StillsuitSim(RSAEncryption * encrypt) {
     this->encryption = encrypt;
+    battery = 720;
 };
 
 void StillsuitSim::updateSuit(int time, double temp) {
     this->worldTime = time;
     this->outsideTemp = temp;
+    cout << "In suit. outsideTemp: " << this->outsideTemp << endl;
 }
 
 void StillsuitSim::seperateFluid() {

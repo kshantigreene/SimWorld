@@ -4,7 +4,7 @@
 
 double HumanSim::calculateInternalTemp(int temp, double activityLevel) // Function for calculating body temp
 {
-    double internalTemp = 98.6;  // base human temp
+    //double internalTemp = 98.6;  // base human temp
 
     internalTemp += activityLevel * 2;
 

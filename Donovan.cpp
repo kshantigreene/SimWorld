@@ -53,14 +53,18 @@ bool HumanSim::calculateDeath() {
     // Calculate death based on hydration percentage (lacking 10% or more total body water brings death)
     double hydrationPercent = currentWL / expectedWL;
     if (hydrationPercent <= 0.9) {
+        cout << "I'm so thirsty!!!!";
         isDead = true;
-        return isDead;
     }
 
     // Calculate death based on internal temperature (internal temp of 104 degrees fahrenheit brings death)
     if (internalTemp >= 104) {
+        cout << "Turn on the AC!";
         isDead = true;
-        return isDead;
+    }
+    else if (internalTemp <= 94) {
+        cout << "I'm so cold!!";
+        isDead = true;
     }
 
     return isDead;
@@ -81,10 +85,11 @@ void HumanSim::updateHuman(int time, int temp) {
     activity(time, hour, minute);
     cout << endl;
 
+    double activityLevel = calculateActivityLevel();
     // Updates the Human's statistics
     cout << "Calculating Human's internal temperature... " << endl;
     double suitTemp = suit->checkTemperature();
-    calculateInternalTemp(suitTemp, internalTemp);
+    calculateInternalTemp(suitTemp, activityLevel);
 
     cout << "Calculating Human's sweat production... " << endl;
     calculateSweat(internalTemp);

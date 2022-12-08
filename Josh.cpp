@@ -11,10 +11,11 @@ auto StillsuitSim::startHeat()
 {
     if (battery > 15)
     {
-        
+
         double suitTemp = outsideTemp + 2;
         return suitTemp;
     }
+    else return outsideTemp;
 }
 
 //start cooling process - not sure on amount to decrease
@@ -25,6 +26,7 @@ auto StillsuitSim::startAirCon()
         double suitTemp = outsideTemp - 2;
         return suitTemp;
     }
+    else return outsideTemp;
 }
 
 //checking current internal temp to see if heat or cooling is needed, then calling needed function

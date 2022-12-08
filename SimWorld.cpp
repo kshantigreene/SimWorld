@@ -23,8 +23,10 @@ bool stop = false;
 
 void sendToSims(HumanSim* human, StillsuitSim* suit, int time, int temp) {
     
-    human->updateHuman(time,temp);
+    cout << "The world temp is: " << temp << endl;
     suit->updateSuit(time, temp);
+    human->updateHuman(time,temp);
+
     
 }
 
@@ -56,7 +58,9 @@ int main()
         this_thread::sleep_for(chrono::milliseconds(SLEEP_TIME));
 
         if (human->calculateDeath()) {
+            cout << "You killed the human!!";
             delete human;
+            break;
         }
     }
     
