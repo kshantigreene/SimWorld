@@ -1,6 +1,8 @@
 #include "HumanSim.h"
 #include "StillsuitSim.h"
+#include "RSAEncryption.h"
 #include <cmath>
+
 using std::log;
 
 HumanSim::HumanSim(string n, StillsuitSim* suit) {
@@ -11,7 +13,7 @@ HumanSim::HumanSim(string n, StillsuitSim* suit) {
     setTotalBodyWater();                    // Will remove this entire constructor once implementation added for the other (full) constructor in simworld
 };
 
-HumanSim::HumanSim(string n, StillsuitSim* suit, double currentActivity, int age, int height, int weight, bool sex) {
+HumanSim::HumanSim(string n, StillsuitSim* suit, double currentActivity, int age, int height, int weight, bool sex, RSAEncryption* encryption) {
 	this->name = name;
     this->suit = suit;
     this->currentActivity = currentActivity;
@@ -21,6 +23,7 @@ HumanSim::HumanSim(string n, StillsuitSim* suit, double currentActivity, int age
     this->sex = sex;
     setInternalTemp(98.6);
     setTotalBodyWater();
+    this->encryption = encryption;
 };
 
 

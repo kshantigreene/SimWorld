@@ -8,14 +8,12 @@ void StillsuitSim::liquidPurifier(char liquidElem) {
         if (waterStg + 0.95 <= MAX_waterStg) {
             cout << "Urine purified." << endl;
             waterStg += 0.95;
-            cout << "The suit weighs: " << calculateSuitWeight() << " kg" << endl;
         }
     }
     else if (liquidElem == '3') {
         if (waterStg + 0.99 <= MAX_waterStg) {
             cout << "Sweat purified." << endl;
             waterStg += 0.99;
-            cout << "The suit weighs: " << calculateSuitWeight() << " kg" << endl;
         }
     }
     else {
@@ -38,8 +36,9 @@ void StillsuitSim::StillsuitCompoundID()
         if (c == '1')
         {
             identified = true;
-            waterStg = +1;
-            cout << "The suit weighs: " << calculateSuitWeight() << " kg" << endl;
+            if (waterStg + 1 <= MAX_waterStg) {
+                waterStg += 1;
+            }
         }
 
         // If string char isn't 1, then call liquidPurifier function and pass c variable to it
@@ -49,4 +48,5 @@ void StillsuitSim::StillsuitCompoundID()
         }
         index++;
     }
+    cout << "The suit weighs: " << calculateSuitWeight() << " kg" << endl;
 }

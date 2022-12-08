@@ -78,13 +78,13 @@ void HumanSim::updateHuman(int time, int temp) {
     }
     printf("Current time is: %02d:%02d, %dF\n", hour, minute, temp);
 
+    activity(time, hour, minute);
+    cout << endl;
+
     // Updates the Human's statistics
     cout << "Calculating Human's internal temperature... " << endl;
     int suitTemp = suit->checkTemperature();
     calculateInternalTemp(suitTemp, internalTemp);
-
-    activity(time, hour, minute);
-    cout << endl;
 
     cout << "Calculating Human's sweat production... " << endl;
     calculateSweat(internalTemp);
