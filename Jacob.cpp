@@ -130,7 +130,7 @@ void HumanSim::sendFluidsToSuit(double water, double urea, double chloride, doub
 
     string convertLiquid = "";
 
-    while (urine > 0) 
+    while (urine > 0 && sweat > 0) 
     {
         int liquidType = rand() % 6;
 
