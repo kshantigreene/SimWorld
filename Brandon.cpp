@@ -7,6 +7,7 @@ using namespace std;
 
 double StillsuitSim::batteryLevel(int time, double currentActivityLevel)
 {
+
     //assigns values to variables
     int batteryLevel = 100;
     int maxBatteryTime = 720;

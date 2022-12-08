@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include "StillsuitSim.h"
+#include "RSAEncryption.h"
 using namespace std;
 
 // declares activity level constants
@@ -21,7 +22,7 @@ public:
 	// ==================================================
 
 	HumanSim(string n, StillsuitSim* suit);
-	HumanSim(string n, StillsuitSim* suit, double currentActivity, int age, int height, int weight, bool sex);
+	HumanSim(string n, StillsuitSim* suit, double currentActivity, int age, int height, int weight, bool sex, RSAEncryption* encryption);
 
 	// ==================================================
 	// Setter functions
@@ -97,6 +98,7 @@ private:
 	 int evaporate(int sweat, int temp);
 	 double currentActivity;
 	 double activityLevel;
+	 RSAEncryption* encryption;
 
 
 };

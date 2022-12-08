@@ -32,9 +32,6 @@ int HumanSim::calculateInternalTemp(int temp, int InternalTemp) // Function for 
 }
 
 
-
-
-
 // getters and setters for Internal Temo
 void HumanSim::setInternalTemp(int InternalTemp) // Setter for Internal temp
 {
