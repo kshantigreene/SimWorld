@@ -23,6 +23,8 @@ public:
 	double getAvailableWater();
 	double sendWater(double amountRequested);
 
+	void setInSuit(bool inSuit);
+
 	double calculateSuitWeight();
 	
 private:
@@ -36,6 +38,7 @@ private:
 	double outsideTemp;
 	double battery;
 	RSAEncryption encryption;
+	bool inSuit;
 
 };
 
