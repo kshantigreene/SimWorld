@@ -4,6 +4,8 @@
 #include <cstdio>
 #include <random>
 
+#include "RSAEncryption.h"
+
 using namespace std;
 
 long gcd(long a, long h)
@@ -131,14 +133,16 @@ long getRandomPrimes()
     }
     return (p, q);
 }
-int main()
+RSAEncryption::RSAEncryption()
 {
-    int msg;
+    int msg = 34000;
+
 
     getRandomPrimes();
+    
 
-    long n = p * q;
-
+    long n = p * q; //n is public key
+    this->nn = n;
     long e = 2;
     long phi = (p - 1) * (q - 1);
 
@@ -157,14 +161,25 @@ int main()
     {
         d++;
     }
+    //d is private key
+    this->dd = d;
+    this->ee = e;
 
-    long double c = encrypt(msg, e, n);
+ /*   long double c = encrypt(msg, e, n);
 
     cout << "Encrypted Msg (c): " << c << endl;
 
     long double m = decrypt(c, d, n);
 
-    cout << "Decrypted Msg (M): " << m << endl;
+    cout << "Decrypted Msg (M): " << m << endl;*/
 
-    return 0;
+    
+}
+
+long RSAEncryption::encryptMsg(int msg) {
+    return (long)encrypt(msg, ee, nn);
+}
+
+long RSAEncryption::decryptMsg(int msg) {
+    return (long)decrypt(msg, dd, nn);
 }

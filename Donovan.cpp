@@ -32,21 +32,34 @@ void HumanSim::setTotalBodyWater() {
 /// </summary>
 /// <returns>Human's Total Body Water amount after sweat/urine outtake in liters</returns>
 void HumanSim::calculateHydration() {
-    double sweatAmnt = 0.0;             // in liters (default value assumes Human hasn't begun sweating yet)
+    double sweatAmnt = sweat;             // in liters (default value assumes Human hasn't begun sweating yet)
     const double SWEAT_WATER = 0.99;    // How much water is lost through sweat
 
     // Same as above but for urine
-    double urineAmnt = 0.0;
-
+    double urineAmnt = bladderCapacity;
     const double URINE_WATER = 0.95;
 
     // calculates how much water is lost through sweat and urine
-    sweatAmnt += sweat;
     sweatAmnt = sweatAmnt * SWEAT_WATER;
-    // urineAmnt += urine;                                      Waiting until urine function is ready
     urineAmnt = urineAmnt * URINE_WATER;
 
     currentWL = currentWL - sweatAmnt - urineAmnt;
+}
+
+// Is the human dead?
+void HumanSim::calculateDeath() {
+
+    // Calculate death based on hydration percentage (lacking 10% or more total body water brings death)
+    double hydrationPercent = currentWL / expectedWL;
+    if (hydrationPercent <= 0.9) {
+        dead = true;
+    }
+
+    // Calculate death based on internal temperature (internal temp of 104 degrees fahrenheit brings death)
+    if (internalTemp >= 104) {
+        dead = true;
+    }
+
 }
 
 void HumanSim::updateHuman(int time, int temp) {
@@ -60,17 +73,12 @@ void HumanSim::updateHuman(int time, int temp) {
     }
     printf("Current time is: %02d:%02d, %dF\n", hour, minute, temp);
 
+    activity(time, hour, minute);
+    cout << endl;
+
     // Updates the Human's statistics
     cout << "Calculating Human's internal temperature... " << endl;
     calculateInternalTemp(temp, internalTemp);
-    cout << "Calculating Human's current activity level... " << endl;
-    activity(time, hour, minute);
-
-
-    
-
-    cout << "Calculating Human's current location... " << endl;
-    HumanLocation();
 
     cout << "Calculating Human's sweat production... " << endl;
     calculateSweat(internalTemp);
