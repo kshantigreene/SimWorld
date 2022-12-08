@@ -11,26 +11,31 @@
 #include <math.h>
 #include <random>
 
+#include "RSAEncryption.h"
+
 const int MIN_PER_DAY = 1440;
 const int MIN_TEMP = 50;
 const int MAX_TEMP = 100;
 const int SLEEP_TIME = 100;
 const double PI = 3.14159265359;
+bool stop = false;
 
 
 void sendToSims(HumanSim* human, StillsuitSim* suit, int time, int temp) {
     
     human->updateHuman(time,temp);
     suit->updateSuit(time, temp);
+    
 }
 
 
 int main()
 {
     srand(time(NULL));
+    RSAEncryption* encryption = new RSAEncryption();
     std::cout << "Hello World!\n";
-    StillsuitSim* suit = new StillsuitSim();
-    HumanSim* human = new HumanSim("Dave", suit, 3.0, 25, 72, 180, true);
+    StillsuitSim* suit = new StillsuitSim( encryption);
+    HumanSim* human = new HumanSim("Dave", suit, 3.0, 25, 72, 180, true, encryption);
     int initTemp= MIN_TEMP+rand() % 10 + 1; //within 10 degrees of min
     double width = 7.5;
     double a = -1.0/(MIN_PER_DAY*width);

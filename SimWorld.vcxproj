@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HumanSim.h" />
+    <ClInclude Include="RSAEncryption.h" />
     <ClInclude Include="StillsuitSim.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

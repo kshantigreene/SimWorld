@@ -12,8 +12,8 @@ auto StillsuitSim::startHeat()
     if (battery > 15)
     {
         
-        outsideTemp +=  2;
-        return outsideTemp;
+        double suitTemp = outsideTemp + 2;
+        return suitTemp;
     }
 }
 
@@ -22,8 +22,8 @@ auto StillsuitSim::startAirCon()
 {
     if (battery > 15) 
     {
-        outsideTemp -= 2;
-        return outsideTemp;
+        double suitTemp = outsideTemp - 2;
+        return suitTemp;
     }
 }
 
@@ -35,10 +35,14 @@ auto StillsuitSim::checkTemperature()
         return startHeat();
     }
 
-    if (outsideTemp > 80)
+    else if (outsideTemp > 80)
     {
        
        return startAirCon();
+    }
+    else 
+    {
+        return outsideTemp;
     }
 
 }

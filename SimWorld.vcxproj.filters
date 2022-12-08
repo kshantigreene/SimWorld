@@ -20,5 +20,6 @@
   <ItemGroup>
     <ClInclude Include="HumanSim.h" />
     <ClInclude Include="StillsuitSim.h" />
+    <ClInclude Include="RSAEncryption.h" />
   </ItemGroup>
 </Project>
