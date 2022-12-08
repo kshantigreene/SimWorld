@@ -28,7 +28,7 @@ auto StillsuitSim::startAirCon()
 }
 
 //checking current internal temp to see if heat or cooling is needed, then calling needed function
-auto StillsuitSim::checkTemperature()
+double StillsuitSim::checkTemperature()
 {
     if (outsideTemp < 60)
     {

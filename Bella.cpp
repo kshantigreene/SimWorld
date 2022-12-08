@@ -12,7 +12,8 @@ int HumanSim::evaporate(int sweat, int temp) {
 
 //human daily activity int time based sections
 int HumanSim::activity(int time, int hour, int minute) {
-    int currentActivity;
+    
+    activityChange = currentActivity;
     bool maybeSuit;
     if (hour < 8) {
         //human is sleeping
@@ -84,6 +85,10 @@ int HumanSim::activity(int time, int hour, int minute) {
         currentActivity = 3;
         maybeSuit = true;
     }
-    
+    //check to see if the activity changed
+    if (activityChange != currentActivity) {
+        cout << currentActivity << " this is the new activity" << endl;
+    }
+    HumanLocation(maybeSuit);
     return currentActivity;
 }

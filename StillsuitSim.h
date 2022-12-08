@@ -16,7 +16,7 @@ public:
 	void updateSuit(int time, double temp);
 	void seperateFluid();
 	void liquidPurifier(char);
-	auto checkTemperature();
+	double checkTemperature();
 	auto startHeat();
 	auto startAirCon();
 
