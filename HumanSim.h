@@ -69,7 +69,7 @@ private:
 	double calculateActivityLevel();
 	bool HumanLocation(bool inSuit); 
 	void amountDrank();
-	double activity(int time, int hour, int minute);
+	int activity(int time, int hour, int minute);
 
 
 	// ==================================================
