@@ -89,7 +89,6 @@ private:
 	 int age;
 	 bool sex;				// 0 female; 1 male
 	 double waterLevel;		// in liters
-	 double urine;			// in milliliters
 	 double bmrM;
 	 double bmrF;
 	 // Internal temperature of human

@@ -6,25 +6,25 @@ double HumanSim::calculateInternalTemp(int temp, double activityLevel) // Functi
 {
     //double internalTemp = 98.6;  // base human temp
 
-    internalTemp += activityLevel * 2;
+    internalTemp += activityLevel * .02;
 
     if (temp < 60)                           // calculates human temp off outside temp
     {
-        internalTemp -= 2;
+        internalTemp -= .02;
 
     }
     else if (temp >= 60 && temp < 70)
     {
-        internalTemp -= 1;
+        internalTemp -= .01;
 
     }
     else if (temp > 70 && temp <= 80)
     {
-        internalTemp += 1;
+        internalTemp += .01;
     }
     else
     {
-        internalTemp += 2;
+        internalTemp += .02;
     }
 
     std::cout << internalTemp << "F is your current internal temperature" << std::endl;

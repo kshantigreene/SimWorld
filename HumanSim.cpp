@@ -3,6 +3,7 @@
 #include "RSAEncryption.h"
 #include <cmath>
 
+
 using std::log;
 
 HumanSim::HumanSim(string n, StillsuitSim* suit) {
@@ -14,7 +15,9 @@ HumanSim::HumanSim(string n, StillsuitSim* suit) {
 };
 
 HumanSim::HumanSim(string n, StillsuitSim* suit, double currentActivity, int age, int height, int weight, bool sex, RSAEncryption* encryption) {
-	this->name = name;
+    
+
+    this->name = name;
     this->suit = suit;
     this->currentActivity = currentActivity;
     this->age = age;

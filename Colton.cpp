@@ -22,6 +22,7 @@ void StillsuitSim::StillsuitCompoundID(int incomingLiquid)
 {
     // Converts incoming liquid integer to a string and stores it in a new string variable
     string strLiquid = to_string(incomingLiquid);
+    int prelevel = waterStg;
 
     // Declaration of FOR loop and index for the purpose of iterating through liquid string
     int index = 0;
@@ -45,5 +46,6 @@ void StillsuitSim::StillsuitCompoundID(int incomingLiquid)
         }*/
         index++;
     }
+    cout << waterStg - prelevel << "mLs of water was added to storage, for a total of: " << waterStg << "mLs." << endl;
     cout << "The suit weighs: " << calculateSuitWeight() << " kg" << endl;
 }

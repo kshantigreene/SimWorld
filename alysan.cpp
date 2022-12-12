@@ -20,6 +20,6 @@ double HumanSim::calculateActivityLevel() {
         currentActivityLevel = bmrF / 5900 * currentActivity /  EXTRAACTIVE; // average female has BMR of 5,900 kJ per day
     }
     
-    cout << "Calculation of the activity level is " << currentActivityLevel;
+    cout << "Calculation of the activity level is " << currentActivityLevel << endl;
     return currentActivityLevel;
 }

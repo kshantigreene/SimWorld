@@ -16,7 +16,7 @@
 const int MIN_PER_DAY = 1440;
 const int MIN_TEMP = 50;
 const int MAX_TEMP = 100;
-const int SLEEP_TIME = 100;
+const int SLEEP_TIME = 10;
 const double PI = 3.14159265359;
 bool stop = false;
 
@@ -34,10 +34,11 @@ void sendToSims(HumanSim* human, StillsuitSim* suit, int time, int temp) {
 int main()
 {
     srand(time(NULL));
+    
     RSAEncryption* encryption = new RSAEncryption();
     std::cout << "Hello World!\n";
     StillsuitSim* suit = new StillsuitSim( encryption);
-    HumanSim* human = new HumanSim("Dave", suit, 3.0, 25, 72, 180, true, encryption);
+    HumanSim* human = new HumanSim("Dave", suit, 3.0, 25, 72, 81, true, encryption);
     int initTemp= MIN_TEMP+rand() % 10 + 1; //within 10 degrees of min
     double width = 7.5;
     double a = -1.0/(MIN_PER_DAY*width);
@@ -54,7 +55,7 @@ int main()
         //create thread so human can deal with it independent of this thread
         thread tempThread(sendToSims,human, suit, i, temp);
         tempThread.detach();
-       
+        sendToSims(human, suit, i, temp);
         this_thread::sleep_for(chrono::milliseconds(SLEEP_TIME));
 
         if (human->calculateDeath()) {

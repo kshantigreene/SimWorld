@@ -26,10 +26,12 @@ void HumanSim::amountDrank()
     if (currentWL < expectedWL)
     {
         double avialWater = suit->getAvailableWater();
-        double neededWater = expectedWL - currentWL;
+        double randAmount = (rand() % 100)/10.0;
+        
+        double neededWater = expectedWL - currentWL+randAmount;
         double waterReq = suit->sendWater(neededWater);
         currentWL += waterReq;
         waterDrank = waterReq;
     }
-    cout << "The human has drank " << waterDrank << "mLs." << '\n';
+    cout << "The human has drank " << waterDrank << "mLs." << " Current water level: "<< currentWL << '\n';
 }

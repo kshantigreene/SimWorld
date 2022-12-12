@@ -17,11 +17,13 @@ double StillsuitSim::batteryLevel(int time, double currentActivityLevel)
     batteryTimeLeft = maxBatteryTime - worldTime;
 
     // every minute called, battery level lowers by 1 minute
-    battery = (1 - currentActivityLevel);
-
-    if (battery < 15) {
-        cout << "Battery is low." << endl;
+    if (inSuit) {
+        battery = (1 - currentActivityLevel);
+        if (battery < 15) {
+            cout << "Battery is low." << endl;
+        }
     }
+
 
     return battery;
 }

@@ -6,16 +6,18 @@
 #include <cstdlib>
 using namespace std;
 #include <vector>
+#include <random>
+#include <time.h>
 
 bool HumanSim::HumanLocation(bool maybeSuit)
 {
     bool test = usingSuit;
-    if (maybeSuit = true) // if this is true will randomize whether they are using the suit or not 
+    if (maybeSuit) // if this is true will randomize whether they are using the suit or not 
     {
 
         int r = rand() % 10;
         // they are in the suit 
-        if (r > 5)
+        if (r > 3)
         {
 
             usingSuit = true;
@@ -24,7 +26,7 @@ bool HumanSim::HumanLocation(bool maybeSuit)
         }
 
         // they are not in the suit 
-        if (r <= 5)
+        if (r <= 3)
         {
             usingSuit = false;
             return usingSuit;
@@ -40,11 +42,11 @@ bool HumanSim::HumanLocation(bool maybeSuit)
     }
     if (test != usingSuit)
     {
-        if (test == true)
+        if (usingSuit == true)
         {
             cout << "suit is being used";
         }
-        else if (test == false)
+        else if (usingSuit == false)
         {
             cout << " suit is not being used";
         }
