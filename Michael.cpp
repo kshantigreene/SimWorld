@@ -6,48 +6,54 @@
 #include <cstdlib>
 using namespace std;
 #include <vector>
+#include <random>
 
 bool HumanSim::HumanLocation(bool maybeSuit)
 {
     bool test = usingSuit;
-    if (maybeSuit = true) // if this is true will randomize whether they are using the suit or not 
+    if (maybeSuit == true) // if this is true will randomize whether they are using the suit or not 
     {
 
         int r = rand() % 10;
         // they are in the suit 
-        if (r > 5)
+        if (r > 3)
         {
 
             usingSuit = true;
-            return usingSuit;
-
+            
         }
 
         // they are not in the suit 
-        if (r <= 5)
+        if (r <= 3)
         {
             usingSuit = false;
-            return usingSuit;
+         
 
 
         }
     }
+    // ends the first argument seeing if usingsuit or not 
     else
     {
         usingSuit = false;
-        return usingSuit;
+     
 
     }
+   // checks if its not equal but the suit is still being used itll show
     if (test != usingSuit)
     {
+        // test is true the suit is bing used 
         if (test == true)
         {
             cout << "suit is being used";
         }
-        else if (test == false)
+        // checks to see if usingsuit is being used or not 
+        else if (usingSuit == false)
         {
             cout << " suit is not being used";
+
         }
+        return usingSuit;
     }
     
 }
