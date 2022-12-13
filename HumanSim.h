@@ -70,6 +70,7 @@ private:
 	bool HumanLocation(bool inSuit); 
 	void amountDrank();
 	int activity(int time, int hour, int minute);
+	void littleUrine();
 
 
 	// ==================================================
