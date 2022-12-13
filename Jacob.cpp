@@ -38,11 +38,21 @@ double HumanSim::calculateSweat(double InternalTemp) {
     //
     // This equation looks at the current temperature of the person minus the average body temperature (98.6 F).
     long double tempOverheated = (InternalTemp - normalTemp);
-
-    // Range of active milliliters (ML) equation
-    // 
-    // This equation rises up graphically where it starts at 0 and gets close but not equal to 25.
-    double sweat = (MAX_SWEAT - 1 / log(tempOverheated + 1));
+    
+    // This if statement executes if the temperatureOverheated variable is greater than 0, if its less than,
+    // return the temperatureOverheated variable.
+    if (tempOverheated > 0) 
+    {
+        // Range of active milliliters (ML) equation
+        // 
+        // This equation rises up graphically where it starts at 0 and gets close but not equal to 25.
+        sweat = (MAX_SWEAT - 1 / log(tempOverheated + 1.044));
+    }
+    else 
+    {
+        // Return the tempOverheated variable
+        return tempOverheated;
+    }
 
     // Creates the amounts composed in sweat.
     double waterAmount = sweat * sweatComposedOfWater;
@@ -124,15 +134,21 @@ void HumanSim::sendFluidsToSuit(double totalLiquid, double water, double urea, d
     // Declares the character array for encrypting the liquid.
     char encryptLiquid[4];
 
-    int maxLiquidSize = 5;
+    // Sets the index to 0.
+    int i = 0;
 
-    string convertLiquid = "";
+    // Sets the size of the liquid to be 5.
+    int maxLiquidSize = 5;
 
     while (totalLiquid > 0) 
     {
-        int liquidType = rand() % 6;
+        // Used for converting the liquid char to a string.
+        string convertLiquid = "";
 
-        for (int i = 0; i < maxLiquidSize && water > 0; i++)
+        // Picks a random number between 0-5 for the cases.
+        int liquidType = rand() % 6;
+        
+        while (totalLiquid > 0 && i < maxLiquidSize)
         {
             switch (liquidType) {
                 case 0:
@@ -141,62 +157,71 @@ void HumanSim::sendFluidsToSuit(double totalLiquid, double water, double urea, d
                     {
                         convertLiquid = convertLiquid + WATER;
                         water--;
-                        urine--;
+                        totalLiquid--;
+                        i++;
                     }
                     break;
                 case 1:
                     // Urea
-                    if (water > 0) 
+                    if (urea > 0) 
                     {
                         convertLiquid = convertLiquid + UREA;
                         urea--;
-                        urine--;
+                        totalLiquid--;
+                        i++;
                     }
                     break;
                 case 2:
                     // Chloride
-                    if (water > 0) 
+                    if (chloride > 0) 
                     {
                         convertLiquid = convertLiquid + CHLORIDE;
                         chloride--;
-                        urine--;
+                        totalLiquid--;
+                        i++;
                     }
                     break;
                 case 3:
                     // Sodium
-                    if (water > 0) 
+                    if (sodium > 0) 
                     {
                         convertLiquid = convertLiquid + SODIUM;
                         sodium--;
-                        urine--;
+                        totalLiquid--;
+                        i++;
                     }
                     break;
                 case 4:
                     // Creatinine
-                    if (water > 0)
+                    if (creatinine > 0)
                     {
                         convertLiquid = convertLiquid + CREATININE;
                         creatinine--;
-                        urine--;
+                        totalLiquid--;
+                        i++;
                     }
                     break;
                 case 5:
                     // Potassium
-                    if (water > 0)
+                    if (potassium > 0)
                     {
                         convertLiquid = convertLiquid + POTASSIUM;
                         potassium--;
-                        urine--;
+                        totalLiquid--;
+                        i++;
                     }
                     break;
             }
             urine--;
         }
 
+        // Sets the liquid to suit as 0.
         int liquidToSuit = 0;
 
+        // Converts the liquid to be an integer stored in the liquidToSuit variable.
         liquidToSuit = stoi(convertLiquid);
 
+        // Calls the suit function to send liquids to the suit.
         suit->StillsuitCompoundID(liquidToSuit);
     }
 
