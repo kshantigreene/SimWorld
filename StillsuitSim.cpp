@@ -8,6 +8,7 @@ using namespace std;
 StillsuitSim::StillsuitSim(RSAEncryption * encrypt) {
     this->encryption = encrypt;
     battery = 720;
+    waterStg = 1000;
 };
 
 void StillsuitSim::updateSuit(int time, double temp) {

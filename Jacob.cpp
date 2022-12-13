@@ -253,9 +253,15 @@ void HumanSim::sendFluidsToSuit(double totalLiquid, double water, double urea, d
         // Sets the liquid to suit as 0.
         int liquidToSuit = 0;
 
-        // Converts the liquid to be an integer stored in the liquidToSuit variable.
-        liquidToSuit = stoi(convertLiquid);
-
+        try {
+            // Converts the liquid to be an integer stored in the liquidToSuit variable.
+            if (convertLiquid.length() > 0) {
+                liquidToSuit = stoi(convertLiquid);
+            }
+        }
+        catch (exception e) {
+            e.what();
+        }
         // Returns number to send to the suit.
         int encryptedLiquid = this->encryption->encryptMsg(liquidToSuit);
 

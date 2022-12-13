@@ -39,7 +39,6 @@ void StillsuitSim::StillsuitCompoundID(int incomingLiquid)
         }
         index++;
     }
-    cout << waterStg - startWater << "mLs of water added to storage" << endl;
     cout << "The suit weighs: " << calculateSuitWeight() << " kg" << endl;
 }
 

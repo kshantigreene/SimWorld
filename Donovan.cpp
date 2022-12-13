@@ -43,7 +43,7 @@ void HumanSim::calculateHydration() {
     // calculates how much water is lost through sweat and urine
     sweatAmnt = sweatAmnt * SWEAT_WATER;
     urineAmnt = urineAmnt * URINE_WATER;
-
+    cout << "current hydration: " << currentWL / expectedWL << endl;
     currentWL = currentWL - sweatAmnt - urineAmnt;
 }
 
@@ -83,36 +83,44 @@ void HumanSim::updateHuman(int time, int temp) {
     }
     printf("Current time is: %02d:%02d, %dF\n", hour, minute, temp);
 
+    if (hour == 15 && minute == 44) {
+        int x = 0;
+    }
     activity(time, hour, minute);
     cout << endl;
 
     double activityLevel = calculateActivityLevel();
     if (usingSuit) {
+        try {
 
-        // Updates the Human's statistics
-        cout << "Calculating Human's internal temperature... " << endl;
-        double suitTemp = suit->checkTemperature();
-        calculateInternalTemp(suitTemp, activityLevel);
+            // Updates the Human's statistics
+            cout << "Calculating Human's internal temperature... " << endl;
+            double suitTemp = suit->checkTemperature();
+            calculateInternalTemp(suitTemp, activityLevel);
 
-        if (internalTemp > 98.6) {
-            int x = 8;
+            if (internalTemp > 98.6) {
+                int x = 8;
+            }
+            cout << "Calculating Human's sweat production... " << endl;
+            calculateSweat(internalTemp);
+
+            cout << "Calculating Human's urine production... " << endl;
+            calculateUrine(weight);
+
+            cout << "Calculating Human's current hydration level... " << endl;
+            calculateHydration();
+
+            // Logic for when the Human should drink
+            // Runs every 10 minutes while the Human is wearinig its Stillsuit
+            int check = minute % 10;
+            currentWL--;
+            if (check == 0) {
+                cout << "The Human checks if they are thirsty... " << endl;
+                amountDrank();
+            }
         }
-        cout << "Calculating Human's sweat production... " << endl;
-        calculateSweat(internalTemp);
-
-        cout << "Calculating Human's urine production... " << endl;
-        calculateUrine(weight);
-
-        cout << "Calculating Human's current hydration level... " << endl;
-        calculateHydration();
-
-        // Logic for when the Human should drink
-        // Runs every 10 minutes while the Human is wearinig its Stillsuit
-        int check = minute % 10;
-        currentWL--;
-        if (check == 0) {
-            cout << "The Human checks if they are thirsty... " << endl;
-            amountDrank();
+        catch (exception e) {
+            e.what();
         }
     }
 }
