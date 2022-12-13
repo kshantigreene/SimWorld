@@ -6,6 +6,7 @@
 #include <cstdlib>
 using namespace std;
 #include <vector>
+#include <random>
 
 bool HumanSim::HumanLocation(bool maybeSuit)
 {
