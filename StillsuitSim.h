@@ -28,6 +28,8 @@ public:
 	void setInSuit(bool inSuit);
 
 	double calculateSuitWeight();
+
+	int decrypt(int incomingLiquid);
 	
 private:
 	int incomingLiquid;
