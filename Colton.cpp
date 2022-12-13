@@ -15,6 +15,8 @@ void StillsuitSim::StillsuitCompoundID(int incomingLiquid)
     int decryptedLiquid = decrypt(incomingLiquid);
     string strLiquid = to_string(decryptedLiquid);
 
+    double oldAvailableWater = getAvailableWater();
+
     //Declaration of FOR loop and index for the purpose of iterating through liquid string
     int index = 0;
     for (char c : strLiquid)
@@ -37,6 +39,10 @@ void StillsuitSim::StillsuitCompoundID(int incomingLiquid)
         }
         index++;
     }
+    double newAvailableWater = getAvailableWater();
+    double addedWater = newAvailableWater - oldAvailableWater;
+
+    cout << addedWater << " ml of water were added" << endl;
     cout << "The suit weighs: " << calculateSuitWeight() << " kg" << endl;
 }
 
