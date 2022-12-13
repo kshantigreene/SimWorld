@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 #include "StillsuitSim.h"
-#include "RSAEncryption.h"
-#include "Kegan.cpp"
 using namespace std;
 
 int StillsuitSim::decrypt(int incomingLiquid) {
