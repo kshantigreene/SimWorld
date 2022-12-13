@@ -87,12 +87,16 @@ void HumanSim::updateHuman(int time, int temp) {
     cout << endl;
 
     double activityLevel = calculateActivityLevel();
-    // Updates the Human's statistics
-    cout << "Calculating Human's internal temperature... " << endl;
-    double suitTemp = suit->checkTemperature();
-    calculateInternalTemp(suitTemp, activityLevel);
-
     if (usingSuit) {
+
+        // Updates the Human's statistics
+        cout << "Calculating Human's internal temperature... " << endl;
+        double suitTemp = suit->checkTemperature();
+        calculateInternalTemp(suitTemp, activityLevel);
+
+        if (internalTemp > 98.6) {
+            int x = 8;
+        }
         cout << "Calculating Human's sweat production... " << endl;
         calculateSweat(internalTemp);
 

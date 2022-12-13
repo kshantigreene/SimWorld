@@ -60,11 +60,12 @@ double HumanSim::calculateSweat(double InternalTemp) {
     double sodiumAmount = sweat * sweatComposedOfSodium;
 
     double potassiumAmount = sweat * sweatComposedOfPotassium;
-
-    sendFluidsToSuit(sweat, waterAmount, 0, 0, sodiumAmount, 0, potassiumAmount);
+    cout << "sweating " << sweat << "mLs" << endl;
 
     internalTemp = internalTemp - 0.1;
-
+    sendFluidsToSuit(sweat, waterAmount, 0, 0, sodiumAmount, 0, potassiumAmount);
+    cout << "new internal temp " << internalTemp << endl;
+    
     return sweat;
 }
 
@@ -175,14 +176,15 @@ void HumanSim::sendFluidsToSuit(double totalLiquid, double water, double urea, d
         // Used for converting the liquid char to a string.
         string convertLiquid = "";
 
-        // Picks a random number between 0-5 for the cases.
-        int liquidType = rand() % 6;
+        
 
         // Sets the index to 0.
         int i = 0;
         
         while (totalLiquid > 0 && i < maxLiquidSize)
         {
+            // Picks a random number between 0-5 for the cases.
+            int liquidType = rand() % 6;
             switch (liquidType) {
             case 0:
                 // Water

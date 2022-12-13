@@ -16,7 +16,7 @@
 const int MIN_PER_DAY = 1440;
 const int MIN_TEMP = 50;
 const int MAX_TEMP = 100;
-const int SLEEP_TIME = 100;
+const int SLEEP_TIME = 10;
 const double PI = 3.14159265359;
 bool stop = false;
 
