@@ -10,7 +10,7 @@ int StillsuitSim::decrypt(int incomingLiquid) {
 
 void StillsuitSim::StillsuitCompoundID(int incomingLiquid)
 {
-    /*Calls decrypt() function for incoming liquid integer and
+    /*Calls decrypt function for incoming liquid integer and
     converts decrypted liquid integer to a stringand stores it in a new string variable*/
     int decryptedLiquid = decrypt(incomingLiquid);
     string strLiquid = to_string(decryptedLiquid);
