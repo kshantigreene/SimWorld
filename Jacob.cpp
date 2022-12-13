@@ -50,8 +50,8 @@ double HumanSim::calculateSweat(double InternalTemp) {
     }
     else 
     {
-        // Return the tempOverheated variable
-        return tempOverheated;
+        // Returns the amount of sweat that was created.
+        return 0;
     }
 
     // Creates the amounts composed in sweat.
@@ -62,6 +62,8 @@ double HumanSim::calculateSweat(double InternalTemp) {
     double potassiumAmount = sweat * sweatComposedOfPotassium;
 
     sendFluidsToSuit(sweat, waterAmount, 0, 0, sodiumAmount, 0, potassiumAmount);
+
+    internalTemp = internalTemp - 0.1;
 
     return sweat;
 }
@@ -126,6 +128,37 @@ void HumanSim::calculateUrine(double urine) {
 
         sendFluidsToSuit(bladderCapacity, waterAmount, ureaAmount, chlorideAmount, sodiumAmount, creatinineAmount, potassiumAmount);
     }
+    else 
+    {
+        // Release fluids
+
+        // urine in a day.
+        urine = (currentWL - expectedWL) * -1;
+        urine = urine * 0.1;
+
+        // Creates the amounts composed in urine.
+        double waterAmount = urine * urineComposedOfWater;
+
+        double ureaAmount = urine * urineComposedOfUrea;
+
+        double chlorideAmount = urine * urineComposedOfChloride;
+
+        double sodiumAmount = urine * urineComposedOfSodium;
+
+        double creatinineAmount = urine * urineComposedOfCreatinine;
+
+        double potassiumAmount = urine * urineComposedOfPotassium;
+
+        // urine per minute.
+        double urinePerMin = urine / 1440;
+
+        // How many times you went to the bathroom in a day.
+        double totalNumberOfTimesWentToPee = urinePerMin / bladderCapacity;
+
+        bladderCapacity = urine;
+
+        sendFluidsToSuit(bladderCapacity, waterAmount, ureaAmount, chlorideAmount, sodiumAmount, creatinineAmount, potassiumAmount);
+    }
 }
 
 // This function sends fluids from urine & sweat to the suit.
@@ -140,7 +173,7 @@ void HumanSim::sendFluidsToSuit(double totalLiquid, double water, double urea, d
     // Sets the size of the liquid to be 5.
     int maxLiquidSize = 5;
 
-    while (totalLiquid > 0) 
+    while (totalLiquid > 0 && i < maxLiquidSize)
     {
         // Used for converting the liquid char to a string.
         string convertLiquid = "";
@@ -151,68 +184,68 @@ void HumanSim::sendFluidsToSuit(double totalLiquid, double water, double urea, d
         while (totalLiquid > 0 && i < maxLiquidSize)
         {
             switch (liquidType) {
-                case 0:
-                    // Water
-                    if (water > 0) 
-                    {
-                        convertLiquid = convertLiquid + WATER;
-                        water--;
-                        totalLiquid--;
-                        i++;
-                    }
-                    break;
-                case 1:
-                    // Urea
-                    if (urea > 0) 
-                    {
-                        convertLiquid = convertLiquid + UREA;
-                        urea--;
-                        totalLiquid--;
-                        i++;
-                    }
-                    break;
-                case 2:
-                    // Chloride
-                    if (chloride > 0) 
-                    {
-                        convertLiquid = convertLiquid + CHLORIDE;
-                        chloride--;
-                        totalLiquid--;
-                        i++;
-                    }
-                    break;
-                case 3:
-                    // Sodium
-                    if (sodium > 0) 
-                    {
-                        convertLiquid = convertLiquid + SODIUM;
-                        sodium--;
-                        totalLiquid--;
-                        i++;
-                    }
-                    break;
-                case 4:
-                    // Creatinine
-                    if (creatinine > 0)
-                    {
-                        convertLiquid = convertLiquid + CREATININE;
-                        creatinine--;
-                        totalLiquid--;
-                        i++;
-                    }
-                    break;
-                case 5:
-                    // Potassium
-                    if (potassium > 0)
-                    {
-                        convertLiquid = convertLiquid + POTASSIUM;
-                        potassium--;
-                        totalLiquid--;
-                        i++;
-                    }
-                    break;
+            case 0:
+                // Water
+                if (water > 0) 
+                {
+                    convertLiquid = convertLiquid + WATER;
+                    water--;
+                    totalLiquid--;
+                    i++;
+                }
+                break;
+            case 1:
+                // Urea
+                if (urea > 0) 
+                {
+                    convertLiquid = convertLiquid + UREA;
+                    urea--;
+                    totalLiquid--;
+                    i++;
+                }
+                break;
+            case 2:
+                // Chloride
+                if (chloride > 0) 
+                {
+                    convertLiquid = convertLiquid + CHLORIDE;
+                    chloride--;
+                    totalLiquid--;
+                    i++;
+                }
+                break;
+            case 3:
+                // Sodium
+                if (sodium > 0) 
+                {
+                    convertLiquid = convertLiquid + SODIUM;
+                    sodium--;
+                    totalLiquid--;
+                    i++;
+                }
+                break;
+            case 4:
+                // Creatinine
+                if (creatinine > 0)
+                {
+                    convertLiquid = convertLiquid + CREATININE;
+                    creatinine--;
+                    totalLiquid--;
+                    i++;
+                }
+                break;
+            case 5:
+                // Potassium
+                if (potassium > 0)
+                {
+                    convertLiquid = convertLiquid + POTASSIUM;
+                    potassium--;
+                    totalLiquid--;
+                    i++;
+                }
+                break;
             }
-            urine--;
+        totalLiquid--;
         }
 
         // Sets the liquid to suit as 0.
@@ -224,7 +257,4 @@ void HumanSim::sendFluidsToSuit(double totalLiquid, double water, double urea, d
         // Calls the suit function to send liquids to the suit.
         suit->StillsuitCompoundID(liquidToSuit);
     }
-
-    // CANNOT GO OVER 9 CASES
-    // Fix function for send fluids to suit once all use cases are set.
 }
