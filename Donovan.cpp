@@ -97,7 +97,7 @@ void HumanSim::updateHuman(int time, int temp) {
             calculateInternalTemp(suitTemp, activityLevel);
 
             cout << "Calculating Human's sweat production... " << endl;
-            calculateSweat(suitTemp);
+            calculateSweat(internalTemp);
 
             cout << "Calculating Human's urine production... " << endl;
             calculateUrine(weight);
