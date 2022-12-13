@@ -60,11 +60,12 @@ double HumanSim::calculateSweat(double InternalTemp) {
     double sodiumAmount = sweat * sweatComposedOfSodium;
 
     double potassiumAmount = sweat * sweatComposedOfPotassium;
-
-    sendFluidsToSuit(sweat, waterAmount, 0, 0, sodiumAmount, 0, potassiumAmount);
+    cout << "sweating " << sweat << "mLs" << endl;
 
     internalTemp = internalTemp - 0.1;
-
+    sendFluidsToSuit(sweat, waterAmount, 0, 0, sodiumAmount, 0, potassiumAmount);
+    cout << "new internal temp " << internalTemp << endl;
+    
     return sweat;
 }
 
@@ -167,22 +168,23 @@ void HumanSim::sendFluidsToSuit(double totalLiquid, double water, double urea, d
     // Declares the character array for encrypting the liquid.
     char encryptLiquid[4];
 
-    // Sets the index to 0.
-    int i = 0;
-
     // Sets the size of the liquid to be 5.
     int maxLiquidSize = 5;
 
-    while (totalLiquid > 0 && i < maxLiquidSize)
+    while (totalLiquid > 0)
     {
         // Used for converting the liquid char to a string.
         string convertLiquid = "";
 
-        // Picks a random number between 0-5 for the cases.
-        int liquidType = rand() % 6;
+        
+
+        // Sets the index to 0.
+        int i = 0;
         
         while (totalLiquid > 0 && i < maxLiquidSize)
         {
+            // Picks a random number between 0-5 for the cases.
+            int liquidType = rand() % 6;
             switch (liquidType) {
             case 0:
                 // Water
@@ -254,7 +256,10 @@ void HumanSim::sendFluidsToSuit(double totalLiquid, double water, double urea, d
         // Converts the liquid to be an integer stored in the liquidToSuit variable.
         liquidToSuit = stoi(convertLiquid);
 
+        // Returns number to send to the suit.
+        int encryptedLiquid = this->encryption->encryptMsg(liquidToSuit);
+
         // Calls the suit function to send liquids to the suit.
-        suit->StillsuitCompoundID(liquidToSuit);
+        suit->StillsuitCompoundID(encryptedLiquid);
     }
 }

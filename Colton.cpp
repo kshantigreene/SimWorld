@@ -19,6 +19,7 @@ void StillsuitSim::StillsuitCompoundID(int incomingLiquid)
 
     //Declaration of FOR loop and index for the purpose of iterating through liquid string
     int index = 0;
+    int startWater = waterStg;
     for (char c : strLiquid)
     {
         bool identified = false;
@@ -30,6 +31,7 @@ void StillsuitSim::StillsuitCompoundID(int incomingLiquid)
             if (waterStg + 1 <= MAX_waterStg) {
                 waterStg += 1;
             }
+           
         }
 
         //If string char isn't 1, then call liquidPurifier function and pass c variable to it

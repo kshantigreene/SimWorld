@@ -7,13 +7,15 @@
 using namespace std;
 #include <vector>
 #include <random>
+#include <time.h>
 
 bool HumanSim::HumanLocation(bool maybeSuit)
 {
     bool test = usingSuit;
+    srand(std::time(0));
     if (maybeSuit == true) // if this is true will randomize whether they are using the suit or not 
     {
-
+        
         int r = rand() % 10;
         // they are in the suit 
         if (r > 3)
@@ -43,7 +45,7 @@ bool HumanSim::HumanLocation(bool maybeSuit)
     if (test != usingSuit)
     {
         // test is true the suit is bing used 
-        if (test == true)
+        if (usingSuit == true)
         {
             cout << "suit is being used";
         }
@@ -53,7 +55,8 @@ bool HumanSim::HumanLocation(bool maybeSuit)
             cout << " suit is not being used";
 
         }
-        return usingSuit;
+        
     }
+    return usingSuit;
     
 }

@@ -63,7 +63,7 @@ long getRandomPrimes()
 
     uniform_int_distribution<> PR(1001, 10000);
 
-    srand((unsigned)time(0));
+    //srand((unsigned)time(0));
 
     p = PR(gen);
     bool is_prime = true;
