@@ -10,19 +10,21 @@ double StillsuitSim::getAvailableWater() {
 }
 
 // Sends the water to the human to drink
-double StillsuitSim::sendWater(double amountRequested) {
-    double waterToSend;
+int StillsuitSim::sendWater(double amountRequested) {
+    int waterToSend;
     if (amountRequested > waterStg) {
-        waterToSend = waterStg;
+        waterToSend = int (waterStg);
         cout << "Amount of water requested is larger than the amount in storage. Sending " << waterToSend << "ml of water." << endl;
         waterStg = 0;
         cout << "There is " << waterStg << "ml of water remaining." << endl;
+        waterToSend = encryption->encryptMsg(waterToSend);
         return waterToSend;
     }
     else {
-        waterToSend = amountRequested;
+        waterToSend = int (amountRequested);
         waterStg = waterStg - waterToSend;
         cout << "Sending " << waterToSend << "ml of water." << endl << "There is " << waterStg << "ml of water remaining." << endl;
+        waterToSend = encryption->encryptMsg(waterToSend);
         return waterToSend;
     }
 }
