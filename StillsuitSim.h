@@ -23,11 +23,13 @@ public:
 	double batteryLevel(int time, double currentActivityLevel);
 
 	double getAvailableWater();
-	double sendWater(double amountRequested);
+	int sendWater(double amountRequested);
 
 	void setInSuit(bool inSuit);
 
 	double calculateSuitWeight();
+
+	int decrypt(int incomingLiquid);
 	
 private:
 	int incomingLiquid;

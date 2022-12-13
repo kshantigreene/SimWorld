@@ -1,4 +1,5 @@
 #include "HumanSim.h"
+#include <random>
 
 void HumanSim::getBattery()
 {
@@ -27,7 +28,9 @@ void HumanSim::amountDrank()
     {
         double avialWater = suit->getAvailableWater();
         double neededWater = expectedWL - currentWL;
+        neededWater += rand() % 10;
         double waterReq = suit->sendWater(neededWater);
+        waterReq = encryption->decryptMsg(waterReq);
         currentWL += waterReq;
         waterDrank = waterReq;
     }
