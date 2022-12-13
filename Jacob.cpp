@@ -58,6 +58,7 @@ double HumanSim::calculateSweat(double InternalTemp) {
 
     double potassiumAmount = sweat * sweatComposedOfPotassium;
     cout << "Human is sweating " << sweat << "mLs" << endl;
+    internalTemp -= tempOverheated*.5;
     sendFluidsToSuit(sweat, waterAmount, 0, 0, sodiumAmount, 0, potassiumAmount);
 
     return sweat;
