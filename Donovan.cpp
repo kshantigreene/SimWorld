@@ -23,6 +23,7 @@ void HumanSim::setTotalBodyWater() {
     }
 
     currentWL = (heightConst * height) + (weightConst * weight) + (sexConst * sex);  // Hume-Weyers Formula
+    currentWL = currentWL * 1000;   // convert currentWL from L to mL
     expectedWL = currentWL;
 
 }
@@ -91,22 +92,23 @@ void HumanSim::updateHuman(int time, int temp) {
     double suitTemp = suit->checkTemperature();
     calculateInternalTemp(suitTemp, activityLevel);
 
-    cout << "Calculating Human's sweat production... " << endl;
-    calculateSweat(internalTemp);
+    if (usingSuit) {
+        cout << "Calculating Human's sweat production... " << endl;
+        calculateSweat(internalTemp);
 
-    cout << "Calculating Human's urine production... " << endl;
-    calculateUrine(weight);
+        cout << "Calculating Human's urine production... " << endl;
+        calculateUrine(weight);
 
-    cout << "Calculating Human's current hydration level... " << endl;
-    calculateHydration();
+        cout << "Calculating Human's current hydration level... " << endl;
+        calculateHydration();
 
-    // Logic for when the Human should drink
-    // Runs every 10 minutes while the Human is wearinig its Stillsuit
-    int check = minute % 10;
-    usingSuit = true;
-    currentWL--;
-    if (usingSuit && check == 0) {
-        cout << "The Human checks if they are thirsty... " << endl;
-        amountDrank();
+        // Logic for when the Human should drink
+        // Runs every 10 minutes while the Human is wearinig its Stillsuit
+        int check = minute % 10;
+        currentWL--;
+        if (check == 0) {
+            cout << "The Human checks if they are thirsty... " << endl;
+            amountDrank();
+        }
     }
 }
